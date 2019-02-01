@@ -1,0 +1,921 @@
+.site-header {
+    background-color: rgb(243, 243, 242);
+    background-image: url("../images/BeyondTheCliffBanner.png");
+    background-size: cover;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-bottom: 102px;
+    padding-top: 102px;
+    width: 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.site-header:after, .logo-wrap:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.site-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.site-content {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+@media (max-width: 768px)
+{
+    .site-content {
+        margin: 0;
+        padding: 0 5%;
+        width: 100%;
+    }
+}
+
+/* main */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+@media (max-width: 768px)
+{
+    main, .site-container {
+        width: 100%;
+    }
+}
+
+.site-container {
+    clear: both;
+}
+
+.site-container {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+}
+
+.cfix:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.link-transition a svg {
+    transition: fill 0.2s ease;
+}
+
+/* Project cover */
+
+.project-covers {
+    padding-bottom: 0px;
+    padding-top: 60px;
+}
+
+@media (max-width: 768px)
+{
+    .project-covers {
+        padding-bottom: 0px;
+        padding-top: 28px;
+    }
+}
+
+.project-cover:nth-child(3n+1) {
+    clear: left;
+    margin-left: 0;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover:nth-child(3n+1) {
+        clear: none;
+    }
+}
+
+.project-cover {
+    margin-right: 5%;
+    width: 30%;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover {
+        width: 47.5%;
+    }
+}
+
+.project-cover {
+    display: block;
+    float: left;
+    position: relative;
+}
+
+/*logo-wrap */
+
+.logo-wrap {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 100%;
+}
+
+.logo {
+    font-family: "museo-slab",serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    padding-bottom: 0px;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0px;
+    text-transform: none;
+}
+
+.logo a {
+    color: #d4d4d4;
+}
+
+.logo a:hover {
+    color: #797979;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.logo, .logo-secondary {
+    clear: both;
+    word-wrap: break-word;
+}
+
+.logo-text {
+  font-family: "museo-slab",serif;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* gallery-title */
+
+nav .gallery-title a:hover {
+    color: #797979;
+    font-style: normal;
+    font-weight: 300;
+    text-transform: none;
+}
+
+nav .gallery-title a {
+    color: #c3c3c3;
+    font-family: "museo-slab",serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 40px;
+    font-family: "museo-slab",serif;
+}
+
+nav .gallery-title {
+    display: inline-block;
+    vertical-align: middle;
+      padding-right: 50px;
+}
+
+nav .gallery-title a.active {
+    color: #797979;
+    font-style: normal;
+    font-weight: 300;
+    text-transform: none;
+}
+
+/*social*/
+.social svg {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.social a {
+    display: block;
+    text-align: center;
+}
+
+.social {
+    font-size: 0;
+}
+
+.social li:first-child {
+    padding-left: 0 !important;
+}
+
+.social li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* nav-social */
+.nav-social {
+    text-align: center;
+}
+
+.nav-social li {
+    padding-top: 35px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+.nav-social svg {
+    fill: #bbbbbb;
+    opacity: 1;
+    width: 30px;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/*nav */
+
+nav {
+    padding-left: 0%;
+    padding-right: 0%;
+    text-align: center;
+}
+
+nav {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px;
+    padding-top: 40px;
+    width: 100%;
+    display: block;
+}
+
+nav {
+    clear: both;
+}
+
+.site-wrap, .site-container {
+    position: relative;
+    width: 100%;
+}
+
+nav .project-title:first-child, nav .gallery-title:first-child, nav .page-title:first-child, nav .link-title:first-child {
+    padding-left: 0 !important;
+}
+
+nav .page-title, nav .gallery-title, nav .project-title, nav .link-title, nav .social, nav .social li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav .project-title:last-child, nav .gallery-title:last-child, nav .page-title:last-child, nav .link-title:last-child {
+    padding-right: 0 !important;
+}
+
+.nav-social {
+    text-align: center;
+}
+
+section, summary {
+    display: block;
+}
+
+a:active, a:focus, a:hover {
+    outline: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.link-transition a {
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.project-cover .cover-image-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.project-cover .cover-image-wrap {
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 0%;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover .cover-image-wrap {
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+}
+
+.project-cover .cover-image {
+    position: relative;
+    -webkit-transform: translateZ(0);
+}
+
+.project-cover .cover-image {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.project-cover .cover-image, .project-cover .cover-image:after, .project-cover .cover {
+    border-radius: 0px;
+}
+
+.project-cover.hold-space .cover-image:before {
+    padding-bottom: 78.21782%;
+}
+
+.project-cover.hold-space .cover-image:before {
+    content: '';
+    display: block;
+    width: 100%;
+}
+
+.project-cover .cover-image, .project-cover .cover-image:after, .project-cover .cover {
+    border-radius: 0px;
+}
+
+.project-cover .cover-image:after {
+    background-color: #ffffff;
+    opacity: 0;
+}
+
+.project-cover .cover-image:after {
+    -webkit-transition: background-color 0.2s ease, opacity 0.2s ease;
+    -moz-transition: background-color 0.2s ease, opacity 0.2s ease;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.project-cover.hold-space .cover {
+    left: 0;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.project-cover .cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    min-height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover:nth-child(2n) {
+        margin-right: 0 !important;
+    }
+}
+
+.project-cover .details-wrap {
+    padding-bottom: 16.5%;
+}
+
+.project-cover .details-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-top: 8%;
+    width: 100%;
+}
+
+.project-cover .details {
+    background: rgba(255, 255, 255, 0);
+}
+
+.project-cover .details-inner:after, .project-covers:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.project-cover .details-inner {
+    overflow: hidden;
+}
+
+.project-cover .details-inner {
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0%;
+}
+
+.project-cover .title, .project-cover .date, .project-cover .fields, .project-cover .custom, .project-cover .description {
+    clear: both;
+}
+
+.project-cover .title {
+    color: #cccccc;
+    float: none;
+    font-family: "museo-slab",serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 28px;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 90%;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover .title {
+        font-size: 18px;
+        line-height: 21px;
+        padding-bottom: 8px;
+    }
+}
+
+.project-cover .date {
+    color: #bbbbbb;
+    float: none;
+    font-family: "museo-slab",serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    margin: auto;
+    padding-bottom: 0px;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 90%;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover .date {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+a:active, a:focus, a:hover {
+    outline: 0;
+}
+
+.project-cover:hover .cover-image:after, .project-cover.touch-hover .cover-image:after {
+    background-color: #000000;
+    opacity: 0.15;
+}
+
+.project-cover:nth-child(3n) {
+    margin-right: 0;
+}
+
+@media (max-width: 768px)
+{
+    .project-cover:nth-child(3n) {
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .project-cover:nth-child(3n+1) {
+        clear: none;
+    }
+}
+
+@media (max-width: 540px)
+{
+    .project-cover {
+        margin-right: 0 !important;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .site-header {
+        padding: 40px 5%;
+    }
+}
+
+@media (max-width: 540px)
+{
+    .site-header {
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 768px)
+{
+    nav {
+        display: none;
+        padding: 0;
+        width: 100%;
+    }
+}
+
+.custom-container {
+    width: 100%;
+}
+
+.custom-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.custom {
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+}
+
+.custom-header {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    width: 100%;
+}
+
+.custom-header .title {
+    margin: 0 auto;
+}
+
+.custom-header .title {
+    color: #444444;
+    font-family: "museo-slab",serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 70px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+    font-family: "museo-slab",serif;
+}
+
+.project-module {
+    clear: both;
+}
+
+.modules .form {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-module-form {
+    float: none;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.modules .form label {
+    display: block;
+}
+
+.project-module-form label {
+    color: #333333;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 14px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    text-align: left;
+    text-transform: none;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+input {
+    line-height: normal;
+}
+
+.modules .form textarea {
+    height: 132px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+}
+
+.modules .form input, .modules .form textarea, .modules .form .submit-button {
+    border-style: solid;
+    border-width: 1px;
+    outline: none;
+}
+
+.modules .form input, .modules .form textarea {
+    -webkit-appearance: none;
+    border-radius: 3px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.modules .form input {
+    height: 42px;
+    line-height: 42px;
+}
+
+.project-module-form input, .project-module-form textarea {
+    background-color: #ffffff;
+    border-color: #dddddd;
+    color: #333333;
+    font-family: arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    padding-left: 10px;
+    text-align: left;
+    text-transform: none;
+}
+
+.modules .form input, .modules .form textarea, .modules .form .submit-button {
+    border-style: solid;
+    border-width: 1px;
+    outline: none;
+}
+
+.modules .form .submit-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    width: auto;
+}
+
+.project-module-form .submit-button {
+    border-radius: 5px;
+    color: #333333;
+    font-family: arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-transform: none;
+    border: 1px solid rgba(51, 51, 51, 0.6);
+}
+
+.modules .form .contact-form-sent {
+    display: none;
+}
+
+.project-module-form .contact-form-sent {
+    color: #333333;
+    font-family: arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    text-transform: none;
+}
+
+.project-container {
+    width: 100%;
+}
+
+.project-header .title, .project-header .description, .project-header .date, .project-header .fields, .project-header .custom {
+    margin: 0 auto;
+}
+
+.project-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.project {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.project-header {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    width: 100%;
+}
+
+.project-header .title {
+    color: #444444;
+    font-family: "museo-slab",serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 70px;
+    padding-bottom: 30px;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+}
+
+.project-header .description {
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.project-header .description {
+    color: #888888;
+    font-family: "museo-slab",serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 28px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+}
+
+.project-module {
+    clear: both;
+}
+
+img {
+    vertical-align: top;
+    border: 0;
+}
+
+.project img, .project object {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.modules .image {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+    padding-top: 0px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.other-projects:after, .other-projects .title-wrapper:after, .project-content:after, .other-projects .project-cover .details-inner:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.download-text
+{
+    color: #888888;
+    font-family: "museo-slab",serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 28px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+    display: block;
+}
+
+.download-text:hover
+{
+    color: #444444;
+}
+
+.back-to-top {
+    clear: both;
+    display: block;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.back-to-top a {
+    color: #999999;
+    font-family: "museo-slab",serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px;
+    text-transform: normal;
+}
+
+.back-to-top .arrow {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.site-footer, .site-footer a {
+    color: #dddddd;
+}
+
+.site-footer {
+    clear: both;
+    display: block;
+}
+
+.site-footer {
+    font-family: "museo-slab",serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px;
+    padding-bottom: 60px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 60px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+}
+
+.cfix:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.custom-content {
+  text-align: center;
+}
