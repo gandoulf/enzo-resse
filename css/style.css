@@ -621,6 +621,11 @@ a:active, a:focus, a:hover {
     clear: both;
 }
 
+.trailer-video {
+    width: 100%;
+    margin-top: 60px;
+}
+
 .modules .form {
     clear: both;
     margin-left: auto;
