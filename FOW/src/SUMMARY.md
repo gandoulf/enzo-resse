@@ -2,6 +2,12 @@
 
 [Documentation](documentation.md)
 
+- [Book](book/index.md)
+  - [Getting Started](book/getting_started.md)
+  - [Architecture](book/architecture/index.md)
+    - [Handler](book/architecture/Handler.md)
+    - [Floor](book/architecture/Floor.md)
+
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)
     - [AFOW_Handler](reference/classes/AFOW_Handler.md)
@@ -21,4 +27,4 @@
     - [UFOW_Rasterizer](reference/classes/UFOW_Rasterizer.md)
     - [UFOW_TextureSample](reference/classes/UFOW_TextureSample.md)
     - [UFOW_Tile_Class](reference/classes/UFOW_Tile_Class.md)
-    - [UFOW_VisibilityComponent](reference/classes/UFOW_VisibilityComponent.md)
+    - [UFOW_VisibilityE_Component](reference/classes/UFOW_VisibilityE_Component.md)

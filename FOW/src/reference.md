@@ -18,7 +18,7 @@
 - [`UFOW_Rasterizer`](/reference/classes/UFOW_Rasterizer.md)
 - [`UFOW_TextureSample`](/reference/classes/UFOW_TextureSample.md)
 - [`UFOW_Tile_Class`](/reference/classes/UFOW_Tile_Class.md)
-- [`UFOW_VisibilityComponent`](/reference/classes/UFOW_VisibilityComponent.md)
+- [`UFOW_VisibilityE_Component`](/reference/classes/UFOW_VisibilityE_Component.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

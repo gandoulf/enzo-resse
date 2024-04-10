@@ -28,7 +28,7 @@ you will have to create 3 templated classes to finish your fully custom tiles :
 
 Contained by : [**`UFOW_Floor`**](/reference/classes/UFOW_Floor.md)
 
-Warning : I highly advise to use the EnumFOWTilePackagingFormat::PACKED format for tiles for optimisation reason
+Warning : I highly advise to use the EnumFOWTilePackagingFormat::PACKED format for optimisation reason
 
 
 ---

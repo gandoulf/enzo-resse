@@ -3,7 +3,7 @@ authors = []
 language = "en"
 multilingual = false
 src = "src"
-title = "documentation"
+title = "Layered Fog Of War documentation"
 
 [output.html]
 default-theme = "ayu"

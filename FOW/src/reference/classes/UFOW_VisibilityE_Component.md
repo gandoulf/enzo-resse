@@ -1,7 +1,7 @@
-# **Class: `UFOW_VisibilityComponent`**
+# **Class: `UFOW_VisibilityE_Component`**
 
 ```cpp
-class FOGOFWAR_API UFOW_VisibilityComponent
+class FOGOFWAR_API UFOW_VisibilityE_Component
     : public UActorComponent
     , public IFOW_VisibilityEntity_Interface;
 ```
@@ -9,6 +9,9 @@ class FOGOFWAR_API UFOW_VisibilityComponent
 ---
 
 **_Reflection-enabled_**
+
+### Specifiers:
+- **ClassGroup** = _Custom_
 
 ### Meta Specifiers:
 - **BlueprintSpawnableComponent**
@@ -30,7 +33,7 @@ Contained by : [**`UFOW_EntityVisibilityHandler`**](/reference/classes/UFOW_Enti
 
     ```cpp
     public:
-    FOnVisibilityChanged OnVisibilityChanged;
+    FOnVisibilityChangedd OnVisibilityChanged;
     ```
     
     ---

@@ -1,4 +1,5 @@
 # Contents
+- [Book](/book/index.md)
 - [C++ API Reference](/reference.md)
 
 ---

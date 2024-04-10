@@ -27,6 +27,16 @@ You have the possibility to change the core module of the FOW by changing the de
 > - If you want a custom FOWHandler be sure to override FindLevelFOWHandler, you can use **`AFOW_Handler_Default`** as example
 > - Go to the FOWFloors settings and display the parametters to shape the floor to your needs
 
+If you need to modify the initialization to fit your pipeline, override those function called by the BeginPlay
+- void InitNetwork();
+- void InitTeams();
+- void InitFOWFloors();
+- void InitFOWFloorsTiles();
+- void InitGameShader();
+- void InitFOWUpdate();
+- void FinalizeInitialization();
+Please be really carefull to not finalize the initialization if the floor or game shader init havn't be called
+
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

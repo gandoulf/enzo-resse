@@ -11,7 +11,7 @@ Visibility entity used to automatically update the ingame visibility of the UObj
 
 > - VisibilityEntity are by default automatically updated
 > - Override OnVisibilityStateChanged to update the visibility state
-> - You can find a default example by looking at [**`UFOW_VisibilityComponent`**](/reference/classes/UFOW_VisibilityComponent.md).
+> - You can find a default example by looking at **`UFOW_VisibilityComponent`**.
 
 Contained by : [**`UFOW_EntityVisibilityHandler`**](/reference/classes/UFOW_EntityVisibilityHandler.md)
 
