@@ -11,10 +11,11 @@ class FOGOFWAR_API UFOW_VisibilityE_Component
 **_Reflection-enabled_**
 
 ### Specifiers:
-- **ClassGroup** = _Custom_
+- **ClassGroup** = _Entity_
 
 ### Meta Specifiers:
 - **BlueprintSpawnableComponent**
+- **DisplayName** = _FOW_VisibilityEntityComponent_
 
 ---
 
