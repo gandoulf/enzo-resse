@@ -7,6 +7,8 @@
   - [Architecture](book/architecture/index.md)
     - [Handler](book/architecture/Handler.md)
     - [Floor](book/architecture/Floor.md)
+  - [Tutorials](book/Tutorials/index.md)
+    - [First set up](book/Tutorials/First_set_up.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)
