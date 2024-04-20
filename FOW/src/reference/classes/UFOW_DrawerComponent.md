@@ -28,6 +28,34 @@ It is possible to :
 
 Contained by : [**`AFOW_Handler`**](/reference/classes/AFOW_Handler.md)
 
+---
+
+# **Properties**
+
+* # __`OnlyRegisterValideTeam`__
+
+    ```cpp
+    protected:
+    bool OnlyRegisterValideTeam;
+    ```
+    
+    ---
+    
+    **_Reflection-enabled_**
+    
+    ### Specifiers:
+    - **BlueprintReadWrite**
+    - **EditAnywhere**
+    - **Category** = _Settings_
+    
+    ---
+    
+    To allow flexibility allow every drawer to be registered in the FOWHandler, it might slighly increase UpdateDrawerLayer parsing time
+    But it will remove every network synchronisation issues if the client team change
+    
+
+
+
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

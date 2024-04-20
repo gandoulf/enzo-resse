@@ -68,5 +68,10 @@ The base radius of the `FOW_Drawer_FOV` component might be too small, don't hesi
 in the actor holding the component. Modify the `DrawerRadius` value to provide a larger sight to your units.
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/10_ChangeRadiusSize.png)
+
+You can change the fog precision of the FOW in the `BP_FOW_Handler` by going in the details panel
+and by changing the `PixelSize` value. By default the fog pixel is set to 25 centimeters
+
+![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/11_Chance_the_fog_precision.png)
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
