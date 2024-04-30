@@ -1,23 +1,22 @@
 # Collision entity
 
-- [Collision Entity Component](#collision-yentity-component)
-- [Collision Entity cpp implementation](#collision-entity-cpp-implementation)
+- [Collision Entity Component](#collision-entity-component)
+- [Collision Entity C++ Implementation](#collision-entity-cpp-implementation)
 
-This tutorial has been realised in the `Tutorial/Maps/TutorialMap_Entities` map providen in the
-[Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
+This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 
-# Collision Entity Component
+## Collision Entity Component
 
-There is Multiple `CollisionEntity` component implementing the `IFOW_CollisionEntity_Interface`.
-All collision work the same, they store a geometry that will be given to a `UFOW_CollisionHandler`.
-The handler will then profide query class to collect colliders informations. <br />
-The geometry can be convex and concave, it's only requiered to correctly sort the vertices.
+There are multiple `CollisionEntity` components implementing the `IFOW_CollisionEntity_Interface`. All collisions
+work the same; they store geometry that will be given to a `UFOW_CollisionHandler`. The handler will then provide
+query class to collect collider information. The geometry can be convex and concave; it's only required to correctly
+sort the vertices.
 
 ![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/0_SetupCollisionComponentMerged.png)
 
-To use them add a `FOW_CollisionEntity_BoxComponent` or `FOW_CollisionEntity_CustomComponent`
-to an instanced actor or to your existing `Blueprint`. I use for the example the box component,
-if you wanna use the custom component to generate custom collision you will have to provide vertices.
+To use them, add a `FOW_CollisionEntity_BoxComponent` or `FOW_CollisionEntity_CustomComponent` to an instanced actor
+or to your existing blueprint. I use for the example the box component; if you want to use the custom component to
+generate custom collision, you will have to provide vertices.
 
 ![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/2_AddBoxCollisionComponent.png)
 
@@ -25,21 +24,24 @@ Select the `FOW_CollisionEntity_BoxComponent` and reset the scale to 1.
 
 ![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/3_ResetCollisionBoxScaleToOne.png)
 
-If you take a look to the collision entity `settings` you will see that `Static/DynamicLayerSettingClass` are requiered.
-It's the case because colliders are also `DrawingEntities`. If `ShouldBeDrawn` is check and if the
-`UFOW_LayerHandler` is correctly set colliders will provide their geometries to a `UFOW_Drawer_Shared`.
-It's present as an optimisation for maps with a lots of `FOVDrawers` or `FOVEntities`, it'll allow the
-FOW to rasterize the colliders geometry into a static layer which will reduce the triangle count per geometry
-for dynamic drawing.
+If you take a look at the collision entity settings, you will see that `Static/DynamicLayerSettingClass` are required.
+It's the case because colliders are also `DrawingEntities`; their geometry can be drawn on a fog fragment by a drawer
+as an optimization if `ShouldBeDrawn` is checked. See the [Layer tutorial](/book/Tutorials/entities/../Layers.md) for more information.
 
 ![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/4_CollisionEntityGeneralParameters.png)
 
-Hit the play button and see the shape of the collision blocking the sight of the drawer.
+Collisions are subject to heavy update time in every game. It is the same for the FOW; collision takes time to query.
+To optimize those queries, we're using acceleration structures that are super fast; however, their update or construction
+time might be heavy. To overcome this issue, we split static colliders from dynamic. It's really important for your game
+to have actors set correctly to `static` or `movable` depending on your needs. Static collision is significantly faster
+than dynamic.
 
-# Collision Entity cpp implementation
+![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png)
 
-You can make your own collision component or directly turn your `UObject` to entities and give them
-the possibility to block the sight of drawers. To be done ...
+## Collision Entity C++ Implementation
+
+You can make your own collision component or directly turn your `UObject` to entities and give them the possibility to
+block the sight of drawers. To be done...
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

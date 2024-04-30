@@ -4,7 +4,7 @@
 
 - [Installation](#installation)
 - [Set up the fog](#set-up-the-fog)
-- [Going furter](#going-furter)
+- [Going further](#going-further)
 
 ## Installation
 
@@ -13,15 +13,15 @@ Install the plugin in the project, helping video [Here](https://www.youtube.com/
 
 ## Set up the fog
 
-This part will explain how to use the Fog Of War in the easiest and fastest possible way !<br />
+This part will explain how to use the Fog Of War in the easiest and fastest possible way!
 
-Drag and drop a `BP_FOWHandler` from the quickly add button, keyboard is enable to allow you fast search
+Drag and drop a `BP_FOWHandler` from the quickly add button, keyboard is enabled to allow you fast search
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/1_DragAndDropFOWHandler.png)
 
-Once in your scene you will see two box:
-* Yellow one, representing the Fog in 3D
-* Pink one, representing the fog align to the tile grid
+Once in your scene you will see two boxes:
+- Yellow one, representing the Fog in 3D
+- Pink one, representing the fog aligned to the tile grid
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/2_DragAndDropFOWHandler_Result.png)
 
@@ -33,8 +33,8 @@ Hit the play button for the first preview of the FOW !!
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/4_PlayGameWithFog.png)
 
-Now that the FOW is running were gonna add collision to limite the sight of character.
-Add `FOW_CollisionEntity_BoxComponent` to the four wall in the map
+Now that the FOW is running we're gonna add collision to limit the sight of character.
+Add `FOW_CollisionEntity_BoxComponent` to the four walls in the map
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/5_AddCollisionToWall.png)
 
@@ -42,23 +42,23 @@ You will have to reset the scale of the box collision to 1 to make them fit to t
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/6_ResetCollisionScaleTo1.png)
 
-Box are cool but might be a bit limited, let's see how to do otherwise
+Boxes are cool but might be a bit limited, let's see how to do otherwise
 Add `FOW_CollisionEntity_CustomComponent` to the cylinder in the map.
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/7_AddCustomCollisionToWall.png)
 
 In the details panel, select the component and Add 8 vertices to the `CustomGeometryVertices` array.
-Position the vertices in top view such as they fit to the object, grid snapping might by annoying.
+Position the vertices in top view such as they fit to the object, grid snapping might be annoying.
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/8_AddVerticesToYourCustomCollider.png)
 
-You can hit the play button again and see that the cylinder collision is projected! 
+You can hit the play button again and see that the cylinder collision is projected!
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/8.1_CollistionAreCasted.png)
 
-## Going furter
+## Going further
 
-If you are setting up the FOW for custom map you can change the size and position of the floor
+If you are setting up the FOW for a custom map you can change the size and position of the floor
 in BP_FOWHandler in the details panel. You can also add other floors to extend your game however
 you want. check the [](/book/Tutorials/)[Floor page](Floor_Verticality.md) for more information to set up the fog in your level.
 
@@ -70,8 +70,9 @@ in the actor holding the component. Modify the `DrawerRadius` value to provide a
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/10_ChangeRadiusSize.png)
 
 You can change the fog precision of the FOW in the `BP_FOW_Handler` by going in the details panel
-and by changing the `PixelSize` value. By default the fog pixel is set to 25 centimeters
+and by changing the `PixelSize` value. By default, the fog pixel is set to 25 centimeters
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/11_Chance_the_fog_precision.png)
+
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
