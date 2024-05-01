@@ -1,6 +1,11 @@
 # Visibility Entity
 
-## Visibility Entity Component
+- [Visibility Entity Components](#drawing-entity-components)
+- [Visibility Entity cpp implementation](#visibility-entity-cpp-implementation)
+
+This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
+
+## Visibility Entity Components
 
 This component implements `IFOW_VisibilityEntity_Interface` and allows your game to change the visibility
 of your actors depending on the fog state.

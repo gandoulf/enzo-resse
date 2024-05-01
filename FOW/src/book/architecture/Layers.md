@@ -122,6 +122,8 @@ It simplifies the implementation of one or a few frame drawing drawers. It's oft
 to the system to ensure at least one update. With this enabled, the system will try to destroy the associated drawer
 every frame.
 
+![Layers](../../assets/Architecture/Layers/10_TransientDrawersUsage.png)
+
 You might not want to draw for only one frame, in that case, you can override `RequestDestruction` in CPP and BP to
 add a timer or verify a condition before calling `DestroyAndUnregister`.
 

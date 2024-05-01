@@ -3,7 +3,7 @@
 - [Create and Add Layers](#create-and-add-layers)
 - [Static Layers and Optimization](#static-layers-and-optimization)
 
-For this tutorial use Tutorial/Maps/TutorialMap or Tutorial/Maps/TutorialMap_Collider map provided in
+For this tutorial use `Tutorial/Maps/TutorialMap` or `Tutorial/Maps/TutorialMap_Collider` map provided in
 the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
 
 ## Create and Add Layers

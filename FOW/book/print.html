@@ -645,6 +645,7 @@ rasterized to represent their shadows.</p>
 <p>It simplifies the implementation of one or a few frame drawing drawers. It's often heavy to write delegate and bind
 to the system to ensure at least one update. With this enabled, the system will try to destroy the associated drawer
 every frame.</p>
+<p><img src="book/architecture/../../assets/Architecture/Layers/10_TransientDrawersUsage.png" alt="Layers" /></p>
 <p>You might not want to draw for only one frame, in that case, you can override <code>RequestDestruction</code> in CPP and BP to
 add a timer or verify a condition before calling <code>DestroyAndUnregister</code>.</p>
 <p><img src="book/architecture/../../assets/Architecture/Layers/11_TransientDrawersDestructionOverride.png" alt="Layers" /></p>
@@ -691,7 +692,8 @@ If you need help installing the plugin, you can watch this <a href="https://www.
 <li><a href="book/Tutorials/First_set_up.html#going-further">Going further</a></li>
 </ul>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>Download the Demo project <a href="https://github.com/gandoulf/LayeredFOW_Demo">Here</a> <br />
+<p>This tutorial has been realised in the <code>Tutorial/Maps/TutorialMap_Minimaps</code> map providen in the demo project.
+If not done yet, download the Demo project <a href="https://github.com/gandoulf/LayeredFOW_Demo">Here</a> <br />
 Install the plugin in the project, helping video <a href="https://www.youtube.com/watch?v=BVz-TQKzHNY">Here</a> <br /></p>
 <h2 id="set-up-the-fog"><a class="header" href="#set-up-the-fog">Set up the fog</a></h2>
 <p>This part will explain how to use the Fog Of War in the easiest and fastest possible way!</p>
@@ -752,7 +754,12 @@ and their updates are managed by the containers.</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visibility-entity"><a class="header" href="#visibility-entity">Visibility Entity</a></h1>
-<h2 id="visibility-entity-component"><a class="header" href="#visibility-entity-component">Visibility Entity Component</a></h2>
+<ul>
+<li><a href="book/Tutorials/entities/Visibility_Entity.html#drawing-entity-components">Visibility Entity Components</a></li>
+<li><a href="book/Tutorials/entities/Visibility_Entity.html#visibility-entity-cpp-implementation">Visibility Entity cpp implementation</a></li>
+</ul>
+<p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Entities</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a>.</p>
+<h2 id="visibility-entity-components"><a class="header" href="#visibility-entity-components">Visibility Entity Components</a></h2>
 <p>This component implements <code>IFOW_VisibilityEntity_Interface</code> and allows your game to change the visibility
 of your actors depending on the fog state.</p>
 <p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Visibility/0_MergePictureVisibilityComponent2.png" alt="VisibilityEntityComponent" /></p>
@@ -781,7 +788,7 @@ the possibility to react to the Fog state. To be done ...</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-entity"><a class="header" href="#drawing-entity">Drawing entity</a></h1>
 <ul>
 <li><a href="book/Tutorials/entities/Drawing_Entity.html#drawing-entity-components">Drawing Entity Components</a></li>
-<li><a href="book/Tutorials/entities/Drawing_Entity.html#drawing-entity-cpp-implementation">Drawing Entity C++ Implementation</a></li>
+<li><a href="book/Tutorials/entities/Drawing_Entity.html#drawing-entity-cpp-implementation">Drawing Entity Cpp implementation</a></li>
 </ul>
 <p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Entities</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a>.</p>
 <h2 id="drawing-entity-components"><a class="header" href="#drawing-entity-components">Drawing Entity Components</a></h2>
@@ -804,14 +811,14 @@ actor or to your existing <code>Blueprint</code>. The default settings of those 
 <li>The advanced section is only necessary for multiple <code>FOW_Floor</code> games. Their behavior will be explained later.</li>
 </ul>
 <p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png" alt="DrawingEntity" /></p>
-<h2 id="drawing-entity-c-implementation"><a class="header" href="#drawing-entity-c-implementation">Drawing Entity C++ Implementation</a></h2>
+<h2 id="drawing-entity-cpp-implementation"><a class="header" href="#drawing-entity-cpp-implementation">Drawing Entity cpp implementation</a></h2>
 <p>You can make your own drawing component or directly turn your <code>UObject</code> to entities and give them the possibility to alter the state of the fog. To be done...</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="collision-entity"><a class="header" href="#collision-entity">Collision entity</a></h1>
 <ul>
 <li><a href="book/Tutorials/entities/Collision_Entity.html#collision-entity-component">Collision Entity Component</a></li>
-<li><a href="book/Tutorials/entities/Collision_Entity.html#collision-entity-cpp-implementation">Collision Entity C++ Implementation</a></li>
+<li><a href="book/Tutorials/entities/Collision_Entity.html#collision-entity-cpp-implementation">Collision Entity cpp implementation</a></li>
 </ul>
 <p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Entities</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a>.</p>
 <h2 id="collision-entity-component"><a class="header" href="#collision-entity-component">Collision Entity Component</a></h2>
@@ -836,7 +843,7 @@ time might be heavy. To overcome this issue, we split static colliders from dyna
 to have actors set correctly to <code>static</code> or <code>movable</code> depending on your needs. Static collision is significantly faster
 than dynamic.</p>
 <p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png" alt="CollisionEntity" /></p>
-<h2 id="collision-entity-c-implementation"><a class="header" href="#collision-entity-c-implementation">Collision Entity C++ Implementation</a></h2>
+<h2 id="collision-entity-cpp-implementation"><a class="header" href="#collision-entity-cpp-implementation">Collision Entity cpp implementation</a></h2>
 <p>You can make your own collision component or directly turn your <code>UObject</code> to entities and give them the possibility to
 block the sight of drawers. To be done...</p>
 <hr />
@@ -846,7 +853,7 @@ block the sight of drawers. To be done...</p>
 <li><a href="book/Tutorials/Layers.html#create-and-add-layers">Create and Add Layers</a></li>
 <li><a href="book/Tutorials/Layers.html#static-layers-and-optimization">Static Layers and Optimization</a></li>
 </ul>
-<p>For this tutorial use Tutorial/Maps/TutorialMap or Tutorial/Maps/TutorialMap_Collider map provided in
+<p>For this tutorial use <code>Tutorial/Maps/TutorialMap</code> or <code>Tutorial/Maps/TutorialMap_Collider</code> map provided in
 the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h2 id="create-and-add-layers"><a class="header" href="#create-and-add-layers">Create and Add Layers</a></h2>
 <p>This part will explain how <code>LayerSettings</code> work and how you can create new ones for your games. First, you have
@@ -899,6 +906,12 @@ It's even more effective for custom collision with a lot of vertices.</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="outdoor-indoor"><a class="header" href="#outdoor-indoor">Outdoor Indoor</a></h1>
+<ul>
+<li><a href="book/Tutorials/Outdoor_Indoor.html#setup-indoor-area">Setup indoor area</a></li>
+</ul>
+<p>For this tutorial use the <code>Tutorial/Maps/TutorialMap_Collider</code> map provided in
+the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
+<h2 id="setup-indoor-area"><a class="header" href="#setup-indoor-area">Setup indoor area</a></h2>
 <p>Depending on the game, you might need to dissociate the indoor from the outdoor, such as only the indoors are
 undiscovered. From my experience, it's easier to clear the whole FOW and add fog to the indoor area. The next
 picture represents the result we will have step by step:</p>
@@ -952,7 +965,7 @@ and dynamic layer setting class by <code>FOW_FloorStartUpLayer</code>.</p>
 Networking <code>GameMode</code>, <code>GameState</code>, <code>Controller</code>, and <code>Character</code> are provided. You have absolutely the right to
 read, copy, and use any code you find :) <br /></strong></p>
 </blockquote>
-<p>This tutorial has been realized in the Tutorial/Maps/TutorialMap_Networking map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
+<p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Networking</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h1 id="default-replication-setup"><a class="header" href="#default-replication-setup">Default Replication Setup</a></h1>
 <p>The <code>TutorialMap_Networking</code> has been set up to show you how replication and teams work. To do so a
 <code>BP_TutorialNetworking_GameMode</code> has been set up with a <code>BP_TutorialNetworking_PlayerController</code> to spawn a
@@ -1038,6 +1051,8 @@ be able to fetch necessary data from your game with it. For the example let's ju
 </ul>
 <p>This tutorial is based on solo games; everything related to channels needs to be taken with caution when applied to
 teams. However, everything works the same; teams will only limit the number of available channels.</p>
+<p>For this tutorial use the <code>Tutorial/Maps/TutorialMap_Collider</code> map provided in
+the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h2 id="basic"><a class="header" href="#basic">Basic</a></h2>
 <p>The FOW has up to 8 configurable channels that you can use. (Be careful with games having teams) The channels may
 or may not all be used. For the default setup of the FOW, only two channels are used:</p>

@@ -1,5 +1,12 @@
 # Outdoor Indoor
 
+- [Setup indoor area](#setup-indoor-area)
+
+For this tutorial use the `Tutorial/Maps/TutorialMap_Collider` map provided in
+the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
+
+## Setup indoor area
+
 Depending on the game, you might need to dissociate the indoor from the outdoor, such as only the indoors are
 undiscovered. From my experience, it's easier to clear the whole FOW and add fog to the indoor area. The next
 picture represents the result we will have step by step:

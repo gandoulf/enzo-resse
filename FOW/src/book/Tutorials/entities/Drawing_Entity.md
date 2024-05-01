@@ -1,7 +1,7 @@
 # Drawing entity
 
 - [Drawing Entity Components](#drawing-entity-components)
-- [Drawing Entity C++ Implementation](#drawing-entity-cpp-implementation)
+- [Drawing Entity Cpp implementation](#drawing-entity-cpp-implementation)
 
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 
@@ -29,7 +29,7 @@ All drawers will have barely the same settings:
 
 ![DrawingEntity](../../../Assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png)
 
-## Drawing Entity C++ Implementation
+## Drawing Entity cpp implementation
 
 You can make your own drawing component or directly turn your `UObject` to entities and give them the possibility to alter the state of the fog. To be done...
 

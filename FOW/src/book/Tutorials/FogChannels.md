@@ -6,6 +6,9 @@
 This tutorial is based on solo games; everything related to channels needs to be taken with caution when applied to
 teams. However, everything works the same; teams will only limit the number of available channels.
 
+For this tutorial use the `Tutorial/Maps/TutorialMap_Collider` map provided in
+the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
+
 ## Basic
 
 The FOW has up to 8 configurable channels that you can use. (Be careful with games having teams) The channels may

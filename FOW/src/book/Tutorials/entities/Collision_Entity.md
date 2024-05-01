@@ -1,7 +1,7 @@
 # Collision entity
 
 - [Collision Entity Component](#collision-entity-component)
-- [Collision Entity C++ Implementation](#collision-entity-cpp-implementation)
+- [Collision Entity cpp implementation](#collision-entity-cpp-implementation)
 
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 
@@ -38,7 +38,7 @@ than dynamic.
 
 ![CollisionEntity](../../../Assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png)
 
-## Collision Entity C++ Implementation
+## Collision Entity cpp implementation
 
 You can make your own collision component or directly turn your `UObject` to entities and give them the possibility to
 block the sight of drawers. To be done...
