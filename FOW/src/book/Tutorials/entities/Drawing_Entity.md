@@ -15,6 +15,7 @@ There are multiple `DrawingEntity` components implementing the `IFOW_DrawingEnti
 All `DrawingEntity` work the same; they hold data and the given `UFOW_LayerSetting` will define how this data will be used to pierce the Fog.
 
 ![DrawingEntity](../../../Assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png)
+![VisibilityEntityComponent](../../../assets/Tutorial/Entities/Visibility/1_AddVisibleEntityToActor.png)
 
 To use them, add a `FOW_DrawingEntity_CircleComponent` / `FOW_DrawingEntity_BoxComponent` / `FOW_DrawingEntity_FOVComponent` to an instanced
 actor or to your existing `Blueprint`. The default settings of those components are made to pierce the fog.
