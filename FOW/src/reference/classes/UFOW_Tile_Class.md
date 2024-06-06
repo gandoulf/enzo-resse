@@ -28,8 +28,6 @@ you will have to create 3 templated classes to finish your fully custom tiles :
 
 Contained by : [**`UFOW_Floor`**](/reference/classes/UFOW_Floor.md)
 
-Warning : I highly advise to use the EnumFOWTilePackagingFormat::PACKED format for optimisation reason
-
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
