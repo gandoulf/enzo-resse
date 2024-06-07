@@ -186,23 +186,23 @@
 work the same; they store geometry that will be given to a <code>UFOW_CollisionHandler</code>. The handler will then provide
 query class to collect collider information. The geometry can be convex and concave; it's only required to correctly
 sort the vertices.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Collision/0_SetupCollisionComponentMerged.png" alt="CollisionEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Collision/0_SetupCollisionComponentMerged.png" alt="CollisionEntityPicture" /></p>
 <p>To use them, add a <code>FOW_CollisionEntity_BoxComponent</code> or <code>FOW_CollisionEntity_CustomComponent</code> to an instanced actor
 or to your existing blueprint. I use for the example the box component; if you want to use the custom component to
 generate custom collision, you will have to provide vertices.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Collision/2_AddBoxCollisionComponent.png" alt="CollisionEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Collision/2_AddBoxCollisionComponent.png" alt="CollisionEntityPicture" /></p>
 <p>Select the <code>FOW_CollisionEntity_BoxComponent</code> and reset the scale to 1.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Collision/3_ResetCollisionBoxScaleToOne.png" alt="CollisionEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Collision/3_ResetCollisionBoxScaleToOne.png" alt="CollisionEntityPicture" /></p>
 <p>If you take a look at the collision entity settings, you will see that <code>Static/DynamicLayerSettingClass</code> are required.
 It's the case because colliders are also <code>DrawingEntities</code>; their geometry can be drawn on a fog fragment by a drawer
 as an optimization if <code>ShouldBeDrawn</code> is checked. See the <a href="/book/Tutorials/entities/../Layers.html">Layer tutorial</a> for more information.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Collision/4_CollisionEntityGeneralParameters.png" alt="CollisionEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Collision/4_CollisionEntityGeneralParameters.png" alt="CollisionEntityPicture" /></p>
 <p>Collisions are subject to heavy update time in every game. It is the same for the FOW; collision takes time to query.
 To optimize those queries, we're using acceleration structures that are super fast; however, their update or construction
 time might be heavy. To overcome this issue, we split static colliders from dynamic. It's really important for your game
 to have actors set correctly to <code>static</code> or <code>movable</code> depending on your needs. Static collision is significantly faster
 than dynamic.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png" alt="CollisionEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png" alt="CollisionEntityPicture" /></p>
 <h2 id="collision-entity-cpp-implementation"><a class="header" href="#collision-entity-cpp-implementation">Collision Entity cpp implementation</a></h2>
 <p>You can make your own collision component or directly turn your <code>UObject</code> to entities and give them the possibility to
 block the sight of drawers. To be done...</p>

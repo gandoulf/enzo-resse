@@ -14,13 +14,12 @@ There are multiple `DrawingEntity` components implementing the `IFOW_DrawingEnti
 
 All `DrawingEntity` work the same; they hold data and the given `UFOW_LayerSetting` will define how this data will be used to pierce the Fog.
 
-![DrawingEntityPiiiiiicture](../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png)
-![VisibilityEntityComponent](../../../assets/Tutorial/Entities/Visibility/1_AddVisibleEntityToActor.png)
+![DrawingEntityPicture](../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png)
 
 To use them, add a `FOW_DrawingEntity_CircleComponent` / `FOW_DrawingEntity_BoxComponent` / `FOW_DrawingEntity_FOVComponent` to an instanced
 actor or to your existing `Blueprint`. The default settings of those components are made to pierce the fog.
 
-![DrawingEntity](../../../Assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png)
+![DrawingEntityPicture](../../../assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png)
 
 All drawers will have barely the same settings:
 * `IsEnableAtStart`: Define if the entity starts drawing from the BeginPlay or if it will be enabled later by calling `EnableEntity()`.
@@ -28,7 +27,7 @@ All drawers will have barely the same settings:
 * `Static/DynamicLayerSettingClass`: Define how the drawer will bring modification to the fog. Those can't be changed at runtime.
 * The advanced section is only necessary for multiple `FOW_Floor` games. Their behavior will be explained later.
 
-![DrawingEntity](../../../Assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png)
+![DrawingEntityPicture](../../../assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png)
 
 ## Drawing Entity cpp implementation
 

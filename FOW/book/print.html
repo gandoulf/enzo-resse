@@ -799,11 +799,10 @@ the possibility to react to the Fog state. To be done ...</p>
 <li><code>FOV drawers</code>: They will pierce fog by collecting the colliders to create shadow geometries. Used by <code>FOW_DrawingEntity_FOVComponent</code>.</li>
 </ul>
 <p>All <code>DrawingEntity</code> work the same; they hold data and the given <code>UFOW_LayerSetting</code> will define how this data will be used to pierce the Fog.</p>
-<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png" alt="DrawingEntityPiiiiiicture" />
-<img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Visibility/1_AddVisibleEntityToActor.png" alt="VisibilityEntityComponent" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png" alt="DrawingEntityPicture" /></p>
 <p>To use them, add a <code>FOW_DrawingEntity_CircleComponent</code> / <code>FOW_DrawingEntity_BoxComponent</code> / <code>FOW_DrawingEntity_FOVComponent</code> to an instanced
 actor or to your existing <code>Blueprint</code>. The default settings of those components are made to pierce the fog.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png" alt="DrawingEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png" alt="DrawingEntityPicture" /></p>
 <p>All drawers will have barely the same settings:</p>
 <ul>
 <li><code>IsEnableAtStart</code>: Define if the entity starts drawing from the BeginPlay or if it will be enabled later by calling <code>EnableEntity()</code>.</li>
@@ -811,7 +810,7 @@ actor or to your existing <code>Blueprint</code>. The default settings of those 
 <li><code>Static/DynamicLayerSettingClass</code>: Define how the drawer will bring modification to the fog. Those can't be changed at runtime.</li>
 <li>The advanced section is only necessary for multiple <code>FOW_Floor</code> games. Their behavior will be explained later.</li>
 </ul>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png" alt="DrawingEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png" alt="DrawingEntityPicture" /></p>
 <h2 id="drawing-entity-cpp-implementation"><a class="header" href="#drawing-entity-cpp-implementation">Drawing Entity cpp implementation</a></h2>
 <p>You can make your own drawing component or directly turn your <code>UObject</code> to entities and give them the possibility to alter the state of the fog. To be done...</p>
 <hr />
@@ -827,23 +826,23 @@ actor or to your existing <code>Blueprint</code>. The default settings of those 
 work the same; they store geometry that will be given to a <code>UFOW_CollisionHandler</code>. The handler will then provide
 query class to collect collider information. The geometry can be convex and concave; it's only required to correctly
 sort the vertices.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/0_SetupCollisionComponentMerged.png" alt="CollisionEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Collision/0_SetupCollisionComponentMerged.png" alt="CollisionEntityPicture" /></p>
 <p>To use them, add a <code>FOW_CollisionEntity_BoxComponent</code> or <code>FOW_CollisionEntity_CustomComponent</code> to an instanced actor
 or to your existing blueprint. I use for the example the box component; if you want to use the custom component to
 generate custom collision, you will have to provide vertices.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/2_AddBoxCollisionComponent.png" alt="CollisionEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Collision/2_AddBoxCollisionComponent.png" alt="CollisionEntityPicture" /></p>
 <p>Select the <code>FOW_CollisionEntity_BoxComponent</code> and reset the scale to 1.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/3_ResetCollisionBoxScaleToOne.png" alt="CollisionEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Collision/3_ResetCollisionBoxScaleToOne.png" alt="CollisionEntityPicture" /></p>
 <p>If you take a look at the collision entity settings, you will see that <code>Static/DynamicLayerSettingClass</code> are required.
 It's the case because colliders are also <code>DrawingEntities</code>; their geometry can be drawn on a fog fragment by a drawer
 as an optimization if <code>ShouldBeDrawn</code> is checked. See the <a href="book/Tutorials/entities//book/Tutorials/entities/../Layers.html">Layer tutorial</a> for more information.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/4_CollisionEntityGeneralParameters.png" alt="CollisionEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Collision/4_CollisionEntityGeneralParameters.png" alt="CollisionEntityPicture" /></p>
 <p>Collisions are subject to heavy update time in every game. It is the same for the FOW; collision takes time to query.
 To optimize those queries, we're using acceleration structures that are super fast; however, their update or construction
 time might be heavy. To overcome this issue, we split static colliders from dynamic. It's really important for your game
 to have actors set correctly to <code>static</code> or <code>movable</code> depending on your needs. Static collision is significantly faster
 than dynamic.</p>
-<p><img src="book/Tutorials/entities/../../../Assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png" alt="CollisionEntity" /></p>
+<p><img src="book/Tutorials/entities/../../../assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png" alt="CollisionEntityPicture" /></p>
 <h2 id="collision-entity-cpp-implementation"><a class="header" href="#collision-entity-cpp-implementation">Collision Entity cpp implementation</a></h2>
 <p>You can make your own collision component or directly turn your <code>UObject</code> to entities and give them the possibility to
 block the sight of drawers. To be done...</p>

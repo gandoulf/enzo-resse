@@ -189,11 +189,10 @@
 <li><code>FOV drawers</code>: They will pierce fog by collecting the colliders to create shadow geometries. Used by <code>FOW_DrawingEntity_FOVComponent</code>.</li>
 </ul>
 <p>All <code>DrawingEntity</code> work the same; they hold data and the given <code>UFOW_LayerSetting</code> will define how this data will be used to pierce the Fog.</p>
-<p><img src="../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png" alt="DrawingEntityPiiiiiicture" />
-<img src="../../../assets/Tutorial/Entities/Visibility/1_AddVisibleEntityToActor.png" alt="VisibilityEntityComponent" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Drawing/0_DefaultDrawingSetupMerged.png" alt="DrawingEntityPicture" /></p>
 <p>To use them, add a <code>FOW_DrawingEntity_CircleComponent</code> / <code>FOW_DrawingEntity_BoxComponent</code> / <code>FOW_DrawingEntity_FOVComponent</code> to an instanced
 actor or to your existing <code>Blueprint</code>. The default settings of those components are made to pierce the fog.</p>
-<p><img src="../../../Assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png" alt="DrawingEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Drawing/1_AddingDrawingCircleToActor.png" alt="DrawingEntityPicture" /></p>
 <p>All drawers will have barely the same settings:</p>
 <ul>
 <li><code>IsEnableAtStart</code>: Define if the entity starts drawing from the BeginPlay or if it will be enabled later by calling <code>EnableEntity()</code>.</li>
@@ -201,7 +200,7 @@ actor or to your existing <code>Blueprint</code>. The default settings of those 
 <li><code>Static/DynamicLayerSettingClass</code>: Define how the drawer will bring modification to the fog. Those can't be changed at runtime.</li>
 <li>The advanced section is only necessary for multiple <code>FOW_Floor</code> games. Their behavior will be explained later.</li>
 </ul>
-<p><img src="../../../Assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png" alt="DrawingEntity" /></p>
+<p><img src="../../../assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png" alt="DrawingEntityPicture" /></p>
 <h2 id="drawing-entity-cpp-implementation"><a class="header" href="#drawing-entity-cpp-implementation">Drawing Entity cpp implementation</a></h2>
 <p>You can make your own drawing component or directly turn your <code>UObject</code> to entities and give them the possibility to alter the state of the fog. To be done...</p>
 <hr />
