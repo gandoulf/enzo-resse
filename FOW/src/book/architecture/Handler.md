@@ -23,7 +23,7 @@ for the floor generation that is instantiated straight into the editor.
 #### Editor debug setting
 * `ShowGrid`: display the grid delimited by the tile. Floors are snapped to this grid.
 * `ShowFloors`: display the 3D box representing the floors. The pink square is the real position of the floor, it will
-* be aligned to the grid. The yellow square is the 3D Fog representation.
+be aligned to the grid. The yellow square is the 3D Fog representation.
 
 #### Fog setting
 * `PixelSize`: lets you adapt the fog precision, the value is expressed in centimeters.
@@ -58,8 +58,8 @@ update time super long for dynamic objects).
 The initialization of the FOW happens in the begin play and can be delayed if your pipeline needs it. Initialization is split into
 many sections:
 
-* `InitNetwork` will create a **Replicated** environment only if the game isn't standalone and if the layer setting class is
-correctly set. Set network setting as the right to override many values from the Handler to provide the accessibility to different
+* `InitNetwork` will create a **Replicated** environment only if the game isn't standalone and if the Network setting class is
+correctly set. Set network setting has the right to override many values from the Handler to provide the accessibility to different
 clients. Thus it has to be executed first.
 * `InitTeams` isn't used and will be deleted.
 * `InitFOWFloorsTiles`: Allocates the memory used by the floor. The FOW cannot do anything without it. The tiles must be

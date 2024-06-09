@@ -202,8 +202,8 @@ for the floor generation that is instantiated straight into the editor.</p>
 <h4 id="editor-debug-setting"><a class="header" href="#editor-debug-setting">Editor debug setting</a></h4>
 <ul>
 <li><code>ShowGrid</code>: display the grid delimited by the tile. Floors are snapped to this grid.</li>
-<li><code>ShowFloors</code>: display the 3D box representing the floors. The pink square is the real position of the floor, it will</li>
-<li>be aligned to the grid. The yellow square is the 3D Fog representation.</li>
+<li><code>ShowFloors</code>: display the 3D box representing the floors. The pink square is the real position of the floor, it will
+be aligned to the grid. The yellow square is the 3D Fog representation.</li>
 </ul>
 <h4 id="fog-setting"><a class="header" href="#fog-setting">Fog setting</a></h4>
 <ul>
@@ -242,8 +242,8 @@ update time super long for dynamic objects).</p>
 <p>The initialization of the FOW happens in the begin play and can be delayed if your pipeline needs it. Initialization is split into
 many sections:</p>
 <ul>
-<li><code>InitNetwork</code> will create a <strong>Replicated</strong> environment only if the game isn't standalone and if the layer setting class is
-correctly set. Set network setting as the right to override many values from the Handler to provide the accessibility to different
+<li><code>InitNetwork</code> will create a <strong>Replicated</strong> environment only if the game isn't standalone and if the Network setting class is
+correctly set. Set network setting has the right to override many values from the Handler to provide the accessibility to different
 clients. Thus it has to be executed first.</li>
 <li><code>InitTeams</code> isn't used and will be deleted.</li>
 <li><code>InitFOWFloorsTiles</code>: Allocates the memory used by the floor. The FOW cannot do anything without it. The tiles must be

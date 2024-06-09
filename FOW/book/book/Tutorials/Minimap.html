@@ -192,30 +192,30 @@ Go into the <code>Plugins/LayeredFogOfWarContent/Minimap</code> folder in the co
 <li><code>RT_FOW_MapTexture_Output</code>, Render target used by the camera of Map texture generator.</li>
 <li><code>WBP_FOW_Minimap</code>, Widget added to the viewport displaying the minimap.</li>
 </ul>
-<p><img src="../../Assets/Tutorial/Minimap/1_OpenMinimapFolderFromPlugin.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/1_OpenMinimapFolderFromPlugin.png" alt="MinimapPicture" /></p>
 <p>Add the <code>BP_FOW_Floor_Minimap</code> to your scene inside a <code>FOW_Floor</code>. The position of the actor is important because
 it will collect the data of the floor it overlappe to send it to the material.</p>
-<p><img src="../../Assets/Tutorial/Minimap/2_AddFloorMinimap.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/2_AddFloorMinimap.png" alt="MinimapPicture" /></p>
 <p>Add the <code>BP_FOW_MapTextureGenerator</code> to your scene.</p>
-<p><img src="../../Assets/Tutorial/Minimap/3_AddMapTextureGenerator.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/3_AddMapTextureGenerator.png" alt="MinimapPicture" /></p>
 <p>Open the <code>RT_FOW_MapTexture_Output</code> which is already linked to the camera of the Map texture generator, it will
 display the result of the map.</p>
-<p><img src="../../Assets/Tutorial/Minimap/4_OpenRenderTargetAndDisableAlpha.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/4_OpenRenderTargetAndDisableAlpha.png" alt="MinimapPicture" /></p>
 <p>Now change the <code>Location</code> and the <code>Camera Width</code> of the <code>BP_FOW_MapTextureGenerator</code> to generate an acccurate picture
 of the level.</p>
-<p><img src="../../Assets/Tutorial/Minimap/5_SetUpPositionAndCameraWith.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/5_SetUpPositionAndCameraWith.png" alt="MinimapPicture" /></p>
 <p>When the setting are done, find the <code>RT_FOW_MapTexture_Output</code> in your content browser, right click on it and generate
 a <code>StaticTexture</code>. Move it to another folder out of the plugin.</p>
-<p><img src="../../Assets/Tutorial/Minimap/6_CreateStaticTexture.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/6_CreateStaticTexture.png" alt="MinimapPicture" /></p>
 <p>Now you have to copy the settings used to generate the texture to the <code>BP_FOW_Floor_Minimap</code>. They are requiered to
 generate a corresponding plane in the material to apply the texture.</p>
-<p><img src="../../Assets/Tutorial/Minimap/7_ChangeFloorMinimapSettingsMerged.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/7_ChangeFloorMinimapSettingsMerged.png" alt="MinimapPicture" /></p>
 <p>You can now hit the play button and see a minimap on the bottom right. You can display a bigger version by pressing
 <code>Tab</code> which will display a full screen version of it.</p>
-<p><img src="../../Assets/Tutorial/Minimap/8_DeleteTestAndPressTab.png" alt="CollisionEntity" /></p>
+<p><img src="../../Assets/Tutorial/Minimap/8_DeleteTestAndPressTab.png" alt="MinimapPicture" /></p>
 <p>The minimap can handler displacement, rotation and scale (zoom). if the minimap havn't the correct orientation you
 can apply static rotation to the texture and the Fog sample</p>
-<h2 id=""><a class="header" href="#"><img src="../../Assets/Tutorial/Minimap/9_AddConstantRotation.png" alt="CollisionEntity" /></a></h2>
+<h2 id=""><a class="header" href="#"><img src="../../Assets/Tutorial/Minimap/9_AddConstantRotation.png" alt="MinimapPicture" /></a></h2>
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 
                     </main>
