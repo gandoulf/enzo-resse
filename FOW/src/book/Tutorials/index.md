@@ -5,6 +5,8 @@ implementation. If you want to be in the same condition as the pictures are, you
 [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo) and use the map in the tutorial folder. <br />
 If you need help installing the plugin, you can watch this [Video](https://www.youtube.com/watch?v=BVz-TQKzHNY).
 
+> **/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br />**
+
 
 # Pages
 

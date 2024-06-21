@@ -4,6 +4,8 @@ This book provides an in-depth explanation of the Layered Fog Of War architectur
 examples, code explanations, and guidance on maximizing the utility of the FOW. While this plugin is
 straightforward to use, understanding it thoroughly may become challenging when striving for improved performance.
 
+> **/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br />**
+
 
 # Pages
 

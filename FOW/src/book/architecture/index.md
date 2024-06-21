@@ -26,6 +26,7 @@ from a base interface, plus one a bit different, designed for a late purpose:
 * `VisibilityEntity`: Provide methods to collect object size and location to update its visible state depending on the fog.
 * `GeometryEntity`: It doesn't derive from the Entity base class; its purpose is to hold geometry data to be used by entities (calling it GeometryEntity was a mistake).
 
+> **/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br />**
 
 # Pages
 

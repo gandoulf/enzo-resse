@@ -11,6 +11,8 @@ are provided with already implemented interfaces. You will find in those derived
 you to `EnableEntity()` or `DisableEntity()` anywhere at any time. There is no other API; they are self-sufficient,
 and their updates are managed by the containers.
 
+> **/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br />**
+
 
 # Pages
 

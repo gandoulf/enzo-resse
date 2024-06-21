@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\images",
+    "\\images\\thumbnail",
     "\\project"
   ],
-  "SelectedNode": "\\about.html",
+  "SelectedNode": "\\project\\LayeredFOW.html",
   "PreviewInSolutionExplorer": false
 }
