@@ -19,21 +19,21 @@ become the case soon. It also dissociates the top from the bottom of the fog whe
 
 To add a new floor, select the `FOW Handler`. In the details panel, find the `FOWFloors` array and add an element.
 
-![AddFloorToMap](../../Assets/Tutorial/Floors_Verticality/1_AddFloorToMap.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/1_AddFloorToMap.png)
 
 Find the new element, which should be set to `None`, and change its value to `FOW_Floor`.
 
-![SelectFloorClass](../../Assets/Tutorial/Floors_Verticality/2_SelectFloorClass.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/2_SelectFloorClass.png)
 
 In the added element, you will find a `FloorLocation` variable in the settings section, allowing you to change the
 position of the floor. Move it so that the other part of the plane is included in the new floor.
 
-![MoveTheFloorInY](../../Assets/Tutorial/Floors_Verticality/3_MoveTheFloorInY.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/3_MoveTheFloorInY.png)
 
 As I mentioned, there are currently a few artifacts between floors around the junctions. You can see sharp fog lines
 not affected by blur.
 
-![UndesirableArtifactsAtIntersection](../../Assets/Tutorial/Floors_Verticality/4_UndersirableArtifactsAtIntersection.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/4_UndersirableArtifactsAtIntersection.png)
 
 # Enable Verticality
 
@@ -43,27 +43,27 @@ to open the door to a new kind of game which could take benefits from verticalit
 To use verticality in your game, you have to first change the `PostProcess` used to render the fog. Select the `FOW_Handler`,
 in the details panel find the `FOWShaderClass` and change the `MPP_FOW_Floors` to `MPP_FOW_FloorsTransparency`.
 
-![ChangePostProcess](../../Assets/Tutorial/Floors_Verticality/5_ChangePostProcess.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/5_ChangePostProcess.png)
 
 Still in the `FOW_Handler`, add 2 new floors and I advise you to change the editor view to `Front`; it'll simplify the
 positioning of the floors. As with the previous floor, you will have to change the `FloorLocation`. Try to center the
 fog plane to the gameplay area in Y and Z.
 
-![AddThreeFloorsandMoveYZ](../../Assets/Tutorial/Floors_Verticality/6_AddThreeFloorAndMoveYZ.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/6_AddThreeFloorAndMoveYZ.png)
 
 With the default settings, you should have a gap between your floors, and it's better to not have them. Reach the settings
 of each floor and change the `Y` value of the `ZExtend`. It'll enlarge the bottom part of the yellow square.
 
-![RemovetheGapBetweenFloors](../../Assets/Tutorial/Floors_Verticality/7_RemoveTheBetweenFloor.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/7_RemoveTheBetweenFloor.png)
 
 One last thing, many settings are provided to the material and one can generate conflict with verticality. To disable it,
 select the `FOW_Handler`, in the details panel find the `MPC_FOWRenderSettings` and open it.
 
-![OpenMPC_FOWRenderSettings](../../Assets/Tutorial/Floors_Verticality/8_OpenMPC_FOWRenderSettings.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/8_OpenMPC_FOWRenderSettings.png)
 
 Find the `bEnableHeightGrading` scalar value and set it to 0.
 
-![RemoveHeightGrading](../../Assets/Tutorial/Floors_Verticality/9_RemoveHeightGrading.png)
+![FloorVerticallityPicture](../../assets/Tutorial/Floors_Verticality/9_RemoveHeightGrading.png)
 
 As explained at the beginning of this tutorial, the multi-floor rendering is still in progress and the vertical transition
 hasn't been properly cleaned.
