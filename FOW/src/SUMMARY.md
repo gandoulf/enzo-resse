@@ -8,6 +8,7 @@
     - [Handler](book/architecture/Handler.md)
     - [Floor](book/architecture/Floor.md)
     - [Layers](book/architecture/Layers.md)
+    - [Network](book/architecture/Network.md)
   - [Tutorials](book/Tutorials/index.md)
     - [First set up](book/Tutorials/First_set_up.md)
     - [Entities](book/Tutorials/entities/index.md)

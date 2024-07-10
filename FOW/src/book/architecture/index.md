@@ -33,6 +33,7 @@ from a base interface, plus one a bit different, designed for a late purpose:
 - [Handler](/book/architecture/Handler.md)
 - [Floor](/book/architecture/Floor.md)
 - [Layers](/book/architecture/Layers.md)
+- [Network](/book/architecture/Network.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
