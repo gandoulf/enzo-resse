@@ -1,8 +1,12 @@
 # Networking
 
 - [Default Replication Setup](#default-replication-setup)
+    - [GameState](#gamestate)
+    - [Network Settings](#network-settings)
+    - [GameMode](#gamemode)
 - [Manage Player Team](#manage-player-team)
 - [Infinite Team](#infinite-team)
+- [Network Template](#network-template)
 
 > **/!\ This tutorial is made to show how the FOW works with networks, replication knowledge won't be provided.
 Networking `GameMode`, `GameState`, `Controller`, and `Character` are provided. You have absolutely the right to
@@ -27,6 +31,8 @@ hit the play button with multiple players in the editor, multiple worlds will be
 application, which means static variables are shared and overridden. To prevent this, the FOW is designed to look
 for an implementation of `FOW_GetHandlerInstance_Interface` in the `GameState`. <br />
 
+# GameState
+
 Let's set up the game state. Create a new `My_FOWNetworking_GameState` derived from `GameStateBase`
 
 ![Networking](../../assets/Tutorial/Network/1_CreateNewGameState.png)
@@ -40,6 +46,7 @@ Now you have to provide the code to the `Find_Level_FOWHandler`.
 * Get the variable and convert it to a `Validate` get, if valid return the variable.
 * Else find all actors of class `FOW_Handler`
 * If at least one is returned, set your `FOW_Handler` variable to the first element of the array
+* Call the `TryInitilization` from the `FOW_Handler`
 * Return the variable
 
 ![Networking](../../assets/Tutorial/Network/3_AddCodeToTheInterfaceMethod.png)
@@ -48,15 +55,16 @@ Now open the `BP_TutoralNetworking_GameMode` and replace the `GameState` with yo
 
 ![Networking](../../assets/Tutorial/Network/4_ChangeDefaultGameState.png)
 
-All set up!
 > **Note that if you don't simulate the network in the editor, this whole setting isn't needed. As long as
 every game instance is a separate process, you don't need to implement the interface.**
+
+# Network Settings
 
 Now let's see how the FOW works with replication. First, create a new `BP_MyNetworkSettings` derived from `UFOW_NetworkSettings`.
 
 ![Networking](../../assets/Tutorial/Network/5_MakeNetworkSettingClass.png)
 
-Open it and change the `NetworkGameMaxTeamNbr` value from the `Server` to 4. It means that the `FOW_Handler` will
+Open it and change the `NetworkGameMaxTeamNbr` value from the `Server` to `4`. It means that the `FOW_Handler` will
 be ready to handle 4 different teams drawing fog separately. (For a few reasons, 4 teams with two channels enabled
 is the maximum). Also, if you pay attention, the client is set to only one team, which means that only the client
 team fog will be updated.<br />
@@ -77,6 +85,22 @@ Now you can hit the play button and see the 4 windows open with your character c
 understand what the fog replication changes, go back to your `BP_MyNetworkSettings` and uncheck `bIsFogStateReplicated`.
 
 ![Networking](../../assets/Tutorial/Network/8_NetworkingResult.png)
+
+# GameMode
+
+The provided `GameMode` already contains some logic, which may be a bit complicated for a simple setup.
+Here you will find a lighter version to manage the player character team. In your custom project, open the `GameMode`.
+
+- In the `Event Graph`, implement the `OnPostLogin` event and bind a custom event to the `OnPossessedPawnChanged` event.
+- Check if the `ControlledPawn` from the `NewPlayer` is valid. If it is, call the function you've just bound with the `ControlledPawn` as the `New Pawn` parameter.
+- In the bound event, check if the `New Pawn` is valid.
+- If it's valid, get the `Controller` from it and cast it to `PlayerController`.
+- Call `GetPlayerControllerTeam`.
+- Plug the result into `SetDrawingEntityTeam`. You will also need to plug in the `Drawing Entity`, which will be the `NewPawn`.
+
+![Networking](../../assets/Tutorial/Network/8.1_SettupGameModePlayerLogin.png)
+
+> **Note: You will find the exact same code in the `Content/TemplateProject/FOW_Network/BP_FOW_NetworkTemplate_GameMode`**
 
 # Manage Player Team
 
@@ -114,5 +138,37 @@ In case you want more than 4 teams with two channels, you can just uncheck `bIsF
 
 ![Networking](../../assets/Tutorial/Network/13_InfinitTeamForNonReplicatedFog.png)
 
+# Network Template
+
+To simplify the creation process of online games, I've created a lightweight template for you to migrate to your current project under UE5.4.
+You will find the template folder in the content folder provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo) <br />
+
+First, ensure that the Layered Fog of War plugin is correctly installed and enabled.
+
+![Networking](../../assets/Tutorial/Network/14_PluginEnabled.png)
+
+Get to the `TemplateProject` folder In the `Demo Project`, right click on the `FOW_Network` folder and select `Migrate`.
+
+![Networking](../../assets/Tutorial/Network/15_MigratTheTemplateProject.png)
+
+A window will open and will let you select what you want to migrate. Be really cautious to select only what's under the `TemplateProject`
+
+![Networking](../../assets/Tutorial/Network/16_SelectEveryFileInFolder.png)
+
+Unreal will then ask you the content folder of your `New Project`.
+
+![Networking](../../assets/Tutorial/Network/17_SelectContentFolder.png)
+
+Once done, you will be able to open the `FOW_NetworkTemplate` map in your `New Project`.
+
+![Networking](../../assets/Tutorial/Network/18_OpenFOW_NetworkTemplateMap.png)
+
+Verify that your editor is correctly setup for network.
+
+![Networking](../../assets/Tutorial/Network/19_TurnOneNetwork.png)
+
+Hit the play button and enjoy :)
+
+![Networking](../../assets/Tutorial/Network/20_HitThePlayButton.png)
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

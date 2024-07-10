@@ -20,6 +20,8 @@
     - [Fog Channels](book/Tutorials/FogChannels.md)
     - [Floor and Verticality](book/Tutorials/Floor_Verticality.md)
     - [Minimap](book/Tutorials/Minimap.md)
+  - [Versions](book/Versions/index.md)
+    - [LFOW V1.1.1](book/Versions/LFOW_V1.1.1.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)

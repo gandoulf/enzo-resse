@@ -29,7 +29,6 @@ You have the possibility to change the core module of the FOW by changing the de
 
 If you need to modify the initialization to fit your pipeline, override those function called by the BeginPlay
 - void InitNetwork();
-- void InitTeams();
 - void InitFOWFloors();
 - void InitFOWFloorsTiles();
 - void InitGameShader();
