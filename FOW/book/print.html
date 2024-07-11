@@ -688,6 +688,7 @@ it, you might create unwanted results if you don't pay attention between layers 
 </li>
 </ul>
 </li>
+<li><a href="book/architecture/Network.html#what-is-replicated">What is Replicated</a></li>
 <li><a href="book/architecture/Network.html#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="explanation-3"><a class="header" href="#explanation-3">Explanation</a></h2>
@@ -701,7 +702,8 @@ as mentioned earlier, synchronize and send the fog state through <code>RPC</code
 3 teams, it will use 6 channels internally. Currently, it can only manage up to 8 channels, which means a maximum of 4 teams
 with 2 channels each.</p>
 <p>However, many games don't need to synchronize the <code>Fog State</code> and rely only on the <code>simulation</code>. MOBA games like <code>League of  Legends</code> or <code>Dota</code> will only use a single channel to represent what is currently visible. For games using such a setup, the
-team limit disappears.</p>
+team limit disappears.<br /></p>
+<p>See the <a href="book/architecture//book/architecture/"></a><a href="book/architecture/../Tutorials/Networking.html">Networking turorial</a> for implementation.</p>
 <h3 id="network-settings"><a class="header" href="#network-settings">Network Settings</a></h3>
 <p>The <code>UFOW_NetworkSettings</code> class is designed to override the <code>FOWHandler</code> variables for online games and set up different
 behaviors depending on the <code>Net Status</code>. <code>Server</code>, <code>Client</code>, and <code>Spectators</code> require more or less data to be computed by the
@@ -710,16 +712,38 @@ However, the <code>Server</code> needs to store the state of each team in case o
 <h3 id="fog-state-replication"><a class="header" href="#fog-state-replication">Fog State Replication</a></h3>
 <p><code>AFOW_FogStateReplication</code> is the base class for every <code>Online</code> game instance implementing the <code>LFOW</code>. The server will have
 its own class and will spawn a new one for every client. It will manage the network used by the plugin, handle connection and
-disconnection, and provide useful <code>RPC</code> to synchronize every game instance. For now, it will only attribute a <code>player ID</code> to
+disconnection, and provide useful <code>RPC</code> to synchronize every game instance. For now, it will only attribute a <code>Team ID</code> to
 every client which is <code>replicated</code> and provide methods to synchronize the Fog through <code>RPC</code> if needed.</p>
 <h4 id="server"><a class="header" href="#server">Server</a></h4>
-<p><code>AFOW_FogStateReplication_Server</code></p>
+<p><code>AFOW_FogStateReplication_Server</code> handles all client connections and provides a <code>Team ID</code> to every <code>AFOW_FogStateReplication_Client</code>.
+To gain full control of the IDs distributed, you can override <code>GetClientTeamIndex</code>, allowing you to return any value. See the
+<code>Networking</code> tutorial for more information. If the fog is replicated, be aware that any team ID higher than the maximum team limit won't work.<br />
+You will find two multicast methods that I've written as examples. I'm not sure of their efficiency, so please don't use them:</p>
+<ul>
+<li><code>MulticastRPC_AddDrawer</code>, deprecated</li>
+<li><code>MulticastRPC_RemoveDrawer</code>, deprecated</li>
+</ul>
 <h4 id="client"><a class="header" href="#client">Client</a></h4>
-<p><code>AFOW_FogStateReplication_Client</code></p>
+<p><code>AFOW_FogStateReplication_Client</code> lets you override a few methods to insert or call whatever you want between the connection steps.
+The <code>ServerRPC_RequestFogStateSynch</code> RPC lets you request the server to synchronize the fog state if replication has been enabled
+in the network settings. You will find a few parameters to manage automatic synchronization or the cooldown time between requests:</p>
+<ul>
+<li><code>MinimumTimePerFrameBeforeSynch</code>: The refresh rate threshold in ms before the automatic request of the FOW sync to the server.
+Set a large timer if you don't want automatic sync.</li>
+<li><code>SynchRequestCooldown</code>: Cooldown to prevent the client from DDOSing the server.</li>
+</ul>
+<h2 id="what-is-replicated"><a class="header" href="#what-is-replicated">What is Replicated</a></h2>
+<p>Since the fog state is not continuously replicated but merely synchronized and then simulated, you might wonder what is actually
+replicated. Only two concepts use replication to allow a fast implementation of the plugin:</p>
+<ul>
+<li><code>Client Team ID</code>: This important value is used to request the correct fog channels from the <code>Server</code> when synchronization is required.
+It is also necessary to attribute a <code>team ID</code> to anything modifying the fog.</li>
+<li><code>Drawing Components Team ID</code>: Every drawing component's team ID will be replicated and can be changed by the server without worrying about the network stack.</li>
+</ul>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
 <p>The <code>LFOW</code> plugin replication implementation is very lightweight and doesn't provide much assistance for the development of
 online games. The main reason for this light implementation is to avoid overloading the bandwidth and to prevent forcing its
-use, as many games like <code>RTS</code> use <code>simulation</code> to avoid the <code>replication</code> of thousands of units. This means that developers will
+use, as many games like <code>RTS</code> use <code>simulation</code> to avoid the <code>replication</code> of thousands of units. This means that <code>developers</code> will
 need to implement events themselves to control the status of the <code>Components</code> and <code>Entities</code>.</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
@@ -1033,6 +1057,9 @@ and dynamic layer setting class by <code>FOW_FloorStartUpLayer</code>.</p>
 <p><strong>/!\ This tutorial is made to show how the FOW works with networks, replication knowledge won't be provided.
 Networking <code>GameMode</code>, <code>GameState</code>, <code>Controller</code>, and <code>Character</code> are provided. You have absolutely the right to
 read, copy, and use any code you find :) <br /></strong></p>
+</blockquote>
+<blockquote>
+<p><strong>/!\ Please take a look to the <a href="book/Tutorials//book/Tutorials/"></a><a href="book/Tutorials/../architecture/Network.html">Netork Architecture</a> to understand correctly how the LFOW has been replicated<br /></strong></p>
 </blockquote>
 <p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Networking</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h1 id="default-replication-setup"><a class="header" href="#default-replication-setup">Default Replication Setup</a></h1>

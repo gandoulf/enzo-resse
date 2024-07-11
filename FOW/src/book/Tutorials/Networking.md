@@ -12,6 +12,8 @@
 Networking `GameMode`, `GameState`, `Controller`, and `Character` are provided. You have absolutely the right to
 read, copy, and use any code you find :) <br />**
 
+> **/!\ Please take a look to the [](/book/Tutorials/)[Netork Architecture](../architecture/Network.md) to understand correctly how the LFOW has been replicated<br />**
+
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Networking` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
 
 # Default Replication Setup
