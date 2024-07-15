@@ -10,7 +10,7 @@
 
 This tutorial has been realised in the `Tutorial/Maps/TutorialMap_Minimaps` map providen in the demo project.
 If not done yet, download the Demo project [Here](https://github.com/gandoulf/LayeredFOW_Demo) <br />
-Install the plugin in the project, helping video [Here](https://www.youtube.com/watch?v=BVz-TQKzHNY) <br />
+Install the plugin in the project, helping video [Here](https://www.youtube.com/watch?v=B9pieujL91c) <br />
 
 ## Set up the fog
 

@@ -12,7 +12,7 @@
 Networking `GameMode`, `GameState`, `Controller`, and `Character` are provided. You have absolutely the right to
 read, copy, and use any code you find :) <br />**
 
-> **/!\ Please take a look to the [](/book/Tutorials/)[Netork Architecture](../architecture/Network.md) to understand correctly how the LFOW has been replicated<br />**
+> **/!\ Please take a look at the [](/book/Tutorials/)[Netork Architecture](../architecture/Network.md) to understand correctly how the LFOW has been replicated<br />**
 
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Networking` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo)
 
@@ -89,6 +89,10 @@ understand what the fog replication changes, go back to your `BP_MyNetworkSettin
 ![Networking](../../assets/Tutorial/Network/8_NetworkingResult.png)
 
 # GameMode
+
+> **/!\ The following code works only for Unreal Engine version 5.4 and higher. For some reason, earlier versions have
+trouble with `netmode` initialization. The demo project contains the fixed version; however, I'm not describing it here
+since there is too much logic for a simple tutorial.<br />**
 
 The provided `GameMode` already contains some logic, which may be a bit complicated for a simple setup.
 Here you will find a lighter version to manage the player character team. In your custom project, open the `GameMode`.

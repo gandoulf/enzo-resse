@@ -751,7 +751,7 @@ need to implement events themselves to control the status of the <code>Component
 <p>Here we will showcase the step-by-step process of basic usage of the Layered Fog Of War - both for C++ and Blueprint
 implementation. If you want to be in the same condition as the pictures are, you can download my
 <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a> and use the map in the tutorial folder. <br />
-If you need help installing the plugin, you can watch this <a href="https://www.youtube.com/watch?v=BVz-TQKzHNY">Video</a>.</p>
+If you need help installing the plugin, you can watch this <a href="https://www.youtube.com/watch?v=B9pieujL91c">Video</a>.</p>
 <blockquote>
 <p><strong>/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br /></strong></p>
 </blockquote>
@@ -777,7 +777,7 @@ If you need help installing the plugin, you can watch this <a href="https://www.
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
 <p>This tutorial has been realised in the <code>Tutorial/Maps/TutorialMap_Minimaps</code> map providen in the demo project.
 If not done yet, download the Demo project <a href="https://github.com/gandoulf/LayeredFOW_Demo">Here</a> <br />
-Install the plugin in the project, helping video <a href="https://www.youtube.com/watch?v=BVz-TQKzHNY">Here</a> <br /></p>
+Install the plugin in the project, helping video <a href="https://www.youtube.com/watch?v=B9pieujL91c">Here</a> <br /></p>
 <h2 id="set-up-the-fog"><a class="header" href="#set-up-the-fog">Set up the fog</a></h2>
 <p>This part will explain how to use the Fog Of War in the easiest and fastest possible way!</p>
 <p>Drag and drop a <code>BP_FOWHandler</code> from the quickly add button, keyboard is enabled to allow you fast search</p>
@@ -1059,7 +1059,7 @@ Networking <code>GameMode</code>, <code>GameState</code>, <code>Controller</code
 read, copy, and use any code you find :) <br /></strong></p>
 </blockquote>
 <blockquote>
-<p><strong>/!\ Please take a look to the <a href="book/Tutorials//book/Tutorials/"></a><a href="book/Tutorials/../architecture/Network.html">Netork Architecture</a> to understand correctly how the LFOW has been replicated<br /></strong></p>
+<p><strong>/!\ Please take a look at the <a href="book/Tutorials//book/Tutorials/"></a><a href="book/Tutorials/../architecture/Network.html">Netork Architecture</a> to understand correctly how the LFOW has been replicated<br /></strong></p>
 </blockquote>
 <p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Networking</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h1 id="default-replication-setup"><a class="header" href="#default-replication-setup">Default Replication Setup</a></h1>
@@ -1116,6 +1116,11 @@ first channel isn't needed since it represents the fog of what drawers currently
 understand what the fog replication changes, go back to your <code>BP_MyNetworkSettings</code> and uncheck <code>bIsFogStateReplicated</code>.</p>
 <p><img src="book/Tutorials/../../assets/Tutorial/Network/8_NetworkingResult.png" alt="Networking" /></p>
 <h1 id="gamemode"><a class="header" href="#gamemode">GameMode</a></h1>
+<blockquote>
+<p><strong>/!\ The following code works only for Unreal Engine version 5.4 and higher. For some reason, earlier versions have
+trouble with <code>netmode</code> initialization. The demo project contains the fixed version; however, I'm not describing it here
+since there is too much logic for a simple tutorial.<br /></strong></p>
+</blockquote>
 <p>The provided <code>GameMode</code> already contains some logic, which may be a bit complicated for a simple setup.
 Here you will find a lighter version to manage the player character team. In your custom project, open the <code>GameMode</code>.</p>
 <ul>

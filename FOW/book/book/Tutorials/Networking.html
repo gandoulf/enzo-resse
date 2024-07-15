@@ -194,7 +194,7 @@ Networking <code>GameMode</code>, <code>GameState</code>, <code>Controller</code
 read, copy, and use any code you find :) <br /></strong></p>
 </blockquote>
 <blockquote>
-<p><strong>/!\ Please take a look to the <a href="/book/Tutorials/"></a><a href="../architecture/Network.html">Netork Architecture</a> to understand correctly how the LFOW has been replicated<br /></strong></p>
+<p><strong>/!\ Please take a look at the <a href="/book/Tutorials/"></a><a href="../architecture/Network.html">Netork Architecture</a> to understand correctly how the LFOW has been replicated<br /></strong></p>
 </blockquote>
 <p>This tutorial has been realized in the <code>Tutorial/Maps/TutorialMap_Networking</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a></p>
 <h1 id="default-replication-setup"><a class="header" href="#default-replication-setup">Default Replication Setup</a></h1>
@@ -251,6 +251,11 @@ first channel isn't needed since it represents the fog of what drawers currently
 understand what the fog replication changes, go back to your <code>BP_MyNetworkSettings</code> and uncheck <code>bIsFogStateReplicated</code>.</p>
 <p><img src="../../assets/Tutorial/Network/8_NetworkingResult.png" alt="Networking" /></p>
 <h1 id="gamemode"><a class="header" href="#gamemode">GameMode</a></h1>
+<blockquote>
+<p><strong>/!\ The following code works only for Unreal Engine version 5.4 and higher. For some reason, earlier versions have
+trouble with <code>netmode</code> initialization. The demo project contains the fixed version; however, I'm not describing it here
+since there is too much logic for a simple tutorial.<br /></strong></p>
+</blockquote>
 <p>The provided <code>GameMode</code> already contains some logic, which may be a bit complicated for a simple setup.
 Here you will find a lighter version to manage the player character team. In your custom project, open the <code>GameMode</code>.</p>
 <ul>
