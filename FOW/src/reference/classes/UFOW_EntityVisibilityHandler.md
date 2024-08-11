@@ -9,6 +9,9 @@ class FOGOFWAR_API UFOW_EntityVisibilityHandler
 
 **_Reflection-enabled_**
 
+### Specifiers:
+- **Blueprintable**
+
 ---
 
 Update the visibility of every registered object implementing IFOW_VisibilityEntity_Interface.<br />

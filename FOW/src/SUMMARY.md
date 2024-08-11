@@ -15,6 +15,7 @@
       - [Visibility Entity](book/Tutorials/entities/Visibility_Entity.md)
       - [Drawing entity](book/Tutorials/entities/Drawing_Entity.md)
       - [Collision entity](book/Tutorials/entities/Collision_Entity.md)
+    - [FogRender](book/Tutorials/FogRender.md)
     - [Layers](book/Tutorials/Layers.md)
     - [Outdoor Indoor](book/Tutorials/Outdoor_Indoor.md)
     - [Networking](book/Tutorials/Networking.md)

@@ -11,6 +11,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 # Pages
 
 - [First set up](/book/Tutorials/First_set_up.md)
+- [FogRender](/book/Tutorials/FogRender.md)
 - [Layers](/book/Tutorials/Layers.md)
 - [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
 - [Networking](/book/Tutorials/Networking.md)

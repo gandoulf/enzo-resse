@@ -50,7 +50,7 @@ Contained by : [**`AFOW_Handler`**](/reference/classes/AFOW_Handler.md)
     
     ---
     
-    To allow flexibility allow every drawer to be registered in the FOWHandler, it might slighly increase UpdateDrawerLayer parsing time
+    If disabled, all drawer will be registered in the FOWHandler, it might slighly increase UpdateDrawerLayer parsing time
     But it will remove every network synchronisation issues if the client team change
     
 
