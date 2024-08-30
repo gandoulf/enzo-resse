@@ -30,6 +30,27 @@ Contained by : [**`UFOW_EntityVisibilityHandler`**](/reference/classes/UFOW_Enti
 
 # **Properties**
 
+* # __`OnEntityStealthStateChanged`__
+
+    ```cpp
+    public:
+    FEvent_VisibleEntityStealthState OnEntityStealthStateChanged;
+    ```
+    
+    ---
+    
+    **_Reflection-enabled_**
+    
+    ### Specifiers:
+    - **BlueprintAssignable**
+    - **BlueprintCallable**
+    - **Category** = _FOW_
+    
+    ---
+    
+    Called every time the the entity enter/leave stealth area
+    
+
 * # __`OnVisibilityChanged`__
 
     ```cpp

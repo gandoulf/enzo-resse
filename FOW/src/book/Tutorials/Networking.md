@@ -90,10 +90,6 @@ understand what the fog replication changes, go back to your `BP_MyNetworkSettin
 
 # GameMode
 
-> **/!\ The following code works only for Unreal Engine version 5.4 and higher. For some reason, earlier versions have
-trouble with `netmode` initialization. The demo project contains the fixed version; however, I'm not describing it here
-since there is too much logic for a simple tutorial.<br />**
-
 The provided `GameMode` already contains some logic, which may be a bit complicated for a simple setup.
 Here you will find a lighter version to manage the player character team. In your custom project, open the `GameMode`.
 

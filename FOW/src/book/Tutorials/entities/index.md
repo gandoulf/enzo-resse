@@ -16,9 +16,9 @@ and their updates are managed by the containers.
 
 # Pages
 
-- [Visibility Entity](/book/Tutorials/entities/Visibility_Entity.md)
-- [Drawing entity](/book/Tutorials/entities/Drawing_Entity.md)
 - [Collision entity](/book/Tutorials/entities/Collision_Entity.md)
+- [Drawing entity](/book/Tutorials/entities/Drawing_Entity.md)
+- [Visibility Entity](/book/Tutorials/entities/Visibility_Entity.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

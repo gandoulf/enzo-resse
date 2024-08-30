@@ -11,13 +11,13 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 # Pages
 
 - [First set up](/book/Tutorials/First_set_up.md)
-- [FogRender](/book/Tutorials/FogRender.md)
-- [Layers](/book/Tutorials/Layers.md)
-- [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
-- [Networking](/book/Tutorials/Networking.md)
 - [Fog Channels](/book/Tutorials/FogChannels.md)
 - [Floor and Verticality](/book/Tutorials/Floor_Verticality.md)
+- [Layers](/book/Tutorials/Layers.md)
 - [Minimap](/book/Tutorials/Minimap.md)
+- [Networking](/book/Tutorials/Networking.md)
+- [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
+- [Stealth Area](/book/Tutorials/StealthArea.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
