@@ -45,6 +45,8 @@ a `StaticTexture`. Move it to another folder out of the plugin.
 Now you have to copy the settings used to generate the texture to the `BP_FOW_Floor_Minimap`. They are requiered to
 generate a corresponding plane in the material to apply the texture.
 
+> **The Z value isn't important; the MinimapPlanLocation will be updated based on the actor's current location. <br />**
+
 ![MinimapPictures](../../assets/Tutorial/Minimap/7_ChangeFloorMinimapSettingsMerged.png)
 
 You can now hit the play button and see a minimap on the bottom right. You can display a bigger version by pressing
@@ -52,8 +54,8 @@ You can now hit the play button and see a minimap on the bottom right. You can d
 
 ![MinimapPictures](../../assets/Tutorial/Minimap/8_DeleteTestAndPressTab.png)
 
-The minimap can handler displacement, rotation and scale (zoom). if the minimap havn't the correct orientation you
-can apply static rotation to the texture and the Fog sample
+The minimap can handle displacement, rotation, and scaling (zoom). If the minimap doesn't have the correct orientation,
+you can apply a static rotation to both the texture and the Fog sample to adjust it accordingly.
 
 ![MinimapPictures](../../assets/Tutorial/Minimap/9_AddConstantRotation.png)
 ---

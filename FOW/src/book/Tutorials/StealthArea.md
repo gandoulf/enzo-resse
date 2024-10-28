@@ -1,6 +1,7 @@
 # Stealth Area
 
 - [Add Stealth Area](#add-stealth-area)
+- [Fog type](#fog-type)
 - [Entities settings](#entities-settings)
 	- [Collision](#collision)
 	- [Delegates](#delegates)
@@ -47,6 +48,20 @@ You can tweak the generation with the following variables:
 - `Random Offset`: A random offset allowed for each instance to prevent alignment.
 - `Rotation Min/Max`: The rotation range to apply to the mesh.
 - `Scale Range`: The scale range to apply to the mesh.
+
+# Fog Type
+
+![StealthAreaPictures](../../assets/Tutorial/StealthArea/11_0_StealthArea_FogType.png)
+
+The stealth area, by default, acts like a collision, casting its collision shadow onto the fog. Depending on your game, you might want a
+different behavior. For this purpose, you will find the `FogType` enum:
+- `FOG_SHADOW`: The fog will remain unrevealed inside and behind the stealth area.
+- `FOG`: The fog will remain unrevealed only inside the stealth area.
+- `NO_FOG`: No fog will be generated from this stealth area.
+
+> **/!\ `NO_FOG` means that the stealth area won't hide the visible entity inside it if an enemy has sight on the stealth area. A custom `VisibilityHandler` will be required to make it work correctly. <br />**
+
+![StealthAreaPictures](../../assets/Tutorial/StealthArea/12_StealthArea_FogType_Enum.png)
 
 ## Entities Settings
 

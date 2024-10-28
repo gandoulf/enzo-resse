@@ -23,11 +23,18 @@ actor or to your existing `Blueprint`. The default settings of those components 
 
 All drawers will have barely the same settings:
 * `IsEnableAtStart`: Define if the entity starts drawing from the BeginPlay or if it will be enabled later by calling `EnableEntity()`.
-* `TeamIndexAtStart`: Define for which team the entity will be drawing. The team can be changed at runtime by calling `SetEntityTeam()`.
+* `EntityTeam`: Define for which team the entity will be drawing. The team can be changed at runtime by calling `SetEntityTeam()`.
 * `Static/DynamicLayerSettingClass`: Define how the drawer will bring modification to the fog. Those can't be changed at runtime.
 * The advanced section is only necessary for multiple `FOW_Floor` games. Their behavior will be explained later.
 
 ![DrawingEntityPicture](../../../assets/Tutorial/Entities/Drawing/2_DrawingEnitySettingsOverView.png)
+
+You will find a hidden property if you set the `EntityTeam` to -1. The `TeamMask` is a struct composed of an editable string to provide a
+mask in binary, and by an int showing the conversion value. Setting the `EntityTeam` to -1 will update the fog for every team. The binary mask
+is here to provide some flexibility if you don't need to update every team.<br/>
+For example, if you need to update the fog only for team 3 and 4, the `TeamMask` will be `1100`.
+
+![DrawingEntityPicture](../../../assets/Tutorial/Entities/Drawing/3_DrawingEnitySettingsOverView_TeamMask.png)
 
 ## Drawing Entity cpp implementation
 

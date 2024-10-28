@@ -5,6 +5,7 @@
 - [Installation](#installation)
 - [Set up the fog](#set-up-the-fog)
 - [Going further](#going-further)
+- [Setup issues](#set-up-issues)
 
 ## Installation
 
@@ -13,6 +14,9 @@ If not done yet, download the Demo project [Here](https://github.com/gandoulf/La
 Install the plugin in the project, helping video [Here](https://www.youtube.com/watch?v=B9pieujL91c) <br />
 
 ## Set up the fog
+
+> **/!\ The `FOWHandler` will use the camera on the `Controlled Pawn` for the Post Process. If your game has a
+different setup for the camera, open the `BP_FOW_Handler` and tweak the code to correctly find the game camera.<br />**
 
 This part will explain how to use the Fog Of War in the easiest and fastest possible way!
 
@@ -74,6 +78,18 @@ You can change the fog precision of the FOW in the `BP_FOW_Handler` by going in 
 and by changing the `PixelSize` value. By default, the fog pixel is set to 25 centimeters
 
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/11_Chance_the_fog_precision.png)
+
+# Setup issues
+
+If you import the plugin to an existing project, you might encounter rendering issues, and the fog won't appear.
+The problem arises from the `BP_FOW_Handler` PostProcess initialization. By default, it attaches the PostProcess
+to a camera present on the `Controlled Pawn` or to the first `PostProcessVolume` found.
+
+To solve this issue, you can change the Blueprint code or simply create a new Blueprint inheriting from `FOW_Handler_Default`.
+Once created, you will just need to override the `Begin Play`, write your logic, and replace the `BP_FOW_Handler` present in
+your scene with the new one.
+
+![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/12_FOW_Handler_PostProcess.png)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
