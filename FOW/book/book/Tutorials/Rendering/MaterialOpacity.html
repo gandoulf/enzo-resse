@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Material Opacity - Layered Fog Of War documentation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../../book/architecture/index.html">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/architecture/Handler.html">Handler</a></li><li class="chapter-item expanded "><a href="../../../book/architecture/Floor.html">Floor</a></li><li class="chapter-item expanded "><a href="../../../book/architecture/Layers.html">Layers</a></li><li class="chapter-item expanded "><a href="../../../book/architecture/Network.html">Network</a></li></ol></li><li class="chapter-item expanded "><a href="../../../book/Template/index.html">Template</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/Template/MOBA.html">MOBA Template</a></li></ol></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/entities/index.html">Entities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/Tutorials/entities/Collision_Entity.html">Collision entity</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/entities/Drawing_Entity.html">Drawing entity</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/entities/Visibility_Entity.html">Visibility Entity</a></li></ol></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/index.html">Rendering</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/HeatTexture.html">Heat Texture</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/Material.html">Post Process</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/MaterialOpacity.html" class="active">Material Opacity</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/Stencil.html">Stencil</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/Teams.html">Teams</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Rendering/ToggleRender.html">Toggle Render</a></li></ol></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/FogChannels.html">Fog Channels</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Floor_Verticality.html">Floor and Verticality</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Layers.html">Layers</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Minimap.html">Minimap</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Networking.html">Networking</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/Outdoor_Indoor.html">Outdoor Indoor</a></li><li class="chapter-item expanded "><a href="../../../book/Tutorials/StealthArea.html">Stealth Area</a></li></ol></li><li class="chapter-item expanded "><a href="../../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../book/Versions/LFOW_V1.1.1.html">LFOW V1.1.1</a></li><li class="chapter-item expanded "><a href="../../../book/Versions/LFOW_V1.2.0.html">LFOW V1.2.0</a></li><li class="chapter-item expanded "><a href="../../../book/Versions/LFOW_V1.2.1.html">LFOW V1.2.1</a></li><li class="chapter-item expanded "><a href="../../../book/Versions/LFOW_V1.3.0.html">LFOW V1.3.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../reference.html">C++ API Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reference/classes.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reference/classes/AFOW_Handler.html">AFOW_Handler</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/IFOW_CollisionEntity_Interface.html">IFOW_CollisionEntity_Interface</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/IFOW_DrawingEntity_Interface.html">IFOW_DrawingEntity_Interface</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/IFOW_Entity_Interface.html">IFOW_Entity_Interface</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/IFOW_GeometryEntity_Interface.html">IFOW_GeometryEntity_Interface</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/IFOW_VisibilityEntity_Interface.html">IFOW_VisibilityEntity_Interface</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_CollisionHandler.html">UFOW_CollisionHandler</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_DrawerComponent.html">UFOW_DrawerComponent</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_Drawer_Shared.html">UFOW_Drawer_Shared</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_EntityContainer.html">UFOW_EntityContainer</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_EntityVisibilityHandler.html">UFOW_EntityVisibilityHandler</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_Floor.html">UFOW_Floor</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_LayerHandler.html">UFOW_LayerHandler</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_LayerSetting.html">UFOW_LayerSetting</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_Rasterizer.html">UFOW_Rasterizer</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_TextureSample.html">UFOW_TextureSample</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_Tile_Class.html">UFOW_Tile_Class</a></li><li class="chapter-item expanded "><a href="../../../reference/classes/UFOW_VisibilityE_Component.html">UFOW_VisibilityE_Component</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="material-opacity"><a class="header" href="#material-opacity">Material Opacity</a></h1>
+<ul>
+<li><a href="#vfx-materials">VFX Materials</a></li>
+<li><a href="#vfx-materials-settings">VFX Materials settings</a></li>
+</ul>
+<p>This tutorial has been created in the <code>Tutorial/Maps/TutorialMap_VFX</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a>.
+It covers how to change the materials opacity depending on the fog.</p>
+<blockquote>
+<p><strong>/!\ <code>Texture Assets</code> prevent the fog to correcly work when the game is packed. This issue will be take care of as soon as possible <br /></strong></p>
+</blockquote>
+<blockquote>
+<p><strong>/!\ This setup will work only in <code>Standalone</code> or for the <code>Server</code> in the <code>Editor</code>. Once the game is packed, the client will correctly apply the <code>Opacity Mask</code>. (waiting for fix) <br /></strong></p>
+</blockquote>
+<h2 id="vfx-materials"><a class="header" href="#vfx-materials">VFX Materials</a></h2>
+<p>The fog post-process and visibility component might not be enough to simulate the unit's vision accurately within your game. You might want a pixel-perfect
+<code>Opacity Mask</code> based on the fog state for VFX or other materials. By using <code>Texture Assets</code>, it's possible to share the FOW globally across all materials
+without creating dynamic instances. This setup makes implementing the opacity mask straightforward.</p>
+<p>The tutorial demonstrates spawning particles that are hidden by the fog when they are out of sight. The firework VFX, however, does not include the opacity
+mask modification.</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/0_ParticuleSpawning.png" alt="MaterialOpacityPictures" /></p>
+<p>In the <code>FOWHandler</code>, go to <code>Settings</code> and look for <code>UseTextureAssets</code>. Enable it, and three texture variables should appear, each pre-set with values. These
+<code>Texture Assets</code> are shared across the materials. You'll notice they are 4k textures with specific settings, like grayscale. They are this large because
+texture assets cannot be resized in C++, and a worst-case scenario must be used to ensure the <code>FOW</code> performs well in most games.</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/1_UseTextureAssets.png" alt="MaterialOpacityPictures" /></p>
+<p>You can now examine the premade <code>FVX_Tutorial_FOW</code> provided and verify that the <code>SpriteRenderer</code> is correctly set with an <code>M_FOW_Default...</code> material. There's
+no need for additional setup; only a custom material needs to be specified (the provided materials are copies of the one in the engine).</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/2_OpenVFX_SetupMaterial.png" alt="MaterialOpacityPictures" /></p>
+<p>Next, open the <code>Tutorial/VFX/Material</code> folder and access <code>M_FOW_DefaultRibbon</code> and <code>M_FOW_DefaultSprite</code>. While the materials are slightly different, they follow
+the same FOW logic to alter the opacity mask.</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/3_OpenAndUpdateMaterial.png" alt="MaterialOpacityPictures" /></p>
+<p>The material code is already present and just needs to be connected to the multiply node. Understanding it fully isn't necessary; the node setup grants access to
+the FOW channel output, with the first channel representing <code>Sight</code> and the second representing what has been <code>Seen</code>, ranging from 0 to 1. With these values, it's
+easy to create a mask or other effects as desired. You can simply copy and paste the nodes inside the comment for your custom material :)</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/4_ConnectFogToMultiply.png" alt="MaterialOpacityPictures" /></p>
+<p>After reconnecting the nodes, test the tutorial to confirm that VFX inside the bush remains hidden. Particles are only rendered when exiting the area.</p>
+<h2 id="vfx-materials-settings"><a class="header" href="#vfx-materials-settings">VFX Materials settings</a></h2>
+<p>By default, the provided nodes for the <code>Opacity Mask</code> are configured to soften the fog data using a <code>Blur</code> algorithm and to apply the <code>HeatTexture</code> if it's enabled
+in the <code>FOWHandler</code>. These two settings may increase rendering costs. To adjust this, disable them in the <code>MPC_FOW_VFXRenderSettings</code> by changing the values of
+<code>bEnableHeatTexture</code> and <code>bEnableBlur</code>.</p>
+<p><img src="../../../assets/Tutorial/Rendering/VFX/5_ChangeSettingsMPC.png" alt="MaterialOpacityPictures" /></p>
+<p>You can also modify these values at runtime with console commands:</p>
+<ul>
+<li><code>fow.r.EnableHeatTexture</code> lets you toggle the Heat Texture on or off.</li>
+<li><code>fow.r.EnableBlur</code> lets you toggle the Blur on or off.</li>
+</ul>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../book/Tutorials/Rendering/Material.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../book/Tutorials/Rendering/Stencil.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../book/Tutorials/Rendering/Material.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../book/Tutorials/Rendering/Stencil.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

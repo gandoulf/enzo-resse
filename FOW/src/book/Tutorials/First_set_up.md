@@ -32,6 +32,9 @@ Once in your scene you will see two boxes:
 
 Add a `FOW_Drawer_FOV` to the BP_TutorialCharacter
 
+> **Note that the `FOW_Drawer_FOV` is an effective solution if you have a few instances of it. If you plan to have more
+than 20 drawing objects, consider using [](/book/Tutorials/)[FOW_DrawingEntity_FOVComponent](entities/Drawing_Entity.md), which perform significantly faster. <br />**
+
 ![FOWHandler update pipeline](../../assets/Tutorial/FirstSetUp/3_AddDrawerToTheCharacter.png)
 
 Hit the play button for the first preview of the FOW !!

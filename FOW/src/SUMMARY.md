@@ -19,7 +19,9 @@
       - [Visibility Entity](book/Tutorials/entities/Visibility_Entity.md)
     - [Rendering](book/Tutorials/Rendering/index.md)
       - [Heat Texture](book/Tutorials/Rendering/HeatTexture.md)
-      - [Material](book/Tutorials/Rendering/Material.md)
+      - [Post Process](book/Tutorials/Rendering/Material.md)
+      - [Material Opacity](book/Tutorials/Rendering/MaterialOpacity.md)
+      - [Stencil](book/Tutorials/Rendering/Stencil.md)
       - [Teams](book/Tutorials/Rendering/Teams.md)
       - [Toggle Render](book/Tutorials/Rendering/ToggleRender.md)
     - [Fog Channels](book/Tutorials/FogChannels.md)
@@ -33,6 +35,7 @@
     - [LFOW V1.1.1](book/Versions/LFOW_V1.1.1.md)
     - [LFOW V1.2.0](book/Versions/LFOW_V1.2.0.md)
     - [LFOW V1.2.1](book/Versions/LFOW_V1.2.1.md)
+    - [LFOW V1.3.0](book/Versions/LFOW_V1.3.0.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)

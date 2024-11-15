@@ -10,7 +10,9 @@ tweak the render. It is provided with many `Console Variables` that can change t
 # Pages
 
 - [Heat Texture](/book/Tutorials/Rendering/HeatTexture.md)
-- [Material](/book/Tutorials/Rendering/Material.md)
+- [Post Process](/book/Tutorials/Rendering/Material.md)
+- [Material Opacity](/book/Tutorials/Rendering/MaterialOpacity.md)
+- [Stencil](/book/Tutorials/Rendering/Stencil.md)
 - [Teams](/book/Tutorials/Rendering/Teams.md)
 - [Toggle Render](/book/Tutorials/Rendering/ToggleRender.md)
 
