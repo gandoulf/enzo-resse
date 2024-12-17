@@ -17,6 +17,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 - [Minimap](/book/Tutorials/Minimap.md)
 - [Networking](/book/Tutorials/Networking.md)
 - [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
+- [PluginAPI](/book/Tutorials/PluginAPI.md)
 - [Stealth Area](/book/Tutorials/StealthArea.md)
 
 ---

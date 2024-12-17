@@ -6,11 +6,11 @@
 This tutorial has been created in the `Tutorial/Maps/TutorialMap_VFX` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 It covers how to change the materials opacity depending on the fog.
 
-> **/!\ `Texture Assets` prevent the fog to correcly work when the game is packed. This issue will be take care of as soon as possible <br />**
-
-> **/!\ This setup will work only in `Standalone` or for the `Server` in the `Editor`. Once the game is packed, the client will correctly apply the `Opacity Mask`. (waiting for fix) <br />**
+> **/!\ This setup will work only in `Standalone` or for the `Server` in the `Editor`. Once the game is packed, the client will correctly apply the `Opacity Mask`. <br />**
 
 ## VFX Materials
+
+> **If you don't have the `Demo Project` you can find the material nodes in the plugin content folder `Material/SurfaceMaterial/M_FOW_OpacityMask.uasset` <br />**
 
 The fog post-process and visibility component might not be enough to simulate the unit's vision accurately within your game. You might want a pixel-perfect
 `Opacity Mask` based on the fog state for VFX or other materials. By using `Texture Assets`, it's possible to share the FOW globally across all materials
@@ -43,19 +43,19 @@ easy to create a mask or other effects as desired. You can simply copy and paste
 
 ![MaterialOpacityPictures](../../../assets/Tutorial/Rendering/VFX/4_ConnectFogToMultiply.png)
 
-After reconnecting the nodes, test the tutorial to confirm that VFX inside the bush remains hidden. Particles are only rendered when exiting the area.
+After reconnecting the nodes, test the tutorial to confirm that VFX inside the bush remains hidden.
 
 ## VFX Materials settings
 
 By default, the provided nodes for the `Opacity Mask` are configured to soften the fog data using a `Blur` algorithm and to apply the `HeatTexture` if it's enabled
-in the `FOWHandler`. These two settings may increase rendering costs. To adjust this, disable them in the `MPC_FOW_VFXRenderSettings` by changing the values of
-`bEnableHeatTexture` and `bEnableBlur`.
+in the `FOWHandler`. These two settings may increase rendering costs. To adjust this, disable them in the `MPC_FOWRenderSettings` by changing the values of
+`VFX_bEnableHeatTexture` and `VFX_bEnableBlur`.
 
 ![MaterialOpacityPictures](../../../assets/Tutorial/Rendering/VFX/5_ChangeSettingsMPC.png)
 
 You can also modify these values at runtime with console commands:
-- `fow.r.EnableHeatTexture` lets you toggle the Heat Texture on or off.
-- `fow.r.EnableBlur` lets you toggle the Blur on or off.
+- `fow.r.vfx.EnableHeatTexture` lets you toggle the Heat Texture on or off.
+- `fow.r.vfx.EnableBlur` lets you toggle the Blur on or off.
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
