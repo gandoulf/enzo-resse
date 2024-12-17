@@ -9,7 +9,7 @@ This tutorial demonstrates various useful functions from the plugin that you wil
 
 The `FOWHandler` is the core of the plugin, as it registers everything. You might need to query it to access different functionalities
 such as Save/Load, floors, collision, and drawer queries. You can access it by calling `GetFOWHandler` in both C++ and Blueprints.
-Be sure to implement the interface from the [](/book/Tutorials/)[Network Architecture](Networking.md) tutorial if you're making an online game.
+Be sure to implement the interface from the [](/book/Tutorials/)[Network tutorial](Networking.md) if you're making an online game.
 
 BP
 
