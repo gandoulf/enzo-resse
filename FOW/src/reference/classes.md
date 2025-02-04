@@ -16,7 +16,6 @@
 - [`UFOW_LayerSetting`](/reference/reference/classes/UFOW_LayerSetting.md)
 - [`UFOW_Rasterizer`](/reference/reference/classes/UFOW_Rasterizer.md)
 - [`UFOW_TextureSample`](/reference/reference/classes/UFOW_TextureSample.md)
-- [`UFOW_Tile_Class`](/reference/reference/classes/UFOW_Tile_Class.md)
 - [`UFOW_VisibilityE_Component`](/reference/reference/classes/UFOW_VisibilityE_Component.md)
 
 ---

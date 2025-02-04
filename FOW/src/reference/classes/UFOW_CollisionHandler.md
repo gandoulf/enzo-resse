@@ -9,6 +9,9 @@ class FOGOFWAR_API UFOW_CollisionHandler
 
 **_Reflection-enabled_**
 
+### Specifiers:
+- **Blueprintable**
+
 ---
 
 Collision handler is used to accelerate the querying of collider to generate sight mask<br />

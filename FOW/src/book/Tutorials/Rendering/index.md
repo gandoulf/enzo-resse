@@ -13,6 +13,7 @@ tweak the render. It is provided with many `Console Variables` that can change t
 - [Post Process](/book/Tutorials/Rendering/Material.md)
 - [Material Opacity](/book/Tutorials/Rendering/MaterialOpacity.md)
 - [Stencil](/book/Tutorials/Rendering/Stencil.md)
+- [Sub Fog Texture](/book/Tutorials/Rendering/SubFogTexture.md)
 - [Teams](/book/Tutorials/Rendering/Teams.md)
 - [Toggle Render](/book/Tutorials/Rendering/ToggleRender.md)
 

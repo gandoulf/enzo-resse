@@ -11,6 +11,7 @@ class FOGOFWAR_API UFOW_VisibilityE_Component
 **_Reflection-enabled_**
 
 ### Specifiers:
+- **Blueprintable**
 - **ClassGroup** = _Entity_
 
 ### Meta Specifiers:

@@ -22,6 +22,7 @@
       - [Post Process](book/Tutorials/Rendering/Material.md)
       - [Material Opacity](book/Tutorials/Rendering/MaterialOpacity.md)
       - [Stencil](book/Tutorials/Rendering/Stencil.md)
+      - [Sub Fog Texture](book/Tutorials/Rendering/SubFogTexture.md)
       - [Teams](book/Tutorials/Rendering/Teams.md)
       - [Toggle Render](book/Tutorials/Rendering/ToggleRender.md)
     - [Fog Channels](book/Tutorials/FogChannels.md)
@@ -38,6 +39,7 @@
     - [LFOW V1.2.1](book/Versions/LFOW_V1.2.1.md)
     - [LFOW V1.3.0](book/Versions/LFOW_V1.3.0.md)
     - [LFOW V1.3.1](book/Versions/LFOW_V1.3.1.md)
+    - [LFOW V1.4.0](book/Versions/LFOW_V1.4.0.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)
@@ -57,5 +59,4 @@
     - [UFOW_LayerSetting](reference/classes/UFOW_LayerSetting.md)
     - [UFOW_Rasterizer](reference/classes/UFOW_Rasterizer.md)
     - [UFOW_TextureSample](reference/classes/UFOW_TextureSample.md)
-    - [UFOW_Tile_Class](reference/classes/UFOW_Tile_Class.md)
     - [UFOW_VisibilityE_Component](reference/classes/UFOW_VisibilityE_Component.md)
