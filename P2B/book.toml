@@ -1,0 +1,17 @@
+[book]
+authors = []
+language = "en"
+multilingual = false
+src = "src"
+title = "Layered Fog Of War documentation"
+
+[output.html]
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
+mathjax-support = true
+no-section-label = true
+site-url = "/"
+
+[output.html.fold]
+enable = false
+level = 0

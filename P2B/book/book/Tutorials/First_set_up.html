@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>First set up - Layered Fog Of War documentation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Tutorials/First_set_up.html" class="active">First set up</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/Blockers.html">Blockers</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html">C++ API Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="first-set-up"><a class="header" href="#first-set-up">First set up</a></h1>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#set-up-and-usage">Set up and Usage</a></li>
+<li><a href="#going-further">Going further</a></li>
+<li><a href="#set-up-issues">Setup issues</a></li>
+</ul>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>The plugin has to be installed in the <code>UE_5.5\Engine\Plugins\Marketplace</code> folder in your engine or in the <code>Plugins</code> folder in your project.
+This is a standalone plugin, but if you are using the <code>Layered Fog of War</code> plugin, I recommend also installing the <code>FOW_P2B_Bridge</code> in the same folder.
+You can then start up your project and enable the <code>Plugins</code> from the editor, or you can edit the <code>YourProject.uproject</code> file directly.</p>
+<pre><code class="language-cpp">"Plugins": [
+	{
+		"Name": "FogOfWar",
+		"Enabled" : true,
+	},
+	{
+		"Name": "Paint2Blocking",
+		"Enabled" : true,
+	},
+	{
+		"Name": "FOW_P2B_Bridge",
+		"Enabled" : true,
+	}
+]
+</code></pre>
+<h2 id="set-up-and-usage"><a class="header" href="#set-up-and-usage">Set up and Usage</a></h2>
+<p>Let's get straight to the first <code>Blockers</code> generation. For that, you will have to drag and drop the <code>BP_P2B_BlockerGenerator</code> from the plugin content into
+your scene. The default generator is set up with a default texture and a <code>Template</code> data asset that will generate <code>Blockers</code> from any color. You can see
+in the details panel a few settings values and three buttons used for the editor actions. You can change the size of the generation plane by tweaking the
+<code>Plane Size</code> value from the Details panel.</p>
+<p><img src="../../Assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
+<p>Once the Generator is in your scene, you can now generate the <code>Blockers</code> by hitting the <code>Generate</code> button! You can also delete everything by hitting the
+<code>Clear blockers</code> button. The <code>Draw Debug</code> will draw small debug spheres where the geometry vertices are.</p>
+<p><img src="../../Assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
+<p>Now that the generation is working, let's paint and create some custom shapes!</p>
+<ul>
+<li>First, open up the <code>Paint2Blocking Mode</code></li>
+<li>Select the <code>Blocker Generator</code></li>
+<li>Go to the <code>Painting</code> tool</li>
+<li>In the layers, click on the dropdown arrow and delete it</li>
+<li>Then add a new layer, give it a name, and create it</li>
+</ul>
+<p>You will have a new texture asset created in a new folder: <code>Content/GenerationTextures</code>. During the texture creation, you can modify the creation folder if it
+doesn't suit you.</p>
+<p><img src="../../Assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
+<p>Now that the new layer is set up, you can change its size if needed in the <code>BP_P2B_BlockerGenerator</code> details panel and then start drawing.</p>
+<ul>
+<li>Select a color</li>
+<li>Draw any shape</li>
+<li>Hit the generate blockers button</li>
+</ul>
+<blockquote>
+<p><strong>Note that you can automatically generate drawers by turning on <code>Enable Dynamic Blocker Generation</code>! <br /></strong></p>
+</blockquote>
+<p><img src="../../Assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
+<p>And that will be all for the default setup. Generated blockers will have default collision presets and will update the pathfinding if one is set up.
+You can add any number of <code>Layers</code>, but you will have to select it before painting; otherwise, the first one will be used.</p>
+<p><img src="../../Assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
+<h2 id="going-further"><a class="header" href="#going-further">Going further</a></h2>
+<p>You might want to use a custom texture coming from Photoshop or Paint. To do that, you will need to import a PNG into the engine (There are some issues with
+the painting mode, and source file conditions are strict). Now, you can select the <code>BlockerGenerator</code>, and in the <code>GenerationLayers</code>, change the texture in use
+to the new one you've imported.</p>
+<p><img src="../../Assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
+<p>Before being able to generate any <code>Blockers</code> out of it, you will have to change a few settings.</p>
+<ul>
+<li>Change <code>MipGenSettings</code> to <code>NoMipmaps</code></li>
+<li>Change the <code>Compression Settings</code> to <code>VectorDisplacementMap</code> (this mode is used because there are 4 channels of 1 byte)</li>
+<li>Change the <code>Filter</code> to <code>Nearest</code> (not necessary, but advised)</li>
+</ul>
+<p><img src="../../Assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
+<p>You can now generate the <code>Blockers</code> out of the texture, but be careful with the density of different colors. The current <code>Template</code> data asset will
+try to generate a <code>Blocker</code> out of every shape of any color it finds (except white). To change this behavior, go to the <code>Blocker DataAsset Tutorial</code>.</p>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../book/Tutorials/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../book/Tutorials/GenerationDataAssets.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../book/Tutorials/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../book/Tutorials/GenerationDataAssets.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

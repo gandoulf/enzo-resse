@@ -1,0 +1,526 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Layered Fog Of War documentation</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="book/Tutorials/Blockers.html">Blockers</a></li><li class="chapter-item expanded "><a href="book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="reference.html">C++ API Reference</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
+<ul>
+<li><a href="/book/index.html">Book</a></li>
+<li><a href="/reference.html">C++ API Reference</a></li>
+</ul>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="book"><a class="header" href="#book">Book</a></h1>
+<p>This book provides the necessary documentation to setup and use the Paint 2 Blocking plugin.</p>
+<blockquote>
+<p><strong>/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br /></strong></p>
+</blockquote>
+<h1 id="pages"><a class="header" href="#pages">Pages</a></h1>
+<ul>
+<li><a href="book//book/getting_started.html">Getting Started</a></li>
+</ul>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="book/getting_started.html#paint-2-blocking">Paint 2 Blocking</a></li>
+<li><a href="book/getting_started.html#features">Features</a>
+<ul>
+<li><a href="book/getting_started.html#3d-generation">3D Generation</a></li>
+<li><a href="book/getting_started.html#parametric-generation">Parametric Generation</a></li>
+<li><a href="book/getting_started.html#custom-blockers">Custom Blockers</a></li>
+<li><a href="book/getting_started.html#painting-tool">Painting Tool</a></li>
+</ul>
+</li>
+<li><a href="book/getting_started.html#fow-p2b-bridge">FOW P2B Bridge</a></li>
+</ul>
+<h2 id="paint-2-blocking"><a class="header" href="#paint-2-blocking">Paint 2 Blocking</a></h2>
+<p>The <code>Paint 2 Blocking</code> plugin is a tool designed for fast gameplay layout iteration. Its primary purpose is to generate 3D <code>Blockers</code> from
+textures. These textures can be easily modified using the <code>Paint Mode</code> provided with the plugin.</p>
+<p>The plugin functions similarly to a classic drawing application, featuring multiple layers that can be shown or hidden. Each layer is drawable
+and includes an undo function to cancel modifications.</p>
+<p>This system is highly flexible, allowing users to override the generated <code>Blockers</code>. Anything can be spawned from a color shape drawn on the
+textures. However, due to texture limitations, unique data cannot be assigned per instance, meaning individual rotations for instanced objects
+are not currently supported. This limitation may be addressed in future updates.</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<p>The plugin comes with a few core features, but its ability to be tweaked makes it highly powerful.</p>
+<h3 id="3d-generation"><a class="header" href="#3d-generation">3D Generation</a></h3>
+<p>The plugin extracts <code>vertices</code> from a single-color shape on a texture to generate a <code>Geometry</code>. The standard approach generates a <code>Vertex</code> for
+each edge pixel of the shape, which is then simplified using various algorithms.</p>
+<p>Once the geometries are extracted, the 3D generation begins, and <code>Blockers</code> are spawned. Their world position is calculated as the average position
+of all vertices, and their 3D shape is created by extruding the vertices.</p>
+<p>To improve efficiency, users can spawn an <code>Actor</code> that inherits from a <code>Blocker Interface</code> instead of generating a standard <code>Blocker</code>. These actors
+are positioned at the center of the <code>Vertices</code> and function the same way. For example, you can create a <code>Player Start</code> blocking actor that spawns
+based on a specific color, allowing for rapid iteration, even with logical engine elements, when designing a new map.</p>
+<h3 id="parametric-generation"><a class="header" href="#parametric-generation">Parametric Generation</a></h3>
+<p>Generation is controlled using <code>Data Asset</code> files. There are two types:</p>
+<ul>
+<li><code>Blocker Generation</code>: is where you will register the colors and bind a <code>Blockers</code> to them. You must provide a <code>Blocker Data</code> class used during
+spawning and specify the corresponding <code>Blocker</code> class that reads the data. Each data class has different configurable settings.</li>
+<li><code>Template Generation</code>: Gether a list of <code>Blocker Generation</code> data assets and defines which <code>Blockers</code> will be generated.</li>
+</ul>
+<h3 id="custom-blockers"><a class="header" href="#custom-blockers">Custom Blockers</a></h3>
+<p>The system is designed to be highly flexible, allowing users to spawn anything with custom settings. Two main classes enable this:</p>
+<ul>
+<li><code>Blocker Data</code>: The default <code>UP2B_BlockerData</code> class in the plugin may not include all necessary configuration options. For example, you might need
+to adjust lighting settings or introduce custom values for spawned <code>Blockers</code>. By overriding this class, you can add any necessary parameters. This
+data is constant, meaning all <code>Blockers</code> generated from the same color will share the same settings.</li>
+<li><code>Blocker</code>: To correctly read custom data, you must either override <code>AP2B_Blocker</code> or implement the <code>IP2B_Blocker_Interface</code> when using a custom <code>Actor</code>.
+These classes function similarly and provide useful methods that are called when a <code>Blocker</code> is instantiated. These functions allow you to use the
+associated <code>Blocker Data</code> to initialize custom settings.</li>
+</ul>
+<h3 id="painting-tool"><a class="header" href="#painting-tool">Painting Tool</a></h3>
+<p>You can activate the painting tool at any time in the editor by selecting <code>Paint 2 Blocking</code> from the dropdown menu in the top-left corner. This will open
+a window similar to Unreal Engine's painting tool but with a custom UI.</p>
+<p>The UI is generated based on the <code>Data Asset</code> linked to the selected <code>Blocker Generator</code>. Using this tool, you can:</p>
+<ul>
+<li>Generate &amp; delete <code>Blockers</code></li>
+<li>Select preset colors for the paintbrush</li>
+<li>Add new drawing layers</li>
+</ul>
+<h2 id="fow-p2b-bridge"><a class="header" href="#fow-p2b-bridge">FOW P2B Bridge</a></h2>
+<p>The <code>Paint 2 Blocking</code> plugin is primarily designed to work alongside the <code>Layered Fog of War</code> (FOW). Setting up fog custom colliders can be time-consuming,
+so a faster system was needed.</p>
+<p>The <code>FOW P2B Bridge</code> is a free plugin that depends on both <code>Paint 2 Blocking</code> and <code>FOW</code>. It provides <code>Blockers</code> and <code>Blocker Data</code> classes that allow you to
+generate collisions, stealth areas, and visual elements from color shapes. The bridge is setup to be used with the MOBA template from the FOW plugin which is
+designed for online games.</p>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h1>
+<p>Here we will showcase the step-by-step process of basic usage of the Layered Fog Of War - both for C++ and Blueprint
+implementation. If you want to be in the same condition as the pictures are, you can download my
+<a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a> and use the map in the tutorial folder. <br />
+If you need help installing the plugin, you can watch this <a href="https://www.youtube.com/watch?v=B9pieujL91c">Video</a>.</p>
+<blockquote>
+<p><strong>/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br /></strong></p>
+</blockquote>
+<h1 id="pages-1"><a class="header" href="#pages-1">Pages</a></h1>
+<ul>
+<li><a href="book/Tutorials//book/Tutorials/First_set_up.html">First set up</a></li>
+<li><a href="book/Tutorials//book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li>
+<li><a href="book/Tutorials//book/Tutorials/Blockers.html">Blockers</a></li>
+<li><a href="book/Tutorials//book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li>
+</ul>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="first-set-up"><a class="header" href="#first-set-up">First set up</a></h1>
+<h2 id="table-of-contents-1"><a class="header" href="#table-of-contents-1">Table of Contents</a></h2>
+<ul>
+<li><a href="book/Tutorials/First_set_up.html#installation">Installation</a></li>
+<li><a href="book/Tutorials/First_set_up.html#set-up-and-usage">Set up and Usage</a></li>
+<li><a href="book/Tutorials/First_set_up.html#going-further">Going further</a></li>
+<li><a href="book/Tutorials/First_set_up.html#set-up-issues">Setup issues</a></li>
+</ul>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>The plugin has to be installed in the <code>UE_5.5\Engine\Plugins\Marketplace</code> folder in your engine or in the <code>Plugins</code> folder in your project.
+This is a standalone plugin, but if you are using the <code>Layered Fog of War</code> plugin, I recommend also installing the <code>FOW_P2B_Bridge</code> in the same folder.
+You can then start up your project and enable the <code>Plugins</code> from the editor, or you can edit the <code>YourProject.uproject</code> file directly.</p>
+<pre><code class="language-cpp">"Plugins": [
+	{
+		"Name": "FogOfWar",
+		"Enabled" : true,
+	},
+	{
+		"Name": "Paint2Blocking",
+		"Enabled" : true,
+	},
+	{
+		"Name": "FOW_P2B_Bridge",
+		"Enabled" : true,
+	}
+]
+</code></pre>
+<h2 id="set-up-and-usage"><a class="header" href="#set-up-and-usage">Set up and Usage</a></h2>
+<p>Let's get straight to the first <code>Blockers</code> generation. For that, you will have to drag and drop the <code>BP_P2B_BlockerGenerator</code> from the plugin content into
+your scene. The default generator is set up with a default texture and a <code>Template</code> data asset that will generate <code>Blockers</code> from any color. You can see
+in the details panel a few settings values and three buttons used for the editor actions. You can change the size of the generation plane by tweaking the
+<code>Plane Size</code> value from the Details panel.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
+<p>Once the Generator is in your scene, you can now generate the <code>Blockers</code> by hitting the <code>Generate</code> button! You can also delete everything by hitting the
+<code>Clear blockers</code> button. The <code>Draw Debug</code> will draw small debug spheres where the geometry vertices are.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
+<p>Now that the generation is working, let's paint and create some custom shapes!</p>
+<ul>
+<li>First, open up the <code>Paint2Blocking Mode</code></li>
+<li>Select the <code>Blocker Generator</code></li>
+<li>Go to the <code>Painting</code> tool</li>
+<li>In the layers, click on the dropdown arrow and delete it</li>
+<li>Then add a new layer, give it a name, and create it</li>
+</ul>
+<p>You will have a new texture asset created in a new folder: <code>Content/GenerationTextures</code>. During the texture creation, you can modify the creation folder if it
+doesn't suit you.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
+<p>Now that the new layer is set up, you can change its size if needed in the <code>BP_P2B_BlockerGenerator</code> details panel and then start drawing.</p>
+<ul>
+<li>Select a color</li>
+<li>Draw any shape</li>
+<li>Hit the generate blockers button</li>
+</ul>
+<blockquote>
+<p><strong>Note that you can automatically generate drawers by turning on <code>Enable Dynamic Blocker Generation</code>! <br /></strong></p>
+</blockquote>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
+<p>And that will be all for the default setup. Generated blockers will have default collision presets and will update the pathfinding if one is set up.
+You can add any number of <code>Layers</code>, but you will have to select it before painting; otherwise, the first one will be used.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
+<h2 id="going-further"><a class="header" href="#going-further">Going further</a></h2>
+<p>You might want to use a custom texture coming from Photoshop or Paint. To do that, you will need to import a PNG into the engine (There are some issues with
+the painting mode, and source file conditions are strict). Now, you can select the <code>BlockerGenerator</code>, and in the <code>GenerationLayers</code>, change the texture in use
+to the new one you've imported.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
+<p>Before being able to generate any <code>Blockers</code> out of it, you will have to change a few settings.</p>
+<ul>
+<li>Change <code>MipGenSettings</code> to <code>NoMipmaps</code></li>
+<li>Change the <code>Compression Settings</code> to <code>VectorDisplacementMap</code> (this mode is used because there are 4 channels of 1 byte)</li>
+<li>Change the <code>Filter</code> to <code>Nearest</code> (not necessary, but advised)</li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
+<p>You can now generate the <code>Blockers</code> out of the texture, but be careful with the density of different colors. The current <code>Template</code> data asset will
+try to generate a <code>Blocker</code> out of every shape of any color it finds (except white). To change this behavior, go to the <code>Blocker DataAsset Tutorial</code>.</p>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generation-data-assets"><a class="header" href="#generation-data-assets">Generation Data Assets</a></h1>
+<ul>
+<li><a href="book/Tutorials/GenerationDataAssets.html#create-pda">Create PDA</a></li>
+<li><a href="book/Tutorials/GenerationDataAssets.html#template">Template</a></li>
+<li><a href="book/Tutorials/GenerationDataAssets.html#blocker">Blocker</a>
+<ul>
+<li><a href="book/Tutorials/GenerationDataAssets.html#fast-setup">Fast setup</a></li>
+<li><a href="book/Tutorials/GenerationDataAssets.html#blocker-settings">Blocker settings</a></li>
+</ul>
+</li>
+</ul>
+<p>This tutorial will explain how to create a working environment for the drawing tool of the plugin. The setup will only depend on <code>Data Assets</code>,
+which will provide generation information for the colors drawn on the textures.</p>
+<h2 id="create-pda"><a class="header" href="#create-pda">Create PDA</a></h2>
+<p>Data asset creation in Unreal is a bit particular, as there are two ways to create it. You can:</p>
+<ul>
+<li>Create a <code>Blueprint</code> of the DataAsset class to add new values, inherit properties, and preset it to your needs.</li>
+<li>Create a <code>Packageable</code> data asset, which can only be edited and has no inheritance.</li>
+</ul>
+<p>To make the <code>BlockerGenerator</code> work, you will need the second one:</p>
+<ul>
+<li>Right-click in the content viewer.</li>
+<li>In miscellaneous, select <code>DataAsset</code>.</li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p>Now, you will have to select the class that you want to use to generate the Data Asset. The plugin has two main classes for generation:</p>
+<ul>
+<li><code>UP2B_TemplateGeneration_DataAsset</code></li>
+<li><code>UP2B_BlockerGeneration_DataAsset</code></li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png" alt="GenerationDataAssetPicture" /></p>
+<h2 id="template"><a class="header" href="#template">Template</a></h2>
+<p>The <code>UP2B_TemplateGeneration_DataAsset</code> holds a list of blocker presets and allows you to efficiently change what the <code>BlockerGenerator</code> will generate.
+For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Forest_Generation</code>.</p>
+<p>Let's break down the parameters:</p>
+<ul>
+<li><code>Template Generation Name</code>, Displayed by the painting tool for color selection.</li>
+<li><code>Geometry Simplifier</code>, Allows tweaking how the geometry is simplified during vertices extraction. Can be overridden in the Blockers data assets.</li>
+<li><code>Generate Blocker For Unregistered Color</code>, Toggle this to generate a blocker for any color shape the generator finds. Be cautious with the texture in use, as the generator has no limits.</li>
+<li><code>Blockers Data Assets</code>, An array holding other types of Data Assets that bind a <code>Color</code> to a <code>Blocker</code>.</li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png" alt="GenerationDataAssetPicture" /></p>
+<p>The default blocker settings will be explained in the Blockers DataAssets section. These settings define what the <code>Blocker Generator</code> will spawn.</p>
+<h2 id="blocker"><a class="header" href="#blocker">Blocker</a></h2>
+<h3 id="fast-setup"><a class="header" href="#fast-setup">Fast setup</a></h3>
+<p>Before explaining how the <code>UP2B_BlockerGeneration_DataAsset</code> works, let's set up a working template. Create two Data Assets, one of each type:</p>
+<ul>
+<li><code>UP2B_TemplateGeneration_DataAsset</code>, The template holding the <code>Blockers</code> parameters, which you will call <code>PDA_Tutorial_Generation</code>.</li>
+<li><code>UP2B_BlockerGeneration_DataAsset</code>, The color-to-blocker binding that will use the template. Let's create <code>PDA_Wall_Blocker</code>.</li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p>Now that both data assets are created, let's tweak the template first:</p>
+<ul>
+<li>Rename the <code>Template Generation Name</code> to <code>Tutorial</code>.</li>
+<li>Disable <code>Generate Blocker For Unregistered Color</code>.</li>
+<li>Add <code>PDA_Wall_Blocker</code> to the <code>Blockers Data Assets</code> array.</li>
+</ul>
+<p>Now, for the blocker:</p>
+<ul>
+<li>Rename the <code>Blocker Generation Name</code> to <code>Wall</code>.</li>
+<li>Add a new element to the <code>Color to Blocker</code>.</li>
+<li>Select any color except white and set the alpha to one.</li>
+<li>In the <code>Value</code>, select the <code>P2B Blocker Data</code>.</li>
+<li>Then, in the <code>Blocker Soft Class</code>, select <code>P2B_Blocker</code>.</li>
+</ul>
+<p>This setup defines the <code>PDA_Tutorial_Generation</code> template to generate walls. The <code>PDA_Wall_Blocker</code> specifies that only one kind of wall can be spawned.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png" alt="GenerationDataAssetPicture" /></p>
+<p>Select the <code>Blocker Generator</code> in the editor, go to the details panel, and change the <code>Template Generation Data Asset</code> to the one you've just created.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png" alt="GenerationDataAssetPicture" /></p>
+<p>Finally, open the <code>Paint 2 Blocking Mode</code>, select paint, and you will see that you can select the <code>Wall</code> color to draw. You can simply click on it to update
+the <code>Paint Color</code> brush.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png" alt="GenerationDataAssetPicture" /></p>
+<p>You can now define as many wall types as needed by adding a new element to <code>Color to Blocker</code>. I also recommend providing a name for each blocker using <code>Blocker Name</code>.
+You can also create another type of blocker by creating a new <code>UP2B_BlockerGeneration_DataAsset</code> and registering it in the <code>PDA_Tutorial_Generation</code> template!</p>
+<h3 id="blocker-settings"><a class="header" href="#blocker-settings">Blocker settings</a></h3>
+<p>Every color has a <code>Blocker Data</code> class associated with it. By default, <code>P2B_Blocker_Data</code> is used to generate basic geometry. This class can be overridden to add any number
+of parameters needed by the <code>Blocker</code>. The default settings are limited and focus only on mesh generation and its location:</p>
+<ul>
+<li><code>Blocker Name</code>, Changes the name of the spawned blocker in the editor.</li>
+<li><code>Use Actor Instead Of Blocker</code>, Allows the spawning of any actor. If the actor inherits from <code>P2B_Blocker_Interface</code>, it will have access to the <code>Blocker Data</code>.</li>
+<li><code>Blocker Soft Class</code> &amp; <code>Actor Soft Class</code>, The asset spawned by the <code>Blocker Generator</code>.</li>
+<li><code>Location Offset</code>, Offsets the actor's center location.</li>
+<li><code>Generate Dynamic Mesh</code>, Toggles the 3D generation of the blocker.</li>
+<li><code>Override Texture Color</code>, Uses another color for the 3D mesh instead of the color bound to the <code>Blocker</code>.</li>
+<li><code>ZExtend</code>, Determines how much the 3D geometry will extend below and above the center. X moves downward, Y moves upward (use positive values only).</li>
+<li><code>Draw Wireframe</code>, Draws the debug wireframe of the generated mesh.</li>
+</ul>
+<p>Other values are straightforward and use the same names as the editor. The generator will simply apply them to the same parameters in the spawned actor.</p>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="blockers"><a class="header" href="#blockers">Blockers</a></h1>
+<h2 id="to-be-done-"><a class="header" href="#to-be-done-">To be done ...</a></h2>
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fow-p2b-bridge-1"><a class="header" href="#fow-p2b-bridge-1">FOW P2B Bridge</a></h1>
+<p>Temporary documentation</p>
+<p>The <code>Bridge</code> comes with a few <code>Blocker</code> classes, allowing the <code>Blocker Generator</code> to spawn assets related to the <code>LFOW</code>. You can try them
+by using the premade template and texture present in the plugin <code>Content</code> folder.</p>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FOW_P2B_Bridge/tmp_DataAssets_Texture.png" alt="BridgePicture" /></p>
+<p>In your <code>Blocker Generator</code>, change the:</p>
+<ul>
+<li><code>Template Generation Data Asset</code> to the <code>PDA_MOBA_Generation</code> template</li>
+<li><code>Layer Texture</code> to the <code>MOBA_TemplateMapGeneration</code> texture</li>
+</ul>
+<p><img src="book/Tutorials/../../Assets/Tutorials/FOW_P2B_Bridge/tmp_SetupBlockerGenerator.png" alt="BridgePicture" /></p>
+<p>You can now hit the generate button or start painting ! :)</p>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paint-2-blocking-versions"><a class="header" href="#paint-2-blocking-versions">Paint 2 Blocking versions</a></h1>
+<p>Here is list of version pushed to the market place.</p>
+<blockquote>
+<p><strong>/!\ The links under apparently don't work, I'm trying to figure it out, please use the links on the left <br /></strong></p>
+</blockquote>
+<h1 id="pages-2"><a class="header" href="#pages-2">Pages</a></h1>
+<ul>
+<li><a href="book/Versions//book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li>
+</ul>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paint2blocking-v100"><a class="header" href="#paint2blocking-v100">Paint2Blocking V1.0.0</a></h1>
+<h2 id="version-still-in-development"><a class="header" href="#version-still-in-development">Version still in development</a></h2>
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="c-api-reference"><a class="header" href="#c-api-reference">C++ API Reference</a></h1>
+<hr />
+<p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
