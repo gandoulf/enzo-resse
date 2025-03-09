@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Generation Data Assets - Layered Fog Of War documentation</title>
+        <title>Generation Data Assets - Paint 2 Blocking documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -143,7 +143,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+                    <h1 class="menu-title">Paint 2 Blocking documentation</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -199,13 +199,13 @@ which will provide generation information for the colors drawn on the textures.<
 <li>Right-click in the content viewer.</li>
 <li>In miscellaneous, select <code>DataAsset</code>.</li>
 </ul>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
 <p>Now, you will have to select the class that you want to use to generate the Data Asset. The plugin has two main classes for generation:</p>
 <ul>
 <li><code>UP2B_TemplateGeneration_DataAsset</code></li>
 <li><code>UP2B_BlockerGeneration_DataAsset</code></li>
 </ul>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png" alt="GenerationDataAssetPicture" /></p>
 <h2 id="template"><a class="header" href="#template">Template</a></h2>
 <p>The <code>UP2B_TemplateGeneration_DataAsset</code> holds a list of blocker presets and allows you to efficiently change what the <code>BlockerGenerator</code> will generate.
 For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Forest_Generation</code>.</p>
@@ -216,7 +216,7 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li><code>Generate Blocker For Unregistered Color</code>, Toggle this to generate a blocker for any color shape the generator finds. Be cautious with the texture in use, as the generator has no limits.</li>
 <li><code>Blockers Data Assets</code>, An array holding other types of Data Assets that bind a <code>Color</code> to a <code>Blocker</code>.</li>
 </ul>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png" alt="GenerationDataAssetPicture" /></p>
 <p>The default blocker settings will be explained in the Blockers DataAssets section. These settings define what the <code>Blocker Generator</code> will spawn.</p>
 <h2 id="blocker"><a class="header" href="#blocker">Blocker</a></h2>
 <h3 id="fast-setup"><a class="header" href="#fast-setup">Fast setup</a></h3>
@@ -225,7 +225,7 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li><code>UP2B_TemplateGeneration_DataAsset</code>, The template holding the <code>Blockers</code> parameters, which you will call <code>PDA_Tutorial_Generation</code>.</li>
 <li><code>UP2B_BlockerGeneration_DataAsset</code>, The color-to-blocker binding that will use the template. Let's create <code>PDA_Wall_Blocker</code>.</li>
 </ul>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
 <p>Now that both data assets are created, let's tweak the template first:</p>
 <ul>
 <li>Rename the <code>Template Generation Name</code> to <code>Tutorial</code>.</li>
@@ -241,12 +241,12 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li>Then, in the <code>Blocker Soft Class</code>, select <code>P2B_Blocker</code>.</li>
 </ul>
 <p>This setup defines the <code>PDA_Tutorial_Generation</code> template to generate walls. The <code>PDA_Wall_Blocker</code> specifies that only one kind of wall can be spawned.</p>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png" alt="GenerationDataAssetPicture" /></p>
 <p>Select the <code>Blocker Generator</code> in the editor, go to the details panel, and change the <code>Template Generation Data Asset</code> to the one you've just created.</p>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png" alt="GenerationDataAssetPicture" /></p>
 <p>Finally, open the <code>Paint 2 Blocking Mode</code>, select paint, and you will see that you can select the <code>Wall</code> color to draw. You can simply click on it to update
 the <code>Paint Color</code> brush.</p>
-<p><img src="../../Assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="../../assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png" alt="GenerationDataAssetPicture" /></p>
 <p>You can now define as many wall types as needed by adding a new element to <code>Color to Blocker</code>. I also recommend providing a name for each blocker using <code>Blocker Name</code>.
 You can also create another type of blocker by creating a new <code>UP2B_BlockerGeneration_DataAsset</code> and registering it in the <code>PDA_Tutorial_Generation</code> template!</p>
 <h3 id="blocker-settings"><a class="header" href="#blocker-settings">Blocker settings</a></h3>

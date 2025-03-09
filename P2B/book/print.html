@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Layered Fog Of War documentation</title>
+        <title>Paint 2 Blocking documentation</title>
         <meta name="robots" content="noindex">
 
 
@@ -144,7 +144,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+                    <h1 class="menu-title">Paint 2 Blocking documentation</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -309,10 +309,10 @@ You can then start up your project and enable the <code>Plugins</code> from the 
 your scene. The default generator is set up with a default texture and a <code>Template</code> data asset that will generate <code>Blockers</code> from any color. You can see
 in the details panel a few settings values and three buttons used for the editor actions. You can change the size of the generation plane by tweaking the
 <code>Plane Size</code> value from the Details panel.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
 <p>Once the Generator is in your scene, you can now generate the <code>Blockers</code> by hitting the <code>Generate</code> button! You can also delete everything by hitting the
 <code>Clear blockers</code> button. The <code>Draw Debug</code> will draw small debug spheres where the geometry vertices are.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
 <p>Now that the generation is working, let's paint and create some custom shapes!</p>
 <ul>
 <li>First, open up the <code>Paint2Blocking Mode</code></li>
@@ -323,7 +323,7 @@ in the details panel a few settings values and three buttons used for the editor
 </ul>
 <p>You will have a new texture asset created in a new folder: <code>Content/GenerationTextures</code>. During the texture creation, you can modify the creation folder if it
 doesn't suit you.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
 <p>Now that the new layer is set up, you can change its size if needed in the <code>BP_P2B_BlockerGenerator</code> details panel and then start drawing.</p>
 <ul>
 <li>Select a color</li>
@@ -333,22 +333,22 @@ doesn't suit you.</p>
 <blockquote>
 <p><strong>Note that you can automatically generate drawers by turning on <code>Enable Dynamic Blocker Generation</code>! <br /></strong></p>
 </blockquote>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
 <p>And that will be all for the default setup. Generated blockers will have default collision presets and will update the pathfinding if one is set up.
 You can add any number of <code>Layers</code>, but you will have to select it before painting; otherwise, the first one will be used.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
 <h2 id="going-further"><a class="header" href="#going-further">Going further</a></h2>
 <p>You might want to use a custom texture coming from Photoshop or Paint. To do that, you will need to import a PNG into the engine (There are some issues with
 the painting mode, and source file conditions are strict). Now, you can select the <code>BlockerGenerator</code>, and in the <code>GenerationLayers</code>, change the texture in use
 to the new one you've imported.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
 <p>Before being able to generate any <code>Blockers</code> out of it, you will have to change a few settings.</p>
 <ul>
 <li>Change <code>MipGenSettings</code> to <code>NoMipmaps</code></li>
 <li>Change the <code>Compression Settings</code> to <code>VectorDisplacementMap</code> (this mode is used because there are 4 channels of 1 byte)</li>
 <li>Change the <code>Filter</code> to <code>Nearest</code> (not necessary, but advised)</li>
 </ul>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
 <p>You can now generate the <code>Blockers</code> out of the texture, but be careful with the density of different colors. The current <code>Template</code> data asset will
 try to generate a <code>Blocker</code> out of every shape of any color it finds (except white). To change this behavior, go to the <code>Blocker DataAsset Tutorial</code>.</p>
 <hr />
@@ -377,13 +377,13 @@ which will provide generation information for the colors drawn on the textures.<
 <li>Right-click in the content viewer.</li>
 <li>In miscellaneous, select <code>DataAsset</code>.</li>
 </ul>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
 <p>Now, you will have to select the class that you want to use to generate the Data Asset. The plugin has two main classes for generation:</p>
 <ul>
 <li><code>UP2B_TemplateGeneration_DataAsset</code></li>
 <li><code>UP2B_BlockerGeneration_DataAsset</code></li>
 </ul>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png" alt="GenerationDataAssetPicture" /></p>
 <h2 id="template"><a class="header" href="#template">Template</a></h2>
 <p>The <code>UP2B_TemplateGeneration_DataAsset</code> holds a list of blocker presets and allows you to efficiently change what the <code>BlockerGenerator</code> will generate.
 For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Forest_Generation</code>.</p>
@@ -394,7 +394,7 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li><code>Generate Blocker For Unregistered Color</code>, Toggle this to generate a blocker for any color shape the generator finds. Be cautious with the texture in use, as the generator has no limits.</li>
 <li><code>Blockers Data Assets</code>, An array holding other types of Data Assets that bind a <code>Color</code> to a <code>Blocker</code>.</li>
 </ul>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png" alt="GenerationDataAssetPicture" /></p>
 <p>The default blocker settings will be explained in the Blockers DataAssets section. These settings define what the <code>Blocker Generator</code> will spawn.</p>
 <h2 id="blocker"><a class="header" href="#blocker">Blocker</a></h2>
 <h3 id="fast-setup"><a class="header" href="#fast-setup">Fast setup</a></h3>
@@ -403,7 +403,7 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li><code>UP2B_TemplateGeneration_DataAsset</code>, The template holding the <code>Blockers</code> parameters, which you will call <code>PDA_Tutorial_Generation</code>.</li>
 <li><code>UP2B_BlockerGeneration_DataAsset</code>, The color-to-blocker binding that will use the template. Let's create <code>PDA_Wall_Blocker</code>.</li>
 </ul>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png" alt="GenerationDataAssetPicture" /></p>
 <p>Now that both data assets are created, let's tweak the template first:</p>
 <ul>
 <li>Rename the <code>Template Generation Name</code> to <code>Tutorial</code>.</li>
@@ -419,12 +419,12 @@ For example, you can have a <code>PDA_Urban_Generation</code> and a <code>PDA_Fo
 <li>Then, in the <code>Blocker Soft Class</code>, select <code>P2B_Blocker</code>.</li>
 </ul>
 <p>This setup defines the <code>PDA_Tutorial_Generation</code> template to generate walls. The <code>PDA_Wall_Blocker</code> specifies that only one kind of wall can be spawned.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png" alt="GenerationDataAssetPicture" /></p>
 <p>Select the <code>Blocker Generator</code> in the editor, go to the details panel, and change the <code>Template Generation Data Asset</code> to the one you've just created.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png" alt="GenerationDataAssetPicture" /></p>
 <p>Finally, open the <code>Paint 2 Blocking Mode</code>, select paint, and you will see that you can select the <code>Wall</code> color to draw. You can simply click on it to update
 the <code>Paint Color</code> brush.</p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png" alt="GenerationDataAssetPicture" /></p>
+<p><img src="book/Tutorials/../../assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png" alt="GenerationDataAssetPicture" /></p>
 <p>You can now define as many wall types as needed by adding a new element to <code>Color to Blocker</code>. I also recommend providing a name for each blocker using <code>Blocker Name</code>.
 You can also create another type of blocker by creating a new <code>UP2B_BlockerGeneration_DataAsset</code> and registering it in the <code>PDA_Tutorial_Generation</code> template!</p>
 <h3 id="blocker-settings"><a class="header" href="#blocker-settings">Blocker settings</a></h3>
@@ -447,8 +447,17 @@ of parameters needed by the <code>Blocker</code>. The default settings are limit
 <h2 id="to-be-done-"><a class="header" href="#to-be-done-">To be done ...</a></h2>
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fow-p2b-bridge-1"><a class="header" href="#fow-p2b-bridge-1">FOW P2B Bridge</a></h1>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FOW_P2B_Bridge/tmp_DataAssets_Texture.png" alt="BridgePicture0" /></p>
-<p><img src="book/Tutorials/../../Assets/Tutorials/FOW_P2B_Bridge/tmp_SetupBlockerGenerator.png" alt="BridgePicture1" /></p>
+<p>Temporary documentation</p>
+<p>The <code>Bridge</code> comes with a few <code>Blocker</code> classes, allowing the <code>Blocker Generator</code> to spawn assets related to the <code>LFOW</code>. You can try them
+by using the premade template and texture present in the plugin <code>Content</code> folder.</p>
+<p><img src="book/Tutorials/../../assets/Tutorials/FOW_P2B_Bridge/tmp_DataAssets_Texture.png" alt="BridgePicture" /></p>
+<p>In your <code>Blocker Generator</code>, change the:</p>
+<ul>
+<li><code>Template Generation Data Asset</code> to the <code>PDA_MOBA_Generation</code> template</li>
+<li><code>Layer Texture</code> to the <code>MOBA_TemplateMapGeneration</code> texture</li>
+</ul>
+<p><img src="book/Tutorials/../../assets/Tutorials/FOW_P2B_Bridge/tmp_SetupBlockerGenerator.png" alt="BridgePicture" /></p>
+<p>You can now hit the generate button or start painting ! :)</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="paint-2-blocking-versions"><a class="header" href="#paint-2-blocking-versions">Paint 2 Blocking versions</a></h1>

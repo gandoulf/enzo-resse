@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>First set up - Layered Fog Of War documentation</title>
+        <title>First set up - Paint 2 Blocking documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -143,7 +143,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Layered Fog Of War documentation</h1>
+                    <h1 class="menu-title">Paint 2 Blocking documentation</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -207,10 +207,10 @@ You can then start up your project and enable the <code>Plugins</code> from the 
 your scene. The default generator is set up with a default texture and a <code>Template</code> data asset that will generate <code>Blockers</code> from any color. You can see
 in the details panel a few settings values and three buttons used for the editor actions. You can change the size of the generation plane by tweaking the
 <code>Plane Size</code> value from the Details panel.</p>
-<p><img src="../../Assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/0_DragAndDropGenerator.png" alt="FirstSetUpPicture" /></p>
 <p>Once the Generator is in your scene, you can now generate the <code>Blockers</code> by hitting the <code>Generate</code> button! You can also delete everything by hitting the
 <code>Clear blockers</code> button. The <code>Draw Debug</code> will draw small debug spheres where the geometry vertices are.</p>
-<p><img src="../../Assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/1_Generate_Delete_Blockers.gif" alt="FirstSetUpPicture" /></p>
 <p>Now that the generation is working, let's paint and create some custom shapes!</p>
 <ul>
 <li>First, open up the <code>Paint2Blocking Mode</code></li>
@@ -221,7 +221,7 @@ in the details panel a few settings values and three buttons used for the editor
 </ul>
 <p>You will have a new texture asset created in a new folder: <code>Content/GenerationTextures</code>. During the texture creation, you can modify the creation folder if it
 doesn't suit you.</p>
-<p><img src="../../Assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/2_OpenMode_NewLayer.gif" alt="FirstSetUpPicture" /></p>
 <p>Now that the new layer is set up, you can change its size if needed in the <code>BP_P2B_BlockerGenerator</code> details panel and then start drawing.</p>
 <ul>
 <li>Select a color</li>
@@ -231,22 +231,22 @@ doesn't suit you.</p>
 <blockquote>
 <p><strong>Note that you can automatically generate drawers by turning on <code>Enable Dynamic Blocker Generation</code>! <br /></strong></p>
 </blockquote>
-<p><img src="../../Assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/3_Paint_CustomShape.gif" alt="FirstSetUpPicture" /></p>
 <p>And that will be all for the default setup. Generated blockers will have default collision presets and will update the pathfinding if one is set up.
 You can add any number of <code>Layers</code>, but you will have to select it before painting; otherwise, the first one will be used.</p>
-<p><img src="../../Assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/4_SelectLayer.png" alt="FirstSetUpPicture" /></p>
 <h2 id="going-further"><a class="header" href="#going-further">Going further</a></h2>
 <p>You might want to use a custom texture coming from Photoshop or Paint. To do that, you will need to import a PNG into the engine (There are some issues with
 the painting mode, and source file conditions are strict). Now, you can select the <code>BlockerGenerator</code>, and in the <code>GenerationLayers</code>, change the texture in use
 to the new one you've imported.</p>
-<p><img src="../../Assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/5_ImportCustomTexture.png" alt="FirstSetUpPicture" /></p>
 <p>Before being able to generate any <code>Blockers</code> out of it, you will have to change a few settings.</p>
 <ul>
 <li>Change <code>MipGenSettings</code> to <code>NoMipmaps</code></li>
 <li>Change the <code>Compression Settings</code> to <code>VectorDisplacementMap</code> (this mode is used because there are 4 channels of 1 byte)</li>
 <li>Change the <code>Filter</code> to <code>Nearest</code> (not necessary, but advised)</li>
 </ul>
-<p><img src="../../Assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
+<p><img src="../../assets/Tutorials/FirstSetUp/6_TextureSettings.png" alt="FirstSetUpPicture" /></p>
 <p>You can now generate the <code>Blockers</code> out of the texture, but be careful with the density of different colors. The current <code>Template</code> data asset will
 try to generate a <code>Blocker</code> out of every shape of any color it finds (except white). To change this behavior, go to the <code>Blocker DataAsset Tutorial</code>.</p>
 <hr />

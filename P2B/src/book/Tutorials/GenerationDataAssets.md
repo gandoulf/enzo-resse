@@ -19,13 +19,13 @@ To make the `BlockerGenerator` work, you will need the second one:
 - Right-click in the content viewer.
 - In miscellaneous, select `DataAsset`.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/0_CreateDataAssets.png)
 
 Now, you will have to select the class that you want to use to generate the Data Asset. The plugin has two main classes for generation:
 - `UP2B_TemplateGeneration_DataAsset`
 - `UP2B_BlockerGeneration_DataAsset`
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/1_SelectDataAssetClass.png)
 
 ## Template
 
@@ -38,7 +38,7 @@ Let's break down the parameters:
 - `Generate Blocker For Unregistered Color`, Toggle this to generate a blocker for any color shape the generator finds. Be cautious with the texture in use, as the generator has no limits.
 - `Blockers Data Assets`, An array holding other types of Data Assets that bind a `Color` to a `Blocker`.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/2_TempaleDataAssetLayout.png)
 
 The default blocker settings will be explained in the Blockers DataAssets section. These settings define what the `Blocker Generator` will spawn.
 
@@ -50,7 +50,7 @@ Before explaining how the `UP2B_BlockerGeneration_DataAsset` works, let's set up
 - `UP2B_TemplateGeneration_DataAsset`, The template holding the `Blockers` parameters, which you will call `PDA_Tutorial_Generation`.
 - `UP2B_BlockerGeneration_DataAsset`, The color-to-blocker binding that will use the template. Let's create `PDA_Wall_Blocker`.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/3_CreateDataAssets.png)
 
 Now that both data assets are created, let's tweak the template first:
 - Rename the `Template Generation Name` to `Tutorial`.
@@ -66,16 +66,16 @@ Now, for the blocker:
 
 This setup defines the `PDA_Tutorial_Generation` template to generate walls. The `PDA_Wall_Blocker` specifies that only one kind of wall can be spawned.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/4_EditGeneration_DataAsset.png)
 
 Select the `Blocker Generator` in the editor, go to the details panel, and change the `Template Generation Data Asset` to the one you've just created.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/5_ChangeGeneratorTemplate.png)
 
 Finally, open the `Paint 2 Blocking Mode`, select paint, and you will see that you can select the `Wall` color to draw. You can simply click on it to update
 the `Paint Color` brush.
 
-![GenerationDataAssetPicture](../../Assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png)
+![GenerationDataAssetPicture](../../assets/Tutorials/GenerationDataAssets/6_OpenTheTool.png)
 
 You can now define as many wall types as needed by adding a new element to `Color to Blocker`. I also recommend providing a name for each blocker using `Blocker Name`.
 You can also create another type of blocker by creating a new `UP2B_BlockerGeneration_DataAsset` and registering it in the `PDA_Tutorial_Generation` template!
