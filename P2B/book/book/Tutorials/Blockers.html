@@ -176,7 +176,86 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="blockers"><a class="header" href="#blockers">Blockers</a></h1>
-<h2 id="to-be-done-"><a class="header" href="#to-be-done-">To be done ...</a></h2>
+<ul>
+<li><a href="#create-blocker">Create Blocker</a>
+<ul>
+<li><a href="#use-case">Use Case</a></li>
+<li><a href="#custom-tooltip">Custom Tooltip</a></li>
+</ul>
+</li>
+</ul>
+<p><code>Blocker</code> and <code>Blocker Data</code> can be created in both <code>C++</code> and <code>Blueprint</code>. This tutorial will describe only the Blueprint implementation.
+Once you understand Blueprint, implementing it in C++ should be straightforward.</p>
+<h2 id="create-blocker"><a class="header" href="#create-blocker">Create Blocker</a></h2>
+<p>First, you will need to create two Blueprints inheriting from:</p>
+<ul>
+<li><code>P2B_Blocker</code> Call it <code>BP_TutorialBlocker</code>. This will be the object spawned by the generator when associated with a color.</li>
+<li><code>P2B_BlockerData</code> Call it <code>BP_TutorialBlockerData</code>. This will hold any custom data you preset in the <code>DataAsset</code>, which will then be sent to the associated <code>Blocker</code>.</li>
+</ul>
+<p><img src="../../assets/Tutorials/Blockers/0_CreateBlockerClass.png" alt="BlockersPicture" /></p>
+<p>If you open <code>BP_TutorialBlocker</code>, you will have access to several overrideable functions that are called during <code>Blocker</code> generation.
+The blocker is spawned in a deferred state to allow modifications before the construction script:</p>
+<ul>
+<li><code>PreDynamicMeshGeneration</code> Called before <code>Finish Spawn</code> and before the <code>DynamicMesh</code> is generated.</li>
+<li><code>PostDynamicMeshGeneration</code> Called before <code>Finish Spawn</code> and after the <code>DynamicMesh</code> is generated.</li>
+<li><code>OnBlockerSpawnFinished</code> Called after <code>Finish Spawn</code>, when the construction script has been executed.</li>
+</ul>
+<p>These functions provide access to the <code>Blocker Data</code> class that generated the <code>Blocker</code>. You can cast it to any type, and if the cast is valid, use the data it holds.
+These functions are the core of customization, where you will add all your logic.</p>
+<p><img src="../../assets/Tutorials/Blockers/1_BlockerOnGenerationFunction.png" alt="BlockersPicture" /></p>
+<p>Next, open the <code>Template Data Asset</code> used by your <code>Blocker Generator</code>. This tutorial uses <code>PDA_Default_Generation</code>. Modify the following:</p>
+<ul>
+<li>Set <code>Default Blocker</code> to the new data class <code>BP_TutorialBlockerData</code>.</li>
+<li>Update <code>Blocker Soft Class</code> in the settings to <code>BP_TutorialBlocker</code>.</li>
+</ul>
+<p>If you hit generate, all blockers will now be of the type you've just created.</p>
+<p><img src="../../assets/Tutorials/Blockers/2_ReplaceBlockerClasses_DataAsset.png" alt="BlockersPicture" /></p>
+<p>If you want only a specific color to generate this new blocker, simply create a new <code>Blocker DataAsset</code>, let's call it <code>PDA_Tutorial_Blocker</code> and add it to the list.</p>
+<p><img src="../../assets/Tutorials/Blockers/3_AddBlockerDataAssets.png" alt="BlockersPicture" /></p>
+<p>Open it and add two rows to the <code>Color to Blocker</code> section. This allows you to spawn two types of <code>Tutorial_Blocker</code> with different settings.</p>
+<p><img src="../../assets/Tutorials/Blockers/4_AddGenerationColor.png" alt="BlockersPicture" /></p>
+<p>Finally, if you open <code>Paint 2 Blocking Mode</code>, you will see that the new blocker colors are available for drawing.</p>
+<p><img src="../../assets/Tutorials/Blockers/5_OpenPaintMode.png" alt="BlockersPicture" /></p>
+<h2 id="use-case"><a class="header" href="#use-case">Use Case</a></h2>
+<p>Now that the custom <code>Blocker</code> is set up, let's see how to use it properly. The goal of the plugin is to generate blockers and iterate on game design quickly.
+For this reason, a <code>Blocker</code> isn't just a 3D mesh with a collider, it can also have logic and play a role in gameplay.
+For example, blockers can define cover areas, loot spawn zones, destructible barricades, etc.</p>
+<p>Let's simulate a life system as an example. First, create a new component call it <code>BP_LifeHandler_Component</code>.</p>
+<p><img src="../../assets/Tutorials/Blockers/6_CreateLifeComponent.png" alt="BlockersPicture" /></p>
+<p>Open it and add a new variable: <code>CurrentLife</code>. I recommend assigning it a proper <code>Category</code>, such as <code>Settings|Life</code>.</p>
+<p><img src="../../assets/Tutorials/Blockers/7_CreateCurrentLifeVariable.png" alt="BlockersPicture" /></p>
+<p>Next, open <code>BP_TutorialBlockerData</code> and do the same, add a new variable called <code>BlockerLife</code>, and set its <code>Category</code> to <code>Settings|Life</code>.
+If you check the <code>Class Default</code> values, they should look like this:</p>
+<p><img src="../../assets/Tutorials/Blockers/8_CreateDataBlockerLife.png" alt="BlockersPicture" /></p>
+<p>Now, open <code>BP_TutorialBlocker</code>, add the <code>BP_LifeHandler_Component</code>, and override <code>PostDynamicMeshGeneration</code> or <code>OnBlockerSpawnFinished</code>.
+Don't forget to call the parent function.</p>
+<p>Now, follow these steps:</p>
+<ul>
+<li>Cast <code>BlockerData</code> to <code>BP_TutorialBlockerData</code>.</li>
+<li>If the cast is valid:</li>
+<li>Get the <code>BlockerLife</code> value from the data.</li>
+<li>Set <code>CurrentLife</code> in <code>BP_LifeHandler_Component</code>.</li>
+</ul>
+<p><img src="../../assets/Tutorials/Blockers/9_SetBlockerLife.png" alt="BlockersPicture" /></p>
+<p>Finally, open <code>PDA_Default_Generation</code> or <code>PDA_Tutorial_Blocker</code> and set the blocker life values as needed.</p>
+<p><img src="../../assets/Tutorials/Blockers/10_SetLifePerBlocker.png" alt="BlockersPicture" /></p>
+<p>Now, when you paint different blockers, they will have different life values. This example is simplified and lacks logic for gameplay,
+but it's easy to imagine a real system with targets and health mechanics.</p>
+<h2 id="custom-tooltip"><a class="header" href="#custom-tooltip">Custom Tooltip</a></h2>
+<p><code>Blocker Data</code> is directly linked to <code>Paint 2 Blocker Mode</code>, meaning you can pass information between them.
+When this mode is open, hovering over a <code>Color Preset</code> will display a tooltip. You can add custom information to this tooltip
+by overriding <code>GenerateParametersTooltip</code> in the <code>BlockerData</code> class.</p>
+<p>For example, to display the <code>BlockerLife</code> parameter in the tooltip:</p>
+<ul>
+<li>Override <code>GenerateParametersTooltip</code> and call the parent function.</li>
+<li>Create a local array variable and name it <code>Tooltip</code>.</li>
+<li>Add an element to the array with <code>ParameterName</code> and the value of <code>CurrentLife</code>.</li>
+<li>Return the <code>Tooltip</code> variable.</li>
+</ul>
+<p><img src="../../assets/Tutorials/Blockers/11_AddParameterToTT.png" alt="BlockersPicture" /></p>
+<p>Open <code>Paint 2 Blocker Mode</code> and hover over a color. The tooltip should now display the <code>BlockerLife</code>.</p>
+<p><img src="../../assets/Tutorials/Blockers/12_OveerColorForTT.png" alt="BlockersPicture" /></p>
+<hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 
                     </main>
