@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Paint2Blocking V1.0.0 - Paint 2 Blocking documentation</title>
+        <title>Blocker Data Modifier - Paint 2 Blocking documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -90,7 +90,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/Blockers.html">Blockers</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/BlockerModifier.html">Blocker Data Modifier</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Versions/Paint2Blocking_V1.0.0.html" class="active">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html">C++ API Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/Blockers.html">Blockers</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/BlockerModifier.html" class="active">Blocker Data Modifier</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html">C++ API Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -175,19 +175,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="paint2blocking-v100"><a class="header" href="#paint2blocking-v100">Paint2Blocking V1.0.0</a></h1>
-<h2 id="version-still-in-development"><a class="header" href="#version-still-in-development">Version still in development</a></h2>
+                        <h1 id="blocker-data-modifier"><a class="header" href="#blocker-data-modifier">Blocker Data Modifier</a></h1>
+<ul>
+<li><a href="#create-blocker">Create Blocker Data Modifier</a>
+<ul>
+<li><a href="#custom-tooltip">Custom Tooltip</a></li>
+</ul>
+</li>
+</ul>
+<p><code>Blocker Data Modifier</code> can be created in both <code>C++</code> and <code>Blueprint</code>. This tutorial will describe only the Blueprint implementation.
+Once you understand Blueprint, implementing it in C++ should be straightforward.</p>
+<h2 id="create-blocker-data-modifier"><a class="header" href="#create-blocker-data-modifier">Create Blocker Data Modifier</a></h2>
+<p>The <code>Blocker Data Modifier</code> is here to soften the custom blocker process and allow generic code for multiple <code>Blocker</code>. It'll be applied
+during the construction and work with an actor. The modifier will then be able to cast, get components, and call interfaces to change the
+instantiated <code>Blocker</code>.</p>
+<p>To begin with, let's create a <code>P2B_BlockerDataModifier</code> blueprint. Let's call it <code>BP_DMod_Tutorial</code>.</p>
+<p><img src="../../assets/Tutorials/BlockerDataModifier/0_CreateDataModifier.png" alt="BlockersModifierPicture" /></p>
+<p>Open the blueprint and override the <code>ApplyDataModifier</code> function. It'll be called during the generation depending on the <code>LoadingTime</code> value.
+Before adding any nodes, create a new variable <code>PhysicalMaterialOverride</code> of type <code>PhysicalMaterial</code>.
+Then, you can add these nodes:</p>
+<ul>
+<li>Call the parent</li>
+<li><code>GetDynamicMeshComponent</code> from the blocker (it's an interface call)</li>
+<li>Check if it's a valid object</li>
+<li>Call <code>SetPhysicalMaterialOverride</code></li>
+</ul>
+<p><img src="../../assets/Tutorials/BlockerDataModifier/1_OverrideApplyDataModifier.png" alt="BlockersModifierPicture" /></p>
+<p>Now that the <code>Modifier</code> is ready, you can add it to any <code>blocker Data Asset</code> in the <code>Mod</code> section. You will see the variable you created and
+another one called <code>Loading Time</code> that will define when the <code>Modifier</code> will be applied to the blocker. Three different times exist:</p>
+<ul>
+<li><code>PreDynamicMeshGeneration</code> The modifier will be applied before generating the <code>DynamicMesh</code>.</li>
+<li><code>PostDynamicMeshGeneration</code> The modifier will be applied after generating the <code>DynamicMesh</code>.</li>
+<li><code>OnSpawnFinished</code> The modifier will be applied when the actor has finished its <code>DeferredSpawn</code>.</li>
+</ul>
+<p><img src="../../assets/Tutorials/BlockerDataModifier/2_AddBlockerDMod.png" alt="BlockersModifierPicture" /></p>
+<h3 id="custom-tooltip"><a class="header" href="#custom-tooltip">Custom Tooltip</a></h3>
+<p>As with the <code>Blocker Data</code>, the <code>Modifiers</code> can add custom <code>Tooltips</code> to the <code>Paint2BlockingMode</code>. To do so, open the <code>BP_DMod_Tutorial</code> and override
+the <code>GenerateModParametersTooltip</code>, then add the following nodes:</p>
+<ul>
+<li>Call the parent</li>
+<li>Add a new element</li>
+<li>Create a <code>BlockerParameterTooltip</code> struct and fill it with your values</li>
+<li>Return the <code>Tooltip</code> array</li>
+</ul>
+<p><img src="../../assets/Tutorials/BlockerDataModifier/3_OverrideGenerateTT.png" alt="BlockersModifierPicture" /></p>
+<p>You can now open the <code>Paint2BlockingMode</code> and see that the blockers implementing the <code>BP_DMod_Tutorial</code> have a tooltip displaying the information you
+provided.</p>
+<p><img src="../../assets/Tutorials/BlockerDataModifier/4_CheckPaintToolTT.png" alt="BlockersModifierPicture" /></p>
+<hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../book/Versions/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../book/Tutorials/Blockers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../reference.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../book/Tutorials/FOW_P2B_Bridge.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -197,11 +243,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../book/Versions/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../book/Tutorials/Blockers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../reference.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../book/Tutorials/FOW_P2B_Bridge.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

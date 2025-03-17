@@ -13,6 +13,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 - [First set up](/book/Tutorials/First_set_up.md)
 - [Generation Data Assets](/book/Tutorials/GenerationDataAssets.md)
 - [Blockers](/book/Tutorials/Blockers.md)
+- [Blocker Data Modifier](/book/Tutorials/BlockerModifier.md)
 - [FOW P2B Bridge](/book/Tutorials/FOW_P2B_Bridge.md)
 
 ---

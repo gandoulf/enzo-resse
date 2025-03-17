@@ -3,6 +3,7 @@
 - [Create Blocker](#create-blocker)
   - [Use Case](#use-case)
   - [Custom Tooltip](#custom-tooltip)
+- [Blocker Interface](#blocker-interface)
 
 `Blocker` and `Blocker Data` can be created in both `C++` and `Blueprint`. This tutorial will describe only the Blueprint implementation.
 Once you understand Blueprint, implementing it in C++ should be straightforward.
@@ -46,7 +47,7 @@ Finally, if you open `Paint 2 Blocking Mode`, you will see that the new blocker 
 
 ![BlockersPicture](../../assets/Tutorials/Blockers/5_OpenPaintMode.png)
 
-## Use Case
+### Use Case
 
 Now that the custom `Blocker` is set up, let's see how to use it properly. The goal of the plugin is to generate blockers and iterate on game design quickly.
 For this reason, a `Blocker` isn't just a 3D mesh with a collider, it can also have logic and play a role in gameplay. 
@@ -83,7 +84,7 @@ Finally, open `PDA_Default_Generation` or `PDA_Tutorial_Blocker` and set the blo
 Now, when you paint different blockers, they will have different life values. This example is simplified and lacks logic for gameplay,
 but it's easy to imagine a real system with targets and health mechanics.
 
-## Custom Tooltip
+### Custom Tooltip
 
 `Blocker Data` is directly linked to `Paint 2 Blocker Mode`, meaning you can pass information between them. 
 When this mode is open, hovering over a `Color Preset` will display a tooltip. You can add custom information to this tooltip
@@ -100,6 +101,40 @@ For example, to display the `BlockerLife` parameter in the tooltip:
 Open `Paint 2 Blocker Mode` and hover over a color. The tooltip should now display the `BlockerLife`.
 
 ![BlockersPicture](../../assets/Tutorials/Blockers/12_OveerColorForTT.png)
+
+## Blocker Interface
+
+The generation system isn't limited to the `P2B_Blocker` class, it is also possible to turn any actor to a `Blocker` thanks to the 
+`IP2B_Blocker_Interface` interface. The following instruction takes into account that you've followed the previous step. The `P2B_BlockerData` 
+will be omited as it work the same.  
+
+The setup is really similar create two Blueprints inheriting from:  
+- `AActor`, and call it `BP_TutorialActorBlocker`. It'll implemente the interface  
+- `P2B_BlockerData` Call it `BP_TutorialActorBlockerData`. This will hold any custom data you preset in the `DataAsset`.  
+
+![BlockersPicture](../../assets/Tutorials/Blockers/13_CreateActorBlocker.png)  
+
+In the `ClassSettings` of the `BP_TutorialActorBlocker` implement the `P2B_Blocker_Interface`.  
+
+![BlockersPicture](../../assets/Tutorials/Blockers/14_ImplementeBlockingInterface.png)  
+
+The Actor will now have 4 new function that you can override. The 3 first have already been explained and are used during the `Blocker` generation.
+The `Blockers` are by default meant to generate 3D objects, so a `DynamicMeshComponent` is present in the base class. For `Actors`, it might be different, 
+and depending on the usage, you might need or not need the generation.  
+
+To enable the generation, you will have to override `GetDynmicMeshComponent` and return a valid `DynamicMeshComponent`. 
+
+![BlockersPicture](../../assets/Tutorials/Blockers/15_AddDynamicMeshAndReturn.png)  
+
+Now that the Actor Blocker is set up, you can add it to any `Blocker Data Asset`:
+- Select the correct `BlockerData` 
+- Toggle `UseActorInsteadOfBlocker` 
+- Select `BP_TutorialActorBlocker` in the `ActorSoftClass` parameter 
+
+![BlockersPicture](../../assets/Tutorials/Blockers/16_AddNewBlocker_DataAssets.png)  
+
+For example, the `FOW_P2B_Bridge` uses a `Player Start` as a blocker but doesn't need a 3D mesh to be generated. By doing this, it becomes possible to 
+change the starting point of the player with the `Paint2BlockingMode`.  
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

@@ -90,7 +90,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/Blockers.html" class="active">Blockers</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html">C++ API Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../documentation.html">Documentation</a></li><li class="chapter-item expanded "><a href="../../book/index.html">Book</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/getting_started.html">Getting Started</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/index.html">Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Tutorials/First_set_up.html">First set up</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/GenerationDataAssets.html">Generation Data Assets</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/Blockers.html" class="active">Blockers</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/BlockerModifier.html">Blocker Data Modifier</a></li><li class="chapter-item expanded "><a href="../../book/Tutorials/FOW_P2B_Bridge.html">FOW P2B Bridge</a></li></ol></li><li class="chapter-item expanded "><a href="../../book/Versions/index.html">Versions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../book/Versions/Paint2Blocking_V1.0.0.html">Paint2Blocking V1.0.0</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html">C++ API Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -183,6 +183,7 @@
 <li><a href="#custom-tooltip">Custom Tooltip</a></li>
 </ul>
 </li>
+<li><a href="#blocker-interface">Blocker Interface</a></li>
 </ul>
 <p><code>Blocker</code> and <code>Blocker Data</code> can be created in both <code>C++</code> and <code>Blueprint</code>. This tutorial will describe only the Blueprint implementation.
 Once you understand Blueprint, implementing it in C++ should be straightforward.</p>
@@ -216,7 +217,7 @@ These functions are the core of customization, where you will add all your logic
 <p><img src="../../assets/Tutorials/Blockers/4_AddGenerationColor.png" alt="BlockersPicture" /></p>
 <p>Finally, if you open <code>Paint 2 Blocking Mode</code>, you will see that the new blocker colors are available for drawing.</p>
 <p><img src="../../assets/Tutorials/Blockers/5_OpenPaintMode.png" alt="BlockersPicture" /></p>
-<h2 id="use-case"><a class="header" href="#use-case">Use Case</a></h2>
+<h3 id="use-case"><a class="header" href="#use-case">Use Case</a></h3>
 <p>Now that the custom <code>Blocker</code> is set up, let's see how to use it properly. The goal of the plugin is to generate blockers and iterate on game design quickly.
 For this reason, a <code>Blocker</code> isn't just a 3D mesh with a collider, it can also have logic and play a role in gameplay.
 For example, blockers can define cover areas, loot spawn zones, destructible barricades, etc.</p>
@@ -241,7 +242,7 @@ Don't forget to call the parent function.</p>
 <p><img src="../../assets/Tutorials/Blockers/10_SetLifePerBlocker.png" alt="BlockersPicture" /></p>
 <p>Now, when you paint different blockers, they will have different life values. This example is simplified and lacks logic for gameplay,
 but it's easy to imagine a real system with targets and health mechanics.</p>
-<h2 id="custom-tooltip"><a class="header" href="#custom-tooltip">Custom Tooltip</a></h2>
+<h3 id="custom-tooltip"><a class="header" href="#custom-tooltip">Custom Tooltip</a></h3>
 <p><code>Blocker Data</code> is directly linked to <code>Paint 2 Blocker Mode</code>, meaning you can pass information between them.
 When this mode is open, hovering over a <code>Color Preset</code> will display a tooltip. You can add custom information to this tooltip
 by overriding <code>GenerateParametersTooltip</code> in the <code>BlockerData</code> class.</p>
@@ -255,6 +256,32 @@ by overriding <code>GenerateParametersTooltip</code> in the <code>BlockerData</c
 <p><img src="../../assets/Tutorials/Blockers/11_AddParameterToTT.png" alt="BlockersPicture" /></p>
 <p>Open <code>Paint 2 Blocker Mode</code> and hover over a color. The tooltip should now display the <code>BlockerLife</code>.</p>
 <p><img src="../../assets/Tutorials/Blockers/12_OveerColorForTT.png" alt="BlockersPicture" /></p>
+<h2 id="blocker-interface"><a class="header" href="#blocker-interface">Blocker Interface</a></h2>
+<p>The generation system isn't limited to the <code>P2B_Blocker</code> class, it is also possible to turn any actor to a <code>Blocker</code> thanks to the
+<code>IP2B_Blocker_Interface</code> interface. The following instruction takes into account that you've followed the previous step. The <code>P2B_BlockerData</code>
+will be omited as it work the same.</p>
+<p>The setup is really similar create two Blueprints inheriting from:</p>
+<ul>
+<li><code>AActor</code>, and call it <code>BP_TutorialActorBlocker</code>. It'll implemente the interface</li>
+<li><code>P2B_BlockerData</code> Call it <code>BP_TutorialActorBlockerData</code>. This will hold any custom data you preset in the <code>DataAsset</code>.</li>
+</ul>
+<p><img src="../../assets/Tutorials/Blockers/13_CreateActorBlocker.png" alt="BlockersPicture" /></p>
+<p>In the <code>ClassSettings</code> of the <code>BP_TutorialActorBlocker</code> implement the <code>P2B_Blocker_Interface</code>.</p>
+<p><img src="../../assets/Tutorials/Blockers/14_ImplementeBlockingInterface.png" alt="BlockersPicture" /></p>
+<p>The Actor will now have 4 new function that you can override. The 3 first have already been explained and are used during the <code>Blocker</code> generation.
+The <code>Blockers</code> are by default meant to generate 3D objects, so a <code>DynamicMeshComponent</code> is present in the base class. For <code>Actors</code>, it might be different,
+and depending on the usage, you might need or not need the generation.</p>
+<p>To enable the generation, you will have to override <code>GetDynmicMeshComponent</code> and return a valid <code>DynamicMeshComponent</code>.</p>
+<p><img src="../../assets/Tutorials/Blockers/15_AddDynamicMeshAndReturn.png" alt="BlockersPicture" /></p>
+<p>Now that the Actor Blocker is set up, you can add it to any <code>Blocker Data Asset</code>:</p>
+<ul>
+<li>Select the correct <code>BlockerData</code></li>
+<li>Toggle <code>UseActorInsteadOfBlocker</code></li>
+<li>Select <code>BP_TutorialActorBlocker</code> in the <code>ActorSoftClass</code> parameter</li>
+</ul>
+<p><img src="../../assets/Tutorials/Blockers/16_AddNewBlocker_DataAssets.png" alt="BlockersPicture" /></p>
+<p>For example, the <code>FOW_P2B_Bridge</code> uses a <code>Player Start</code> as a blocker but doesn't need a 3D mesh to be generated. By doing this, it becomes possible to
+change the starting point of the player with the <code>Paint2BlockingMode</code>.</p>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 
@@ -266,7 +293,7 @@ by overriding <code>GenerateParametersTooltip</code> in the <code>BlockerData</c
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../book/Tutorials/FOW_P2B_Bridge.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../book/Tutorials/BlockerModifier.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -280,7 +307,7 @@ by overriding <code>GenerateParametersTooltip</code> in the <code>BlockerData</c
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../book/Tutorials/FOW_P2B_Bridge.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../book/Tutorials/BlockerModifier.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
