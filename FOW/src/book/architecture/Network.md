@@ -7,6 +7,7 @@
 	- [Fog State Replication](#fog-state-replication)
 		- [Server](#server)
 		- [Client](#client)
+	- [Networking Diagram](#networking-diagram)
 - [What is Replicated](#what-is-replicated)
 - [Conclusion](#conclusion)
 
@@ -62,6 +63,12 @@ in the network settings. You will find a few parameters to manage automatic sync
 Set a large timer if you don't want automatic sync.
 - `SynchRequestCooldown`: Cooldown to prevent the client from DDOSing the server.
 
+### Networking Diagram
+
+Here is a simple representation of the plugin network layer. All red nodes represent networking events triggered by RPC or replication. 
+On the left of the `On Login` event are represented the server execution of a client, on the right the client one.
+
+![Network update pipeline](../../assets/Architecture/Network/0_NetworkInitDiagram.png)
 
 ## What is Replicated
 

@@ -40,6 +40,7 @@
     - [LFOW V1.3.0](book/Versions/LFOW_V1.3.0.md)
     - [LFOW V1.3.1](book/Versions/LFOW_V1.3.1.md)
     - [LFOW V1.4.0](book/Versions/LFOW_V1.4.0.md)
+    - [LFOW V1.4.1](book/Versions/LFOW_V1.4.1.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)

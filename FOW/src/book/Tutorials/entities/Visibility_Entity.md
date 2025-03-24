@@ -12,6 +12,10 @@ This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map 
 This components implement `IFOW_VisibilityEntity_Interface` and allows your game to change the visibility
 of your actors depending on the fog state.
 
+> **/!\ The `FOW visibility components` modify the `Visibility` of `Scene components`. It's important to understand that both the server and the client manage
+visibility independently. If you enable `Component Replicate`, the server will override the value set by the client, which may cause visibility to no longer
+match the fog state.**  
+
 ![VisibilityEntityComponent](../../../Assets/Tutorial/Entities/Visibility/0_MergePictureVisibilityComponent2.png)
 
 ### Default entity
