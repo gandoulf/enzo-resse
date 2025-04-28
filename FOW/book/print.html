@@ -1222,6 +1222,7 @@ You may need to increase the 0.1 value from the previous <code>Multiply</code> t
 </ul>
 <p>This tutorial has been created in the <code>Tutorial/Maps/TutorialMap_VFX</code> map provided in the <a href="https://github.com/gandoulf/LayeredFOW_Demo">Demo Project</a>.
 It covers how to change the materials opacity depending on the fog.</p>
+<p>The <code>SubFogTexture</code> is a major feature that significantly reduces the processing time of the fog <code>PostProcess</code> and any <code>Materials</code> sampling the fog state.</p>
 <blockquote>
 <p><strong>/!\ This setup will work only in <code>Standalone</code> or for the <code>Server</code> in the <code>Editor</code>. Once the game is packed, the client will correctly apply the <code>Opacity Mask</code>. <br /></strong></p>
 </blockquote>
@@ -1235,9 +1236,12 @@ without creating dynamic instances. This setup makes implementing the opacity ma
 <p>The tutorial demonstrates spawning particles that are hidden by the fog when they are out of sight. The firework VFX, however, does not include the opacity
 mask modification.</p>
 <p><img src="book/Tutorials/Rendering/../../../assets/Tutorial/Rendering/VFX/0_ParticuleSpawning.png" alt="MaterialOpacityPictures" /></p>
-<p>In the <code>FOWHandler</code>, go to <code>Settings</code> and look for <code>UseTextureAssets</code>. Enable it, and three texture variables should appear, each pre-set with values. These
+<p>In the <code>FOWHandler</code>, go to <code>Settings</code> and look for <code>UseTextureAssets</code>. Enable it, and four texture variables should appear, each pre-set with values. These
 <code>Texture Assets</code> are shared across the materials. You'll notice they are 4k textures with specific settings, like grayscale. They are this large because
 texture assets cannot be resized in C++, and a worst-case scenario must be used to ensure the <code>FOW</code> performs well in most games.</p>
+<blockquote>
+<p><strong>/!\ It's highly recommanded to use the <a href="book/Tutorials/Rendering//book/Tutorials/Rendering/"></a><a href="book/Tutorials/Rendering/./SubFogTexture.html">SubFogTexture</a> while using texture assets <br /></strong></p>
+</blockquote>
 <p><img src="book/Tutorials/Rendering/../../../assets/Tutorial/Rendering/VFX/1_UseTextureAssets.png" alt="MaterialOpacityPictures" /></p>
 <p>You can now examine the premade <code>FVX_Tutorial_FOW</code> provided and verify that the <code>SpriteRenderer</code> is correctly set with an <code>M_FOW_Default...</code> material. There's
 no need for additional setup; only a custom material needs to be specified (the provided materials are copies of the one in the engine).</p>

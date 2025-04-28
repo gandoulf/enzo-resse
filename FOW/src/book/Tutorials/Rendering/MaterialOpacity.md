@@ -6,6 +6,8 @@
 This tutorial has been created in the `Tutorial/Maps/TutorialMap_VFX` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 It covers how to change the materials opacity depending on the fog.
 
+The `SubFogTexture` is a major feature that significantly reduces the processing time of the fog `PostProcess` and any `Materials` sampling the fog state.
+
 > **/!\ This setup will work only in `Standalone` or for the `Server` in the `Editor`. Once the game is packed, the client will correctly apply the `Opacity Mask`. <br />**
 
 ## VFX Materials
@@ -21,9 +23,11 @@ mask modification.
 
 ![MaterialOpacityPictures](../../../assets/Tutorial/Rendering/VFX/0_ParticuleSpawning.png)
 
-In the `FOWHandler`, go to `Settings` and look for `UseTextureAssets`. Enable it, and three texture variables should appear, each pre-set with values. These
+In the `FOWHandler`, go to `Settings` and look for `UseTextureAssets`. Enable it, and four texture variables should appear, each pre-set with values. These
 `Texture Assets` are shared across the materials. You'll notice they are 4k textures with specific settings, like grayscale. They are this large because
 texture assets cannot be resized in C++, and a worst-case scenario must be used to ensure the `FOW` performs well in most games.
+
+> **/!\ It's highly recommanded to use the [](/book/Tutorials/Rendering/)[SubFogTexture](./SubFogTexture.md) while using texture assets <br />**
 
 ![MaterialOpacityPictures](../../../assets/Tutorial/Rendering/VFX/1_UseTextureAssets.png)
 
