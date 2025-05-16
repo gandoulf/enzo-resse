@@ -15,6 +15,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 - [Floor and Verticality](/book/Tutorials/Floor_Verticality.md)
 - [Layers](/book/Tutorials/Layers.md)
 - [Minimap](/book/Tutorials/Minimap.md)
+- [Navigation](/book/Tutorials/Navigation.md)
 - [Networking](/book/Tutorials/Networking.md)
 - [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
 - [PluginAPI](/book/Tutorials/PluginAPI.md)

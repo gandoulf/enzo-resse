@@ -29,6 +29,7 @@
     - [Floor and Verticality](book/Tutorials/Floor_Verticality.md)
     - [Layers](book/Tutorials/Layers.md)
     - [Minimap](book/Tutorials/Minimap.md)
+    - [Navigation](book/Tutorials/Navigation.md)
     - [Networking](book/Tutorials/Networking.md)
     - [Outdoor Indoor](book/Tutorials/Outdoor_Indoor.md)
     - [PluginAPI](book/Tutorials/PluginAPI.md)
@@ -41,6 +42,7 @@
     - [LFOW V1.3.1](book/Versions/LFOW_V1.3.1.md)
     - [LFOW V1.4.0](book/Versions/LFOW_V1.4.0.md)
     - [LFOW V1.4.1](book/Versions/LFOW_V1.4.1.md)
+    - [LFOW V1.4.2](book/Versions/LFOW_V1.4.2.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)
