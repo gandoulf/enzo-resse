@@ -25,6 +25,8 @@
       - [Sub Fog Texture](book/Tutorials/Rendering/SubFogTexture.md)
       - [Teams](book/Tutorials/Rendering/Teams.md)
       - [Toggle Render](book/Tutorials/Rendering/ToggleRender.md)
+    - [Platforms](book/Tutorials/Platforms/index.md)
+      - [Android](book/Tutorials/Platforms/Android.md)
     - [Fog Channels](book/Tutorials/FogChannels.md)
     - [Floor and Verticality](book/Tutorials/Floor_Verticality.md)
     - [Layers](book/Tutorials/Layers.md)
@@ -43,6 +45,7 @@
     - [LFOW V1.4.0](book/Versions/LFOW_V1.4.0.md)
     - [LFOW V1.4.1](book/Versions/LFOW_V1.4.1.md)
     - [LFOW V1.4.2](book/Versions/LFOW_V1.4.2.md)
+    - [LFOW V1.5.0](book/Versions/LFOW_V1.5.0.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)
