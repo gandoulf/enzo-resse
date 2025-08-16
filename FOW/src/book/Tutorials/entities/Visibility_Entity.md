@@ -3,6 +3,7 @@
 - [Visibility Entity Components](#drawing-entity-components)
 	- [Default entity](#default-entity)
 	- [Fading entity](#fading-entity)
+- [Visibility Update Strategy](#visibility-update-strategy)
 - [Visibility Entity cpp implementation](#visibility-entity-cpp-implementation)
 
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
@@ -77,6 +78,15 @@ If you check the `Visibility Component` details, you will find the default varia
 If you open `M_FOW_Visibility_Dithering`, you will find all the necessary nodes to replicate this fading effect on any material.
 
 ![VisibilityEntityComponent](../../../assets/Tutorial/Entities/Visibility/10_MaterialNodeForFading.png)
+
+## Visibility Update Strategy
+
+The Visibility Entities can have their state updated using three different strategies:
+- `Location`: The system checks the FOW state at the entity's location. The position is based on the `Actor Location`.
+- `AABB`: The system checks the FOW state around the AABB bounds. The size of the AABB is determined by the `AABBExtend` value.
+- `Geometry`: The system checks the FOW state along the edges of a defined geometry. The geometry must be built using the `Custom Geometry Vertices`.
+
+![VisibilityEntityComponent](../../../assets/Tutorial/Entities/Visibility/11_VisibilityUpdateStrategy.png)
 
 ## Visibility Entity cpp implementation
 

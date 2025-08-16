@@ -2,7 +2,8 @@
 
 ```cpp
 class FOGOFWAR_API UFOW_VisibilityE_Component
-    : public UActorComponent
+    : public USceneComponent
+    , public IFOW_GeometryEntity_Interface
     , public IFOW_VisibilityEntity_Interface;
 ```
 

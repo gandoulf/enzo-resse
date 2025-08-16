@@ -35,6 +35,7 @@
     - [Networking](book/Tutorials/Networking.md)
     - [Outdoor Indoor](book/Tutorials/Outdoor_Indoor.md)
     - [PluginAPI](book/Tutorials/PluginAPI.md)
+    - [Save Load](book/Tutorials/SaveLoad.md)
     - [Stealth Area](book/Tutorials/StealthArea.md)
   - [Versions](book/Versions/index.md)
     - [LFOW V1.1.1](book/Versions/LFOW_V1.1.1.md)
@@ -46,6 +47,7 @@
     - [LFOW V1.4.1](book/Versions/LFOW_V1.4.1.md)
     - [LFOW V1.4.2](book/Versions/LFOW_V1.4.2.md)
     - [LFOW V1.5.0](book/Versions/LFOW_V1.5.0.md)
+    - [LFOW V1.5.1](book/Versions/LFOW_V1.5.1.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)

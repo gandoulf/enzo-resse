@@ -19,6 +19,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 - [Networking](/book/Tutorials/Networking.md)
 - [Outdoor Indoor](/book/Tutorials/Outdoor_Indoor.md)
 - [PluginAPI](/book/Tutorials/PluginAPI.md)
+- [Save Load](/book/Tutorials/SaveLoad.md)
 - [Stealth Area](/book/Tutorials/StealthArea.md)
 
 ---
