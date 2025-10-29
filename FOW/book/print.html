@@ -1300,14 +1300,9 @@ is challenging, but custom depth allows it! By modifying a few settings, the GPU
 <p><img src="book/Tutorials/Rendering/../../../assets/Tutorial/Rendering/Stencil/2_EnableCustomDepthPass.png" alt="StencilPictures" /></p>
 <p>Hit play, and you'll see that the cylinder is unaffected by the grey fog!</p>
 <h2 id="custom-depth-settings"><a class="header" href="#custom-depth-settings">Custom depth settings</a></h2>
-<p>By default, the FOW is set to ignore fog for assets with a <code>Stencil ID</code> of <code>1</code>. To change this, open <code>MPC_FOWRenderSettings</code> and adjust <code>CustomDepthStencil</code>.
-Note: you can disable the stencil logic entirely by setting <code>bEnableCustomDepth</code> to <code>0</code>.</p>
+<p>By default, the FOW is set to ignore fog for assets with a <code>Stencil ID</code> of <code>1</code>. To change this, open the MPP instance <code>MPP_FOW_Floor_Inst</code> and enable <code>IgnorFogByStencil</code>.
+If you need to change the <code>Stencil ID</code> you will need to open the parent material and update <code>StencilIgnoringFog</code> value (The value should be move to the <code>MPC</code> with a console command soon)</p>
 <p><img src="book/Tutorials/Rendering/../../../assets/Tutorial/Rendering/Stencil/3_CustomDepthSettingMPC.png" alt="StencilPictures" /></p>
-<p>You can also modify these values at runtime with console commands:</p>
-<ul>
-<li><code>fow.r.EnableCustomDepth</code> lets you turn the stencil logic On/Off.</li>
-<li><code>fow.r.CustomDepthStencil</code> lets you change the stencil ID used by the post-process.</li>
-</ul>
 <hr />
 <p><em>Documentation built with <a href="https://github.com/PsichiX/unreal-doc"><strong><code>Unreal-Doc</code> v1.0.9</strong></a> tool by <a href="https://github.com/PsichiX"><strong><code>PsichiX</code></strong></a></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sub-fog-texture"><a class="header" href="#sub-fog-texture">Sub Fog Texture</a></h1>
@@ -2835,6 +2830,8 @@ virtual void UpdateVisibilityState(
 <h3 id="specifiers-10"><a class="header" href="#specifiers-10">Specifiers:</a></h3>
 <ul>
 <li><strong>EditInlineNew</strong></li>
+<li><strong>Blueprintable</strong></li>
+<li><strong>BlueprintType</strong></li>
 </ul>
 <hr />
 <p>The floor is an area where a bit mask texture is generated to create fog.<br />

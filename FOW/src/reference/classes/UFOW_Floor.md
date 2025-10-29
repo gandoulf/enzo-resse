@@ -11,6 +11,8 @@ class FOGOFWAR_API UFOW_Floor
 
 ### Specifiers:
 - **EditInlineNew**
+- **Blueprintable**
+- **BlueprintType**
 
 ---
 

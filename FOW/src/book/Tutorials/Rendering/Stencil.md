@@ -30,14 +30,10 @@ Hit play, and you'll see that the cylinder is unaffected by the grey fog!
 
 ## Custom depth settings
 
-By default, the FOW is set to ignore fog for assets with a `Stencil ID` of `1`. To change this, open `MPC_FOWRenderSettings` and adjust `CustomDepthStencil`.
-Note: you can disable the stencil logic entirely by setting `bEnableCustomDepth` to `0`.
+By default, the FOW is set to ignore fog for assets with a `Stencil ID` of `1`. To change this, open the MPP instance `MPP_FOW_Floor_Inst` and enable `IgnorFogByStencil`.
+If you need to change the `Stencil ID` you will need to open the parent material and update `StencilIgnoringFog` value (The value should be move to the `MPC` with a console command soon)
 
 ![StencilPictures](../../../assets/Tutorial/Rendering/Stencil/3_CustomDepthSettingMPC.png)
-
-You can also modify these values at runtime with console commands:
-- `fow.r.EnableCustomDepth` lets you turn the stencil logic On/Off.
-- `fow.r.CustomDepthStencil` lets you change the stencil ID used by the post-process.
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
