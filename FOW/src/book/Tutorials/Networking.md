@@ -6,7 +6,6 @@
     - [GameMode](#gamemode)
 - [Manage Player Team](#manage-player-team)
 - [Infinite Team](#infinite-team)
-- [Network Template](#network-template)
 
 > **/!\ This tutorial is made to show how the FOW works with networks, replication knowledge won't be provided.
 Networking `GameMode`, `GameState`, `Controller`, and `Character` are provided. You have absolutely the right to
@@ -35,30 +34,7 @@ for an implementation of `FOW_GetHandlerInstance_Interface` in the `GameState`. 
 
 # GameState
 
-Let's set up the game state. Create a new `My_FOWNetworking_GameState` derived from `GameStateBase`
-
-![Networking](../../assets/Tutorial/Network/1_CreateNewGameState.png)
-
-Open it and go into `ClassSettings` to add the `FOW_GetHandlerInstance_Interface` in the `ImplementedInterfaces` array.
-
-![Networking](../../assets/Tutorial/Network/2_AddGetHandlerInterface.png)
-
-Now you have to provide the code to the `Find_Level_FOWHandler`.
-* Add a `FOW_Handler` variable
-* Get the variable and convert it to a `Validate` get, if valid return the variable.
-* Else find all actors of class `FOW_Handler`
-* If at least one is returned, set your `FOW_Handler` variable to the first element of the array
-* Call the `TryInitilization` from the `FOW_Handler`
-* Return the variable
-
-![Networking](../../assets/Tutorial/Network/3_AddCodeToTheInterfaceMethod.png)
-
-Now open the `BP_TutoralNetworking_GameMode` and replace the `GameState` with yours
-
-![Networking](../../assets/Tutorial/Network/4_ChangeDefaultGameState.png)
-
-> **Note that if you don't simulate the network in the editor, this whole setting isn't needed. As long as
-every game instance is a separate process, you don't need to implement the interface.**
+> **All GameState requirements have been reworked and aren't needed anymore! <br />**
 
 # Network Settings
 

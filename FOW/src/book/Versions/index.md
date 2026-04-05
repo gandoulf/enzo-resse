@@ -16,6 +16,7 @@ Here is list of version pushed to the market place.
 - [LFOW V1.4.2](/book/Versions/LFOW_V1.4.2.md)
 - [LFOW V1.5.0](/book/Versions/LFOW_V1.5.0.md)
 - [LFOW V1.5.1](/book/Versions/LFOW_V1.5.1.md)
+- [LFOW V1.5.4](/book/Versions/LFOW_V1.5.4.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

@@ -37,6 +37,7 @@
     - [PluginAPI](book/Tutorials/PluginAPI.md)
     - [Save Load](book/Tutorials/SaveLoad.md)
     - [Stealth Area](book/Tutorials/StealthArea.md)
+    - [Sub Level](book/Tutorials/SubLevel.md)
   - [Versions](book/Versions/index.md)
     - [LFOW V1.1.1](book/Versions/LFOW_V1.1.1.md)
     - [LFOW V1.2.0](book/Versions/LFOW_V1.2.0.md)
@@ -48,6 +49,7 @@
     - [LFOW V1.4.2](book/Versions/LFOW_V1.4.2.md)
     - [LFOW V1.5.0](book/Versions/LFOW_V1.5.0.md)
     - [LFOW V1.5.1](book/Versions/LFOW_V1.5.1.md)
+    - [LFOW V1.5.4](book/Versions/LFOW_V1.5.4.md)
 
 - [C++ API Reference](reference.md)
   - [Classes](reference/classes.md)

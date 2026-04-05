@@ -21,6 +21,7 @@ If you need help installing the plugin, you can watch this [Video](https://www.y
 - [PluginAPI](/book/Tutorials/PluginAPI.md)
 - [Save Load](/book/Tutorials/SaveLoad.md)
 - [Stealth Area](/book/Tutorials/StealthArea.md)
+- [Sub Level](/book/Tutorials/SubLevel.md)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
