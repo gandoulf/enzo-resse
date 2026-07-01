@@ -4,6 +4,7 @@
 - [Material Instance](#material-instance)
 	- [Enable Distance Field](#enable-distance-field)
 	- [Enable Stylized Fog](#enable-stylized-fog)
+	- [Enable Stylized Edge Fog](#enable-stylized-edge-fog)
 
 This tutorial is about changing the fog render. You can use any map that you want.
 
@@ -92,6 +93,40 @@ And the noise parameters `G_VolumetricFogNoise`:
 - `Noise Speed`: The speed of the noise moving through the clouds.
 
 ![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/9_VolumetricFogSettings.png)
+
+### Enable Stylized Edge Fog
+
+The `StylizedEdgeFog` provides a cartoon-style effect by replacing the smooth gradient with 4 monochromatic layers. This feature has been designed to work with the Heat Texture.
+
+First, select the `FOWHandler` and:
+- Set `EnableFogHeatTexture` to `true`
+- Open the `FOWShaderClass` currently in use (preferably a material instance)
+
+![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/10_EnableStylizedCartoon.png)
+
+There, you will find two new `StaticParam` options:
+- `EnableStylizedFogEdge`: Replaces the smooth gradient with 4 monochromatic layers.
+- `EnableStylizedPulseAnimation`: Adds a breathing animation to the fog.
+
+![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/11_TurnOnStylizedFogEdge.png)
+
+For `EnableStylizedFogEdge`, you will find 4 layers, each composed of 2 variables:
+- `Layer_Dist`: The transition distance, expressed from `0` to `1`.
+- `Layer_Value`: The multiplier applied to all pixels below this distance.
+
+![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/12_StylizedFogEdgeDescription.png)
+
+You can modify these layers at runtime through your material instance.
+
+![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/13_StylizedEdge_LayerTweaking-ezgif.com-optimize.gif)
+
+Finally, set `EnableStylizedPulseAnimation` to `true` to add a breathing effect.
+- `PulseDirection`: Controls the direction of the pulse.
+- `PulsePeriod`: Controls how fast the edge animation plays.
+- `PulseScale`: Controls the intensity of the breathing effect (be careful with high values).
+- `PulseWorldScale`: Controls how many waves animate across the fog.
+
+![FogRenderPictures](../../../assets/Tutorial/Rendering/Material/14_StylizedEdge_Pulsing-ezgif.com-optimize.gif)
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_
