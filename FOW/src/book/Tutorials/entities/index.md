@@ -17,6 +17,7 @@ and their updates are managed by the containers.
 # Pages
 
 - [Collision entity](/book/Tutorials/entities/Collision_Entity.md)
+- [Collision Terrain Entity](/book/Tutorials/entities/CollisionTerrain_Entity.md)
 - [Drawing entity](/book/Tutorials/entities/Drawing_Entity.md)
 - [Visibility Entity](/book/Tutorials/entities/Visibility_Entity.md)
 

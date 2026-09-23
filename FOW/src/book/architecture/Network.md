@@ -38,6 +38,11 @@ behaviors depending on the `Net Status`. `Server`, `Client`, and `Spectators` re
 `LFOW`. For example, a `Client` only needs to compute the state of its team since it should never see what the opponent sees.
 However, the `Server` needs to store the state of each team in case of client re-synchronization.
 
+> **/!\ A custom `NetworkSettingsClass` isn't required to run over a network. Leaving it unset (the default base
+> `UFOW_NetworkSettings`) still lets the `FOWHandler` initialize and run correctly for `Server`/`Client`/`Standalone` -
+> you only need a custom class once you want fog replication and synchronization configured, neither of which will
+> work without one. <br />**
+
 ### Fog State Replication
 
 `AFOW_FogStateReplication` is the base class for every `Online` game instance implementing the `LFOW`. The server will have

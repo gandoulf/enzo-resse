@@ -1,7 +1,7 @@
 # Collision entity
 
 - [Collision Entity Component](#collision-entity-component)
-- [Collision Entity cpp implementation](#collision-entity-cpp-implementation)
+- [Display FOW Collision](#display-fow-collision)
 
 This tutorial has been realized in the `Tutorial/Maps/TutorialMap_Entities` map provided in the [Demo Project](https://github.com/gandoulf/LayeredFOW_Demo).
 
@@ -38,10 +38,17 @@ than dynamic.
 
 ![CollisionEntityPicture](../../../assets/Tutorial/Entities/Collision/5_SetCollidersMobilityToStatic.png)
 
-## Collision Entity cpp implementation
+## Display FOW Collision
 
-You can make your own collision component or directly turn your `UObject` to entities and give them the possibility to
-block the sight of drawers. To be done...
+Every collider (Box, Custom, or terrain-generated) can show an editor-only wireframe of the volume it actually
+blocks - useful to check placement without guessing from the component's regular gizmo. Toggle it from the
+viewport's `Show` menu, under `Fog Of War Colliders`. The same flag also shows `Stealth Area` colliders.
+
+This is purely an editor visualization: it's stripped from cooked/packaged builds and costs nothing at runtime.
+Each collider exposes `Volume Color`, `Split Color`, and `Line Thickness` if you want to override the default
+magenta/orange look for specific colliders.
+
+<video controls autoplay loop muted playsinline src="../../../assets/Tutorial/Entities/Collision/ShowFOWCollision.mp4"></video>
 
 ---
 _Documentation built with [**`Unreal-Doc` v1.0.9**](https://github.com/PsichiX/unreal-doc) tool by [**`PsichiX`**](https://github.com/PsichiX)_

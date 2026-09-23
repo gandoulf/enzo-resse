@@ -2,6 +2,7 @@
 
 ## Classes
 - [`AFOW_Handler`](/reference/classes/AFOW_Handler.md)
+- [`FFOW_DebugRenderSceneProxy`](/reference/classes/FFOW_DebugRenderSceneProxy.md)
 - [`IFOW_CollisionEntity_Interface`](/reference/classes/IFOW_CollisionEntity_Interface.md)
 - [`IFOW_DrawingEntity_Interface`](/reference/classes/IFOW_DrawingEntity_Interface.md)
 - [`IFOW_Entity_Interface`](/reference/classes/IFOW_Entity_Interface.md)
