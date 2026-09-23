@@ -78,6 +78,13 @@ Here you will find a lighter version to manage the player character team. In you
 
 ![Networking](../../assets/Tutorial/Network/8.1_SettupGameModePlayerLogin.png)
 
+Some more work will be needed to have the seemless travel working properly. Since the assets are kept between travel the initialisation pipeline can be broken
+and it will be necessary to 
+- Override `OnSwapPlayerControllers`
+- Execute the same code as in `OnPossessedPawnChanged` 
+
+![Networking](../../assets/Tutorial/Network/8.2_SettupGameModePlayerLogin.png)
+
 > **Note: You will find the exact same code in the `Content/TemplateProject/FOW_Network/BP_FOW_NetworkTemplate_GameMode`**
 
 # Manage Player Team

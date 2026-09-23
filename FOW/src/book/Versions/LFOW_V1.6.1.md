@@ -26,6 +26,7 @@ This update focuses on networking robustness (seamless travel, dedicated servers
 ## **Documentation**
 
 - `Entities`: Added documentation for `AFOW_CollisionE_Terrain`, including FOWHandler-limited generation and the collider display show flag.
+- `Networking`: Added a note about `Seamless Travel`
 
 ## **Next Features to Come**
 

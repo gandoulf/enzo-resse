@@ -244,6 +244,13 @@ Here you will find a lighter version to manage the player character team. In you
 <li>Plug the result into <code>SetDrawingEntityTeam</code>. You will also need to plug in the <code>Drawing Entity</code>, which will be the <code>NewPawn</code>.</li>
 </ul>
 <p><img src="../../assets/Tutorial/Network/8.1_SettupGameModePlayerLogin.png" alt="Networking" /></p>
+<p>Some more work will be needed to have the seemless travel working properly. Since the assets are kept between travel the initialisation pipeline can be broken
+and it will be necessary to</p>
+<ul>
+<li>Override <code>OnSwapPlayerControllers</code></li>
+<li>Execute the same code as in <code>OnPossessedPawnChanged</code></li>
+</ul>
+<p><img src="../../assets/Tutorial/Network/8.2_SettupGameModePlayerLogin.png" alt="Networking" /></p>
 <blockquote>
 <p><strong>Note: You will find the exact same code in the <code>Content/TemplateProject/FOW_Network/BP_FOW_NetworkTemplate_GameMode</code></strong></p>
 </blockquote>
